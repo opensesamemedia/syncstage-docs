@@ -1,0 +1,76 @@
+
+# Project information
+site_name: SyncStage Docs
+site_url: https://docs.sync-stage.com
+site_author: Patryk Kaczmarek
+site_description: >-
+  SyncStage is a patent pending infrastructure platform that allows any application developer to create a synchronous audio experience within their application.
+
+# Copyright
+copyright: Copyright &copy; 2022 Open Sesame Media, Inc.
+
+# Configuration
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+
+  font:
+    text: Josefin Sans
+    code: Source Code Pro 
+    
+  features:
+    - header.autohide    
+
+  palette: 
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-3
+        name: Switch to light mode
+
+
+# Customization
+extra:
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    cookies:
+      analytics:
+        name: Google Analytics
+        checked: true
+    actions:
+      - accept
+      - manage
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/opensesamemedia
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/opensesamemedia
+    - icon: fontawesome/brands/slack 
+      link: https://join.slack.com/t/opensesamemedia/shared_invite/zt-162251zdd-OXcue6sakNB9iDeVbHOE6g
+
+
+extra_css:
+  - stylesheets/extra.css
+
+      
+
+# Page tree
+nav:
+  - Home: index.md
+  - Getting started:
+    - Installation: getting-started.md
+  - iOS SDK:
+    - Getting started:
+      - Set up a project: ios-project-setup.md
