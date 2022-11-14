@@ -1,0 +1,1 @@
+![alt SyncStage architecture](assets/architecture.png "SyncStage architecture")
