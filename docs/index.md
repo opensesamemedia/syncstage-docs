@@ -1,17 +1,8 @@
-# Welcome to MkDocs
+# Welcome to SyncStage
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+SyncStage is a patent pending infrastructure platform that allows any application developer to create a synchronous audio experience within their application.
 
-## Commands
+What you need is to integrate SyncStage SDK into your application and we handle the rest and deliver you consistent low latency.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+SING, CELEBRATE. JAM, LEARN. LAUGH. MOURN. WIN. TEACH. LISTEN. PRAY. AND PLAY TOGETHER. THE POSSIBILITIES ARE ENDLESS.
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
