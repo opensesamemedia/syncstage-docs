@@ -70,8 +70,7 @@ extra_css:
 nav:
   - SyncStage:
     - What is SyncStage?: index.md
-    - Architecture: architecture.md 
-    - Glossary: glossary.md
+    - Architecture & Glossary: architecture-and-glossary.md 
   - Available platforms: platforms.md
   - Getting started:
     - Test application: test-application.md

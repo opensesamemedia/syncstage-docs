@@ -1,0 +1,168 @@
+### 1. Add package dependency.
+
+```
+dependencies: [
+    .package(url: "TODO", .upToNextMajor(from: "0.0.18"))
+]
+
+```
+
+### 2. Add the following permissions to info.plist. 
+
+```
+Privacy - Microphone Usage Description (Need microphone access for audio recording)
+Privacy - Camera Usage Description (No need for camera access), required by ffmpeg
+
+```
+
+### 3. Enable background modes.
+
+SyncStage SDK requires the audio background mode to be enabled to allow streaming, recording in background.
+
+`Audio, AirPlay, Picture in Picture`
+
+### 4. Add SyncStageSecret.plist to your xcode project, and make sure that it is added to the “Copy Bundle Resources” in the target build phases.
+
+SyncStageSecret.plist is assigned to one application. File contains confidential credentials that allow access to your SyncStage resources. 
+
+__Security Notice__
+
+_We strongly recommend storing applicationSecretKey securely in your backend and provide it as a parameter at SyncStage SDK object instantiation. Having implemented the supply of the applicationSecretKey from your protected backend, you can remove that parameter from .plist._
+
+
+### 5. Integrate the SyncStage class with your app.
+
+## SDK methods
+#### Initialize
+
+Initializes the SDK.
+
+```
+init(
+    applicationSecretKey: String? = nil,
+    completion: @escaping (_ error: SyncStageError?) -> Void
+)
+```
+
+Constructor parameters:
+
+* `applicationSecretKey` - if set to nil, SDK will look for applicationSecretKey in the SyncStageSecret.plist file
+
+* `completion` - closure informs if setup error occurs
+
+#### Get zones list
+
+Gets available Zones list, where a session can be created
+
+```
+zoneList(completion: @escaping (Result<[Zone], Error>)
+```
+
+Parameters:
+
+* `completion` - returns zones list
+
+#### Create a session
+
+Creates a session in a given zone by a given user from your user pool.
+
+```
+createSession(
+    zoneId: String,
+    userId: String,
+    completion: @escaping (Result<SessionIdentifier, SyncStageError>) -> Void
+)
+```
+
+Parameters:
+
+* `zoneId` - zone in which we want to host our session
+* `userId` - id of your app user to match the data between SyncStage and your backend
+* `completion` -  if succeeded returns a SessionIdentifier (session Id and session code)
+
+#### Join the session
+
+Joins a particular session identified by `sessionCode`.
+
+```
+join(
+    sessionCode: String,
+    userId: String,
+    displayName: String? = nil,
+    latitude: Decimal? = nil,
+    longitude: Decimal? = nil,
+    completion: @escaping (Result<Session, SyncStageError>) -> Void
+)
+```
+
+Parameters:
+
+* `sessionCode` - the session code
+
+* `userId` - id of your app user to match de data between SyncStage and your backend
+
+* `displayName` - your app user display name
+
+* `latitude` - current location latitude
+
+* `longitude` - current location longitude
+
+* `completion` - if succeeded returns a Session object
+
+__Note:__ latitude and longitude are now optional parameters, in the future releases it will be used to improve the synchrinization throughout sessions.
+
+#### Get session state
+
+Gets state of currently joined session.
+
+```
+session(completion: @escaping (Result<Session, SyncStageError>)
+```
+
+Parameters:
+
+* `completion` - returns session state
+
+
+#### Leave the session
+
+Leaves currently joined session.
+
+```
+leave(
+    completion: @escaping (_ error: SyncStageError?) -> Void
+)
+```
+
+Parameters:
+
+* `completion` - closure informs if leave session error occurs
+
+#### Mute / unmute microphone
+
+Enables or disables microphone stream.
+
+```
+toggleMuteTransmitter(mute: Bool)
+```
+
+Parameters:
+
+* `mute`- is microphone muted
+
+#### Is muted
+
+Returns state of microphone stream.
+
+```
+isTransmitterMuted() -> Bool
+```
+
+#### Toggle direct monitor
+
+#### Toggle internal microphone
+
+#### Get SDK version
+
+
+### SyncStage delegates
