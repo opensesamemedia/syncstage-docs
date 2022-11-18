@@ -20,3 +20,5 @@
 *  __Developer Console__ - web application for managing your Organization, Projects, Applications, it provides comprehensive insight into the statistics data and billing.
 *  __Developer team__ - developer console users from your organization who have access to your projects and applications.
 *  __Audio stream__ - is an audio sent between 2 users of your mobile app.
+*  __Internal microphone__ - microphone that is built into your user’s smartphone.
+*  __Direct monitor__ - SDK option which allows you to hear yourself on your headphones. It's very useful for jamming and singing use cases when the user wants to hear not only other musicians / backing tracks but also himself.
