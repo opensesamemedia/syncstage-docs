@@ -35,7 +35,7 @@ _We strongly recommend storing applicationSecretKey securely in your backend and
 ## SDK methods
 #### Initialize
 
-Initializes the SDK.
+Initializes the SDK SyncStage object.
 
 ```
 init(
