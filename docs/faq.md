@@ -1,6 +1,6 @@
 __Q. SDK does not work as expected, but the application is building and running, what can I do about it?__
 
-A. Some problems might occur if the app user did not grant all required permissions. Before using the SyncStage object, make sure that all of the required permissions are granted.
+A. Some problems might occur if the application user did not grant all required permissions on their device. Before using the SyncStage object, make sure that all of the required permissions are granted.
 
 __Q. Can users connect their audio stream via SyncStage audio pipeline when not connected to the 5G network?__
 

@@ -3,6 +3,7 @@
 #### Added
 
 * TCP fallback resolving NAT issues
+* Displaying network measurements
 
 #### Changed
 
