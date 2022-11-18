@@ -10,7 +10,7 @@
 *  __Your users__ - end users of your mobile app.
 *  __Studio Server__ - a low latency audio streaming server.
 *  __Session__ - a virtual room where up to 8 users can connect and enjoy a low-latency experience. One mobile app can join only one session at a time.
-*  __App user__ - is an end-user of your mobile application, it is managed by your user pool.
+*  __App user__ - is an end-user of your mobile application, it is managed by your user pool. App user can become session participant.
 *  __Organization__ - stands for your company or other legal entity that will incorporate SyncStage into its products.
 *  __Project__ - is an abstraction that encapsulates settings for a particular business case. A Project is related to one organization.
 *  __Application__ - is a mobile application that is related to a project. Application is created for a particular platform such as Android / iOS / Unity.
@@ -22,3 +22,5 @@
 *  __Audio stream__ - is an audio sent between 2 users of your mobile app.
 *  __Internal microphone__ - microphone that is built into your user’s smartphone.
 *  __Direct monitor__ - SDK option which allows you to hear yourself on your headphones. It's very useful for jamming and singing use cases when the user wants to hear not only other musicians / backing tracks but also himself.
+*  __Transmitter stream__ - is a stream of microphone data that flows from your users' smartphones to Studio Server.
+*  __Receiver streams__ - are incoming streams of all session participants that flow from Studio Server to your users' smartphones.

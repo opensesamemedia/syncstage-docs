@@ -143,7 +143,7 @@ Parameters:
 Enables or disables microphone stream.
 
 ```
-toggleMuteTransmitter(mute: Bool)
+toggleMicrophone(mute: Bool)
 ```
 
 Parameters:
@@ -155,7 +155,7 @@ Parameters:
 Returns state of microphone stream.
 
 ```
-isTransmitterMuted() -> Bool
+isMicrophoneMuted() -> Bool
 ```
 
 #### Turn on / of direct monitor
