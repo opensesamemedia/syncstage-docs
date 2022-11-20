@@ -87,3 +87,8 @@ nav:
     - Developer Console: developer-console-changelog.md
   - Looking for assistance: looking-for-assistance.md
   - Acknowledgements: acknowledgements.md
+
+
+# Extensions
+markdown_extensions:
+  - attr_list # Needed for opening links in a new tab.

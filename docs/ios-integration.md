@@ -2,7 +2,7 @@
 
 ```
 dependencies: [
-    .package(url: "TODO", .upToNextMajor(from: "0.0.18"))
+    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.1.0"))
 ]
 
 ```

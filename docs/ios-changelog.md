@@ -9,7 +9,7 @@
 
 #### Fixed
 
-### [Version 1.0.0-beta 2022-11-XX]
+### [Version 0.1.0 2022-11-18]
 #### Added
 
 * Create session
