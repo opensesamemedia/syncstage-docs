@@ -130,12 +130,14 @@ Leaves currently joined session.
 
 ```
 leave(
+    transmitterId: String,
     completion: @escaping (_ error: SyncStageError?) -> Void
 )
 ```
 
 Parameters:
 
+* `transmitterId` - the session transmitter identifier
 * `completion` - closure informs if leave session error occurs
 
 #### Mute / unmute microphone
