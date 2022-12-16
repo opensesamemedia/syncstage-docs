@@ -1,12 +1,10 @@
-Please visit GitHub to clone and discover an iOS project presenting how the SDK can be integrated into the application. To get authorized to the SyncStage backend you need to add SyncStageSecret.plist to your application. Instructions on how to do that can be found in the __'How to integrate SDK'__ section.
+Please visit our GitHub to clone and discover the [iOS project](https://github.com/opensesamemedia/syncstage-test-app-ios){target=_blank} or the  [Android project](https://github.com/opensesamemedia/syncstage-test-app-android){target=_blank} presenting how the SDK can be integrated into the application. To get authorized to the SyncStage backend you need to add SyncStageSecret file to your application. Instructions on how to do that can be found in the __'How to integrate SDK'__ section.
 
-You can also download the test application from the TestFlight.
-
-### Create a session 
+### Create a session  
 
 ![alt Create a Session](assets/createsession.png "Create a Session")
 
-You first provide an app username (in this example the first user is called ‘Mateusz’), select the Join session button and select location of the deployment. To get the best latency experience choose the one that is the nearest to expected geolocation of your users. Once a session is created you will see yourself represented as ‘You’ and be able to share the session code, so that you can invite others. Share the code and wait for others to join you.
+You first provide an app username (in this example the first user is called ‘Mateusz’), select the New session button and select location of the deployment. To get the best latency experience choose the one that is the nearest to expected geolocation of your users. Once a session is created you will see yourself represented as ‘You’ and be able to share the session code, so that you can invite others. Share the code and wait for others to join you.
 
 ### Join a session
 
