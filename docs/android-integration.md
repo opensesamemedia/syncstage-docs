@@ -171,6 +171,7 @@ Turns on / of direct monitor.
 ```
 fun toggleDirectMonitor(enable: Boolean): SyncStageSDKErrorCode
 ```
+
 Parameters:
 
 * `enable`- `true` for turning on direct monitor
@@ -181,9 +182,30 @@ Turns on / of internal microphone to be used instead of default audio input i.e.
 ```
 fun toggleInternalMic(enable: Boolean): SyncStageSDKErrorCode
 ```
+
 Parameters:
 
 * `enable`- `true` for turning on internal microphone
+
+#### Get receiver network measurements
+Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
+
+```
+fun getReceiverMeasurements(identifier: String): Measurements
+```
+
+Parameters:
+
+* `identifier`- receiver's identifier
+
+
+#### Get transmitter network measurements
+Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
+
+```
+fun getTransmitterMeasurements(): Measurements
+```
+
 
 ### SyncStage delegates
 SyncStage class provide two delegate:, `SyncStageUserDelegate` and `SyncStageConnectivityDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate` and `connectivityDelegate` anytime.
