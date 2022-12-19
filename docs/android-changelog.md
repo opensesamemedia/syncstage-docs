@@ -2,9 +2,6 @@
 
 #### Added
 
-* Displaying network measurements
-* Toggle direct monitor
-
 #### Changed
 
 #### Fixed
@@ -18,6 +15,8 @@
 * Mute streams
 * Change stream volumes
 * Toggle internal microphone
+* Toggle direct monitor
+* Get network measurements
 
 #### Changed
 
