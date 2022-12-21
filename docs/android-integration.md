@@ -150,12 +150,12 @@ suspend fun leave(): SyncStageSDKErrorCode
 Enables or disables microphone stream.
 
 ```
-fun toggleMicrophone(enable: Boolean): SyncStageSDKErrorCode 
+fun toggleMicrophone(mute: Boolean): SyncStageSDKErrorCode 
 ```
 
 Parameters:
 
-* `enable`- desired state of the mute option
+* `mute`- desired state of the mute option
 
 #### Is muted
 
