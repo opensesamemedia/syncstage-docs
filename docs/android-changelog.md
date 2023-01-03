@@ -2,11 +2,12 @@
 
 #### Added
 
+* Toggle direct monitor
 #### Changed
 
 #### Fixed
 
-### [Version 0.1.0 2022-12-18]
+### [Version 0.1.0 2023-01-03]
 #### Added
 
 * Create session
@@ -15,7 +16,6 @@
 * Mute streams
 * Change stream volumes
 * Toggle internal microphone
-* Toggle direct monitor
 * Get network measurements
 
 #### Changed
