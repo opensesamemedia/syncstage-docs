@@ -1,4 +1,4 @@
-Please visit our [GitHub](https://github.com/opensesamemedia/syncstage-test-app-ios){target=_blank} to clone and discover an iOS project presenting how the SDK can be integrated into the application. To get authorized to the SyncStage backend you need to add SyncStageSecret.plist to your application. Instructions on how to do that can be found in the __'How to integrate SDK'__ section.
+Please visit our GitHub to clone and discover the [iOS project](https://github.com/opensesamemedia/syncstage-test-app-ios){target=_blank} or the  [Android project](https://github.com/opensesamemedia/syncstage-test-app-android){target=_blank} presenting how the SDK can be integrated into the application. To get authorized to the SyncStage backend you need to add SyncStageSecret file to your application. Instructions on how to do that can be found in the __'How to integrate SDK'__ section.
 
 ### Create a session  
 

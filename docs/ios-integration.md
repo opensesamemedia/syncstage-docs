@@ -27,7 +27,7 @@ SyncStageSecret.plist is assigned to one application. File contains confidential
 
 __Security Notice__
 
-_We strongly recommend storing applicationSecretKey securely in your backend and provide it as a parameter at SyncStage SDK object instantiation. Having implemented the supply of the applicationSecretKey from your protected backend, you can remove that parameter from .plist._
+_We strongly recommend storing applicationSecretKey securely in your backend and provide it as a parameter at SyncStage SDK object instantiation. Having implemented the supply of the applicationSecretKey from your protected backend, you can remove that parameter from the .plist._
 
 
 ### 5. Integrate the SyncStage class with your app.
