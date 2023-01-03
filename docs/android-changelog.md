@@ -3,9 +3,11 @@
 #### Added
 
 * Toggle direct monitor
+
 #### Changed
 
 #### Fixed
+* Internal microphone crashes
 
 ### [Version 0.1.0 2023-01-03]
 #### Added
