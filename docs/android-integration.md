@@ -1,17 +1,37 @@
 ### 1. Add package dependency.
-To the `settings.gradle` add SyncStage maven repository.
+In the `settings.gradle` add SyncStage maven repository under `dependencyResolutionManagement` block. Please define `githubProperties` which will be used for package repository authentication.
 
 ```
+def githubProperties = new Properties()
+githubProperties.load(new FileInputStream("github.properties"))
+
 dependencyResolutionManagement {
-    repositories 
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
         maven {
-            name = "GitHubPackages SyncStage"
-            url "https://maven.pkg.github.com/opensesamemedia"
+            url = uri("https://maven.pkg.github.com/opensesamemedia/syncstagesdkpackage")
+            credentials {
+                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
+                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
+            }
         }
     }
 }
 
 ```
+
+Android studio needs GitHub credentials with `read:packages` permission to fetch the SDK package.
+
+In order to provide GitHub credentials please create a `github.properties` file in the root directory and paste following code:
+
+```
+gpr.usr=
+gpr.key=
+```
+
+Under `gpr.usr` please provide you GitHub login, and under `gpr.key` paste GitHub token with `read:packages` permission. For information how to generate token please refer [here](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token){target=_blank}.
 
 ### 2. Add the following permissions to AndroidManifest.xml. 
 
