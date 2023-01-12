@@ -184,8 +184,8 @@ Returns state of microphone stream.
 ```
 fun isMicrophoneMuted(): Boolean
 ```
-
-<!-- #### Turn on / of direct monitor
+<!-- 
+#### Turn on / of direct monitor
 Turns on / of direct monitor.
 
 ```
@@ -194,7 +194,26 @@ fun toggleDirectMonitor(enable: Boolean): SyncStageSDKErrorCode
 
 Parameters:
 
-* `enable`- `true` for turning on direct monitor -->
+* `enable`- `true` for turning on direct monitor
+
+#### Get direct monitor volume
+Returns current direct monitor volume.
+
+```
+fun getDirectMonitorVolume(): Int
+```
+
+#### Change direct monitor volume
+Changes volume of the direct monitor.
+
+```
+fun changeDirectMonitorVolume(volume: Int): SyncStageSDKErrorCode 
+```
+
+Parameters:
+
+* `volume`- value from range [0;100] -->
+
 
 #### Turn on / of internal microphone
 Turns on / of internal microphone to be used instead of default audio input i.e. headphones mic.
