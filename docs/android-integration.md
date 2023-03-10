@@ -45,6 +45,8 @@ Under `gpr.usr` please provide you GitHub login, and under `gpr.key` paste GitHu
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 ```
 
+Please note that most of those notifications must accepted by user explicitly.
+
 ### 3. Add SyncStageSecret.json to your Android Studio project to the assets folder.
 
 SyncStageSecret.json is assigned to one application. File contains confidential credentials that allow access to your SyncStage resources. 
