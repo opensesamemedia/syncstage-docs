@@ -184,7 +184,7 @@ Returns state of microphone stream.
 ```
 fun isMicrophoneMuted(): Boolean
 ```
-<!-- 
+
 #### Turn on / of direct monitor
 Turns on / of direct monitor.
 
@@ -212,8 +212,14 @@ fun changeDirectMonitorVolume(volume: Int): SyncStageSDKErrorCode
 
 Parameters:
 
-* `volume`- value from range [0;100] -->
+* `volume`- value from range [0;100]
 
+#### Get direct monitor state
+Gets direct monitor enabled state
+
+```
+fun getDirectMonitorEnabled(): Boolean
+```
 
 #### Turn on / of internal microphone
 Turns on / of internal microphone to be used instead of default audio input i.e. headphones mic.
@@ -225,6 +231,13 @@ fun toggleInternalMic(enable: Boolean): SyncStageSDKErrorCode
 Parameters:
 
 * `enable`- `true` for turning on internal microphone
+
+#### Get internal microphone state
+Gets internal microphone enabled state
+
+```
+fun getInternalMicEnabled(): Boolean
+```
 
 #### Get receiver network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
@@ -294,7 +307,7 @@ enum class SyncStageSDKErrorCode(val errorCode: Int) {
 ### 5. Use SyncStage in background
 
 To allow SyncStage work in background you need to create a [foreground service](https://developer.android.com/guide/components/foreground-services){target=_blank} of `microphone` type.
-Service and additional permission must be added to `AndroidManifest.xml`.
+Service and additional permissions must be added to `AndroidManifest.xml`.
 
 ```
 ...
@@ -306,4 +319,5 @@ Service and additional permission must be added to `AndroidManifest.xml`.
 </application>
 
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 ```

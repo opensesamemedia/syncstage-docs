@@ -5,7 +5,6 @@ https://docs.sync-stage.com/
 pipenv install
 ```
 
-
 ## Run 
 ```
 pipenv run mkdocs serve
