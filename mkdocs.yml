@@ -77,6 +77,7 @@ nav:
     - How to integrate SDK: 
       - iOS: ios-integration.md
       - Android: android-integration.md
+      - Web Application: webapp-integration.md
   - Getting ultra low latency experience: low-latency-experience.md
   - Recommendations: recommendations.md
   - Known issues: known-issues.md
