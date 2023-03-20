@@ -85,6 +85,7 @@ nav:
   - Changelog:
     - iOS SDK: ios-changelog.md
     - Android SDK: android-changelog.md
+    - Web Application SDK: webapp-changelog.md
     - Developer Console: developer-console-changelog.md
   - Looking for assistance: looking-for-assistance.md
   - Acknowledgements: acknowledgements.md
