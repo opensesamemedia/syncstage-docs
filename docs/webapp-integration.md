@@ -126,42 +126,6 @@ Returns state of microphone stream.
 async isMicrophoneMuted(): Promise<boolean> 
 ```
 
-#### Turn on / of direct monitor
-Turns on / of direct monitor.
-
-```
-async toggleDirectMonitor(enable: boolean): Promise<SyncStageSDKErrorCode>
-```
-
-Parameters:
-
-* `enable`- `true` for turning on direct monitor
-
-#### Get direct monitor volume
-Returns current direct monitor volume.
-
-```
-async getDirectMonitorVolume(): Int
-```
-
-#### Change direct monitor volume
-Changes volume of the direct monitor.
-
-```
-async changeDirectMonitorVolume(volume: number): Promise<SyncStageSDKErrorCode>
-```
-
-Parameters:
-
-* `volume`- value from range [0;100]
-
-#### Get direct monitor state
-Gets direct monitor enabled state
-
-```
-async getDirectMonitorEnabled(): Promise<boolean>
-```
-
 #### Get receiver network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
 
