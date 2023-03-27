@@ -9,7 +9,8 @@ To get the latest npm package of the SyncStage SDK install it from: https://www.
 class SyncStage implements ISyncStage{
     constructor(
         public userDelegate: ISyncStageUserDelegate | null,
-        public connectivityDelegate: ISyncStageConnectivityDelegate | null
+        public connectivityDelegate: ISyncStageConnectivityDelegate | null,
+        desktopAgentPort: number = 18080,
     );
 }
 ```
@@ -19,6 +20,8 @@ Constructor parameters:
 * `userDelegate` - delegate object to receive events about users in session state
 
 * `connectivityDelegate` - delegate object to receive events with information about stream connection to Studio Server state
+
+* `desktopAgentPort` - port for communication with local desktop agent, 18080 by default
 
 #### Initialize
 
@@ -116,33 +119,33 @@ async toggleMicrophone(mute: boolean): Promise<SyncStageSDKErrorCode>
 
 Parameters:
 
-* `mute`- desired state of the mute option
+* `mute` - desired state of the mute option
 
 #### Is muted
 
 Returns state of microphone stream.
 
 ```
-async isMicrophoneMuted(): Promise<boolean> 
+async isMicrophoneMuted(): Promise<[boolean | null, SyncStageSDKErrorCode]>
 ```
 
 #### Get receiver network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
 
 ```
-async getReceiverMeasurements(identifier: string): Promise<IMeasurements>
+async getReceiverMeasurements(identifier: string): Promise<[IMeasurements | null, SyncStageSDKErrorCode]>
 ```
 
 Parameters:
 
-* `identifier`- receiver's identifier
+* `identifier` - receiver's identifier
 
 
 #### Get transmitter network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
 
 ```
-async getTransmitterMeasurements(): Promise<IMeasurements>
+async getTransmitterMeasurements(): Promise<[IMeasurements | null, SyncStageSDKErrorCode]>
 ```
 
 
@@ -189,5 +192,6 @@ enum SyncStageSDKErrorCode {
     'BAD_VOLUME_VALUE'=6,
     'SESSION_NOT_JOINED'=7,
     'AUDIO_SERVER_NOT_REACHABLE'=8,
+    'DESKTOP_AGENT_COMMUNICATION_ERROR' = 9,
 }
 ```

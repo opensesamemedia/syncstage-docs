@@ -6,7 +6,7 @@
 
 #### Fixed
 
-### [Version 1.3.0 2023-03-XX]
+### [Version 1.3.0 2023-03-27]
 #### Added
 
 Mock methods for:
