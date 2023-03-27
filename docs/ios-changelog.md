@@ -1,11 +1,15 @@
 ### [In progress]
 
+* TCP fallback resolving NAT issues
+
+### [Version 0.2.0 2022-12-02]
 #### Added
 
-* TCP fallback resolving NAT issues
 * Displaying network measurements
 
 #### Changed
+
+* Transmitter identifier is removed from the leave session method.
 
 #### Fixed
 

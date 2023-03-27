@@ -2,7 +2,7 @@
 
 ```
 dependencies: [
-    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.1.0"))
+    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.2.0"))
 ]
 
 ```
@@ -129,15 +129,11 @@ Parameters:
 Leaves currently joined session.
 
 ```
-leave(
-    transmitterId: String,
-    completion: @escaping (_ error: SyncStageError?) -> Void
-)
+leave(completion: @escaping (_ error: SyncStageError?) -> Void)
 ```
 
 Parameters:
 
-* `transmitterId` - the session transmitter identifier
 * `completion` - closure informs if leave session error occurs
 
 #### Mute / unmute microphone
@@ -160,6 +156,29 @@ Returns state of microphone stream.
 isMicrophoneMuted() -> Bool
 ```
 
+#### Change receiver volume
+
+Return error code if error occured
+
+```
+changeReceiverVolume(identifier: Swift.String, volume: Swift.Float) -> SyncStageSDK.SyncStageErrorCode
+```
+Parameters:
+
+* `identifier`- Session receiver identifier.
+* `volume`- volume float value between 0 and 100.
+
+#### Get receiver volume
+
+Returns receiver volume float value.
+
+```
+getReceiverVolume(identifier: Swift.String) -> Swift.Float
+```
+Parameters:
+
+* `identifier`- Session receiver identifier.
+
 #### Turn on / of direct monitor
 Turns on / of direct monitor.
 
@@ -170,6 +189,21 @@ Parameters:
 
 * `enable`- `true` for turning on direct monitor
 
+#### Get direct monitor volume value
+Returns direct monitor volume float value.
+
+```
+getDirectMonitorVolume() -> Swift.Float
+```
+#### Change direct monitor volume value
+
+```
+changeDirectMonitorVolume(volume: Swift.Float)
+```
+Parameters:
+
+* `volume`- volume float value between 1 and 100.
+
 #### Turn on / of internal microphone
 Turns on / of internal microphone to be used instead of default audio input i.e. headphones mic.
 
@@ -179,6 +213,26 @@ toggleInternalMic(enable: Bool)
 Parameters:
 
 * `enable`- `true` for turning on internal microphone
+
+#### Get receiver measurements
+Retruns session receiver measurements structure.
+
+```
+getReceiverMeasurements(identifier: Swift.String) -> SyncStageSDK.Measurements
+```
+Parameters:
+
+* `identifier`- session receiver identifier
+
+#### Get transmitter measurements
+Retruns session transmitter measurements structure.
+
+```
+func getTransmitterMeasurements() -> SyncStageSDK.Measurements
+```
+Parameters:
+
+* `identifier`- session transmitter identifier.
 
 #### Get SDK version
 Returns SDK version.
