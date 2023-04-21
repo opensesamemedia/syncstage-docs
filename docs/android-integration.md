@@ -94,12 +94,21 @@ Parameters:
 
 * `onCompleted` - callback informing about the result of initialization with `SyncStageSDKErrorCode`
 
-#### Get zones list
 
-Gets available Zones list, where a session can be created
+#### Get SyncStage SDK version
+
+Gets SyncStage SDK version
 
 ```
-suspend fun zonesList(): Pair<ZonesInRegionsList?, SyncStageSDKErrorCode> 
+fun getSDKVersion(): String
+```
+
+#### Get zone list
+
+Gets available zone list, where a session can be created
+
+```
+suspend fun zoneList(): Pair<ZonesInRegionsList?, SyncStageSDKErrorCode> 
 ```
 
 #### Create a session

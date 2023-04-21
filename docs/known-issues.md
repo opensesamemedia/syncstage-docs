@@ -4,6 +4,11 @@ Some ISP providers, and/or routers do not allow for NAT traversing. It may cause
 
 We are currently working on a fallback TCP mode that will cure that problem regardless of your application users’ network conditions.
 
-## Internal microphone
 
-Internal microphone feature might cause problems on some smartphones including app crash. We are currently working on resolving that issue.
+## Android
+* When headphones without a microphone are connected, the internal microphone must be manually enabled.
+* Robotic sound - on some smartphones, audio quality drops occasionally.
+* Switching between Wi-Fi and mobile networks, or vice versa, during a session causes the app to crash.
+* Disabling the internet connection during a session leads to an app crash.
+* Losing network coverage results in the app crashing.
+* Users may be removed from a session when the app runs in the background and the screen is locked.
