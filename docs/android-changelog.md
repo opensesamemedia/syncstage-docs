@@ -1,4 +1,15 @@
-### [In progress]
+### [Version 0.2.0 2023-04-21]
+#### Added
+
+* Toggle direct monitor
+* Get direct monitor volume
+* Get SDK version
+
+#### Changed
+* method `zonesList` is renamed to `zoneList`
+
+#### Fixed
+* Internal microphone crashes
 
 #### Added
 
