@@ -1,4 +1,4 @@
-### [Version 0.2.0 2023-04-21]
+### [Version 0.2.0 2023-04-26]
 #### Added
 
 * Toggle direct monitor
