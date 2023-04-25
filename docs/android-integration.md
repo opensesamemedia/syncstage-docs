@@ -45,6 +45,8 @@ Under `gpr.usr` please provide you GitHub login, and under `gpr.key` paste GitHu
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 ```
 
+Please note that most of those notifications must accepted by user explicitly.
+
 ### 3. Add SyncStageSecret.json to your Android Studio project to the assets folder.
 
 SyncStageSecret.json is assigned to one application. File contains confidential credentials that allow access to your SyncStage resources. 
@@ -92,12 +94,21 @@ Parameters:
 
 * `onCompleted` - callback informing about the result of initialization with `SyncStageSDKErrorCode`
 
-#### Get zones list
 
-Gets available Zones list, where a session can be created
+#### Get SyncStage SDK version
+
+Gets SyncStage SDK version
 
 ```
-suspend fun zonesList(): Pair<ZonesInRegionsList?, SyncStageSDKErrorCode> 
+fun getSDKVersion(): String
+```
+
+#### Get zone list
+
+Gets available zone list, where a session can be created
+
+```
+suspend fun zoneList(): Pair<ZonesInRegionsList?, SyncStageSDKErrorCode> 
 ```
 
 #### Create a session
@@ -184,7 +195,7 @@ Returns state of microphone stream.
 ```
 fun isMicrophoneMuted(): Boolean
 ```
-<!-- 
+
 #### Turn on / of direct monitor
 Turns on / of direct monitor.
 
@@ -212,8 +223,14 @@ fun changeDirectMonitorVolume(volume: Int): SyncStageSDKErrorCode
 
 Parameters:
 
-* `volume`- value from range [0;100] -->
+* `volume`- value from range [0;100]
 
+#### Get direct monitor state
+Gets direct monitor enabled state
+
+```
+fun getDirectMonitorEnabled(): Boolean
+```
 
 #### Turn on / of internal microphone
 Turns on / of internal microphone to be used instead of default audio input i.e. headphones mic.
@@ -225,6 +242,13 @@ fun toggleInternalMic(enable: Boolean): SyncStageSDKErrorCode
 Parameters:
 
 * `enable`- `true` for turning on internal microphone
+
+#### Get internal microphone state
+Gets internal microphone enabled state
+
+```
+fun getInternalMicEnabled(): Boolean
+```
 
 #### Get receiver network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
@@ -294,7 +318,7 @@ enum class SyncStageSDKErrorCode(val errorCode: Int) {
 ### 5. Use SyncStage in background
 
 To allow SyncStage work in background you need to create a [foreground service](https://developer.android.com/guide/components/foreground-services){target=_blank} of `microphone` type.
-Service and additional permission must be added to `AndroidManifest.xml`.
+Service and additional permissions must be added to `AndroidManifest.xml`.
 
 ```
 ...
@@ -306,4 +330,5 @@ Service and additional permission must be added to `AndroidManifest.xml`.
 </application>
 
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 ```
