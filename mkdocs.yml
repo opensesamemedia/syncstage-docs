@@ -7,7 +7,7 @@ site_description: >-
   SyncStage is a patent pending infrastructure platform that allows any application developer to create a synchronous audio experience within their application.
 
 # Copyright
-copyright: Copyright &copy; 2022 Open Sesame Media, Inc.
+copyright: Copyright &copy; 2023 Open Sesame Media, Inc.
 
 # Configuration
 theme:

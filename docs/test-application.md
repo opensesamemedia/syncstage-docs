@@ -1,3 +1,4 @@
+## iOS and Android
 Please visit our GitHub to clone and discover the [iOS project](https://github.com/opensesamemedia/syncstage-test-app-ios){target=_blank} or the  [Android project](https://github.com/opensesamemedia/syncstage-test-app-android){target=_blank} presenting how the SDK can be integrated into the application. To get authorized to the SyncStage backend you need to add SyncStageSecret file to your application. Instructions on how to do that can be found in the __'How to integrate SDK'__ section.
 
 ### Create a session  
@@ -19,3 +20,28 @@ User Mateusz will be prompted that Steve has joined the session on his device. S
 ### Other functionalities
 
 You can control volume levels of all participants on your end, each app user can mix volumes according to one's needs. Anytime you can mute / unmute yourself or simply leave the session.
+
+
+## Webbrowser
+
+Please visit our GitHub to clone and discover the [iOS project](https://github.com/opensesamemedia/syncstage-test-app-ios){target=_blank} or the  [Android project](https://github.com/opensesamemedia/syncstage-test-app-android){target=_blank} presenting how the SDK can be integrated into the application. To get authorized to the SyncStage backend you need to provision it with SyncStageSecret.
+
+Deployed test application is available [here](https://syncstagebrowsersdktestapp.web.app/).
+
+Firstly you will be asked to install Desktop Agent on your Mac.
+![alt Install Desktop Agent](assets/browser/setup-1.png "Install Desktop Agent")
+
+Once installed you will see
+![alt Install Desktop Agent Installed](assets/browser/setup-2.png "Install Desktop Agent Installed")
+
+Input nickname of the user that will join the session
+![alt Nickname](assets/browser/profile.png "Nickname")
+
+You can now join the existing session
+![alt Nickname](assets/browser/join.png "Nickname")
+
+or create a new one
+![alt Nickname](assets/browser/create.png "Nickname")
+
+Enjoy your low latency session
+![alt Nickname](assets/browser/session.png "Nickname")

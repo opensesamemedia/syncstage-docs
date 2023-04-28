@@ -40,12 +40,30 @@ Parameters:
 
 * `applicationSecretId` - id of secret for SDK provisioning
 
+#### Get is desktop agent connected
+
+Checks if desktop agent is running and available on the localhost.
+
+```
+isDesktopAgentConnected(): boolean
+```
+
+
+#### Get SDK version
+
+Gets SDK version.
+
+```
+getSDKVersion(): string
+```
+
+
 #### Get zones list
 
 Gets available Zones list, where a session can be created
 
 ```
-async zonesList(): Promise<[IZonesInRegionsList | null, SyncStageSDKErrorCode]>
+async zoneList(): Promise<[IZonesInRegionsList | null, SyncStageSDKErrorCode]>
 ```
 
 #### Create a session
@@ -148,6 +166,25 @@ Returns Mesurements object with network delay, jitter, and calculated network qu
 async getTransmitterMeasurements(): Promise<[IMeasurements | null, SyncStageSDKErrorCode]>
 ```
 
+
+#### Register Desktop Agent Reconnected Callback
+In case of reconnection UI application should be aware of this fact, to refetch the session state to keep it synchronized.
+
+```
+registerDesktopAgentReconnectedCallback(onWebsocketReconnected: () => void): void;
+```
+
+Parameters:
+
+* `onWebsocketReconnected` - callback
+
+
+#### Unregister Desktop Agent Reconnected Callback
+Remove the callback in the SyncStage.
+
+```
+unregisterDesktopAgentReconnectedCallback(): void;
+```
 
 ### SyncStage delegates
 SyncStage class provide two delegate:, `ISyncStageUserDelegate` and `ISyncStageConnectivityDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate` and `connectivityDelegate` anytime.
