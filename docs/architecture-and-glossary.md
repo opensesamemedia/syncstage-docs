@@ -24,3 +24,5 @@
 *  __Direct monitor__ - SDK option which allows you to hear yourself on your headphones. It's very useful for jamming and singing use cases when the user wants to hear not only other musicians / backing tracks but also himself.
 *  __Transmitter stream__ - is a stream of microphone data that flows from your users' smartphones to the Studio Server.
 *  __Receiver streams__ - are incoming streams of all session participants that flow from the Studio Server to your users' smartphones.
+* __SyncStage SDK__ - a typescript / javascript library that we provide to you to integrate it into your web app.
+* __Desktop Agent__ - desktop application running in the background on the computer responsible for low latency audio streaming.

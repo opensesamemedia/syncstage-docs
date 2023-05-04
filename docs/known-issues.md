@@ -12,3 +12,8 @@ We are currently working on a fallback TCP mode that will cure that problem rega
 * Disabling the internet connection during a session leads to an app crash.
 * Losing network coverage results in the app crashing.
 * Users may be removed from a session when the app runs in the background and the screen is locked.
+
+
+## Web browser
+
+Web browser SDK supports only Mac computers with Google Chrome.
