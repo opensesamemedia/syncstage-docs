@@ -68,25 +68,41 @@ extra_css:
 
 # Page tree
 nav:
-  - SyncStage:
-    - What is SyncStage?: index.md
-    - Architecture & Glossary: architecture-and-glossary.md 
-  - Available platforms: platforms.md
-  - Getting started:
-    - Test application: test-application.md
-    - How to integrate SDK: 
-      - iOS: ios-integration.md
-      - Android: android-integration.md
-      - Web Application: webapp-integration.md
+  # - SyncStage:
+  - What is SyncStage?: index.md
+  - Architecture & Glossary: architecture-and-glossary.md
+  # - Available platforms: platforms.md
+  - SyncStage SDK for Android:
+    - Overview: android-integration.md
+    - Test Application: android-integration.md
+    - Setup:
+      - Set up SyncStage Project: android-integration.md
+      - Use SDK Secrets: android-integration.md
+      - Set up Android Studio project: android-integration.md
+    - Reference:
+      - Methods: android-sdk-methods.md
+      - Delegates: android-sdk-delegates.md
+      - Error Codes: android-sdk-error-codes.md
+    - Requiremets: platforms.md
+    - Changelog: android-changelog.md
+  - SyncStage SDK for iOS:
+    - Overview: android-integration.md    
+  - SyncStage SDK for Web:
+    - Overview: android-integration.md        
+  # - Getting started:
+  #   - Test application: test-application.md
+  #   - How to integrate SDK: 
+  #     - iOS: ios-integration.md
+  #     - Android: android-integration.md
+  #     - Web Application: webapp-integration.md
   - Getting ultra low latency experience: low-latency-experience.md
   - Recommendations: recommendations.md
   - Known issues: known-issues.md
   - FAQ: faq.md
-  - Changelog:
-    - iOS SDK: ios-changelog.md
-    - Android SDK: android-changelog.md
-    - Web Application SDK: webapp-changelog.md
-    - Developer Console: developer-console-changelog.md
+  # - Changelog:
+  #   - iOS SDK: ios-changelog.md
+  #   - Web Application SDK: webapp-changelog.md
+  #   - Developer Console: developer-console-changelog.md
   - Looking for assistance: looking-for-assistance.md
   - Acknowledgements: acknowledgements.md
 
