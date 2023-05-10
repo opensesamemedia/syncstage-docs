@@ -1,6 +1,7 @@
 ## Architecture
 
-![alt SyncStage architecture](assets/architecture.png "SyncStage architecture")
+![alt SyncStage architecture](assets/syncstage-architecture.png#only-light "SyncStage architecture")
+![alt SyncStage architecture](assets/syncstage-architecture-dark.png#only-dark "SyncStage architecture")
 
 ## Glossary
 

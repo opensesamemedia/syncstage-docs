@@ -1,1 +1,0 @@
-You can lean on the SyncStage Early Access Slack channel for assistance with connecting with your applications. You can join the [Slack channel](https://opensesamemedia.slack.com){target=_blank} or send us an email via [syncstage@opensesame.media](mailto:syncstage@opensesame.media){target=_blank}

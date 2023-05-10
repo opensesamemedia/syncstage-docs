@@ -1,6 +1,6 @@
 Most of the SDK methods return SyncStageSDKErrorCode which can be decoded using following enum class.
 
-```
+```kotlin
 enum class SyncStageSDKErrorCode(val errorCode: Int) {
     UNKNOWN_ERROR(-1),
     OK(0),

@@ -3,7 +3,7 @@ SyncStage class provide two delegate:, `SyncStageUserDelegate` and `SyncStageCon
 ### SyncStageUserDelegate
 Responsible for getting callbacks about users' state in the session.
 
-```
+```kotlin
 interface SyncStageUserDelegate {
     fun userJoined(connection: Connection)
     fun userLeft(identifier: String)
@@ -13,10 +13,10 @@ interface SyncStageUserDelegate {
 }
 ```
 
-#### SyncStageConnectivityDelegate
+### SyncStageConnectivityDelegate
 Responsible for getting callbacks about users' connectivity in the session.
 
-```
+``````kotlin
 interface SyncStageConnectivityDelegate {
     fun transmitterConnectivityChanged(connected: Boolean)
     fun receiverConnectivityChanged(identifier: String, connected: Boolean)

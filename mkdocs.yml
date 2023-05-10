@@ -2,7 +2,7 @@
 # Project information
 site_name: SyncStage Docs
 site_url: https://docs.sync-stage.com
-site_author: Patryk Kaczmarek
+site_author: Patryk Kaczmarek, Mateusz Mul
 site_description: >-
   SyncStage is a patent pending infrastructure platform that allows any application developer to create a synchronous audio experience within their application.
 
@@ -57,8 +57,9 @@ extra:
       link: https://github.com/opensesamemedia
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/opensesamemedia
-    - icon: fontawesome/brands/slack 
-      link: https://join.slack.com/t/opensesamemedia/shared_invite/zt-162251zdd-OXcue6sakNB9iDeVbHOE6g
+  analytics:
+    provider: google
+    property: G-7YFZKQNWH4
 
 
 extra_css:
@@ -73,40 +74,56 @@ nav:
   - Architecture & Glossary: architecture-and-glossary.md
   # - Available platforms: platforms.md
   - SyncStage SDK for Android:
-    - Overview: android-integration.md
-    - Test Application: android-integration.md
-    - Setup:
-      - Set up SyncStage Project: android-integration.md
-      - Use SDK Secrets: android-integration.md
-      - Set up Android Studio project: android-integration.md
+    - Overview: android/overview.md
+    - Quickstart: android/quickstart.md
     - Reference:
-      - Methods: android-sdk-methods.md
-      - Delegates: android-sdk-delegates.md
-      - Error Codes: android-sdk-error-codes.md
-    - Requiremets: platforms.md
-    - Changelog: android-changelog.md
+      - Methods: android/sdk-methods.md
+      - Delegates: android/sdk-delegates.md
+      - Error codes: android/sdk-error-codes.md
+    - Test App: android/test-app.md
+    - Changelog: android/changelog.md
+    - Known issues: android/known-issues.md
   - SyncStage SDK for iOS:
-    - Overview: android-integration.md    
+    - Overview: ios/overview.md
+    - Quickstart: ios/quickstart.md
+    - Reference:
+      - Methods: ios/sdk-methods.md
+      - Delegates: ios/sdk-delegates.md
+    - Test App: ios/test-app.md      
+    - Changelog: ios/changelog.md    
   - SyncStage SDK for Web:
-    - Overview: android-integration.md        
-  # - Getting started:
-  #   - Test application: test-application.md
-  #   - How to integrate SDK: 
-  #     - iOS: ios-integration.md
-  #     - Android: android-integration.md
-  #     - Web Application: webapp-integration.md
+    - Overview: web/overview.md        
+    - Quickstart: web/quickstart.md
+    - Reference:
+      - Methods: web/sdk-methods.md
+      - Delegates: web/sdk-delegates.md
+      - Error codes: web/sdk-error-codes.md    
+    - Test App: web/test-app.md
   - Getting ultra low latency experience: low-latency-experience.md
   - Recommendations: recommendations.md
   - Known issues: known-issues.md
-  - FAQ: faq.md
-  # - Changelog:
-  #   - iOS SDK: ios-changelog.md
-  #   - Web Application SDK: webapp-changelog.md
-  #   - Developer Console: developer-console-changelog.md
-  - Looking for assistance: looking-for-assistance.md
+  - Help:
+    - FAQ: help/faq.md
+    - Reporting a bug: help/report-a-bug.md
+    - Reporting an issue in docs: help/report-an-issue-in-docs.md
+    - Asking a question: help/ask-a-question.md
   - Acknowledgements: acknowledgements.md
-
 
 # Extensions
 markdown_extensions:
+  - toc:
+      permalink: "#"
   - attr_list # Needed for opening links in a new tab.
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg

@@ -4,4 +4,4 @@ A. Some problems might occur if the application user did not grant all required 
 
 __Q. Can users connect their audio stream via SyncStage audio pipeline when not connected to the 5G network?__
 
-A. Yes, 5G is not a must. Your users can connect using their WiFi network or LTE connection, however some ISPs can block traffic of our packets, so switching to the mobile network from WiFi will be needed.
+A. Yes, 5G is not a must. Your users can connect using their WiFi network or LTE connection.

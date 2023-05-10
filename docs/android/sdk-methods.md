@@ -1,5 +1,5 @@
 ### Constructor 
-```
+```kotlin
 SyncStage(
         private val ctx: Context,
         var userDelegate: SyncStageUserDelegate? = null,
@@ -19,7 +19,7 @@ Constructor parameters:
 
 Initializes the SDK SyncStage object.
 
-```
+```kotlin
 fun init(
         applicationSecretKey: String? = null,
         onCompleted: (errorCode: SyncStageSDKErrorCode) -> Unit = {},
@@ -37,7 +37,7 @@ Parameters:
 
 Gets SyncStage SDK version
 
-```
+```kotlin
 fun getSDKVersion(): String
 ```
 
@@ -45,7 +45,7 @@ fun getSDKVersion(): String
 
 Gets available zone list, where a session can be created
 
-```
+```kotlin
 suspend fun zoneList(): Pair<ZonesInRegionsList?, SyncStageSDKErrorCode> 
 ```
 
@@ -53,7 +53,7 @@ suspend fun zoneList(): Pair<ZonesInRegionsList?, SyncStageSDKErrorCode>
 
 Creates a session in a given zone by a given user from your user pool.
 
-```
+```kotlin
 suspend fun createSession(
     zoneId: String,
     userId: String
@@ -69,7 +69,7 @@ Parameters:
 
 Joins a particular session identified by `sessionCode`.
 
-```
+```kotlin
 suspend fun join(
     sessionCode: String,
     userId: String,
@@ -91,13 +91,16 @@ Parameters:
 
 * `longitude` - current location longitude
 
-__Note:__ latitude and longitude are now optional parameters, in the future releases it will be used to improve the synchrinization throughout sessions.
+!!! note
+
+    Latitude and longitude are now optional parameters, in the future releases it will be used to further optimize the latency.
+
 
 ### Get session state
 
 Gets state of currently joined session.
 
-```
+```kotlin
 session(completion: @escaping (Result<Session, SyncStageError>)
 ```
 
@@ -110,7 +113,7 @@ Parameters:
 
 Leaves currently joined session.
 
-```
+```kotlin
 suspend fun leave(): SyncStageSDKErrorCode
 ```
 
@@ -118,7 +121,7 @@ suspend fun leave(): SyncStageSDKErrorCode
 
 Enables or disables microphone stream.
 
-```
+```kotlin
 fun toggleMicrophone(mute: Boolean): SyncStageSDKErrorCode 
 ```
 
@@ -130,14 +133,14 @@ Parameters:
 
 Returns state of microphone stream.
 
-```
+```kotlin
 fun isMicrophoneMuted(): Boolean
 ```
 
 ### Turn on / of direct monitor
 Turns on / of direct monitor.
 
-```
+```kotlin
 fun toggleDirectMonitor(enable: Boolean): SyncStageSDKErrorCode
 ```
 
@@ -148,14 +151,14 @@ Parameters:
 ### Get direct monitor volume
 Returns current direct monitor volume.
 
-```
+```kotlin
 fun getDirectMonitorVolume(): Int
 ```
 
 ### Change direct monitor volume
 Changes volume of the direct monitor.
 
-```
+```kotlin
 fun changeDirectMonitorVolume(volume: Int): SyncStageSDKErrorCode 
 ```
 
@@ -166,14 +169,14 @@ Parameters:
 ### Get direct monitor state
 Gets direct monitor enabled state
 
-```
+```kotlin
 fun getDirectMonitorEnabled(): Boolean
 ```
 
 ### Turn on / of internal microphone
 Turns on / of internal microphone to be used instead of default audio input i.e. headphones mic.
 
-```
+```kotlin
 fun toggleInternalMic(enable: Boolean): SyncStageSDKErrorCode
 ```
 
@@ -184,14 +187,14 @@ Parameters:
 ### Get internal microphone state
 Gets internal microphone enabled state
 
-```
+```kotlin
 fun getInternalMicEnabled(): Boolean
 ```
 
 ### Get receiver network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
 
-```
+```kotlin
 fun getReceiverMeasurements(identifier: String): Measurements
 ```
 
@@ -203,33 +206,6 @@ Parameters:
 ### Get transmitter network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
 
-```
+```kotlin
 fun getTransmitterMeasurements(): Measurements
-```
-
-
-## SyncStage delegates
-SyncStage class provide two delegate:, `SyncStageUserDelegate` and `SyncStageConnectivityDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate` and `connectivityDelegate` anytime.
-
-### SyncStageUserDelegate
-Responsible for getting callbacks about users' state in the session.
-
-```
-interface SyncStageUserDelegate {
-    fun userJoined(connection: Connection)
-    fun userLeft(identifier: String)
-    fun userMuted(identifier: String)
-    fun userUnmuted(identifier: String)
-    fun sessionOut()
-}
-```
-
-#### SyncStageConnectivityDelegate
-Responsible for getting callbacks about users' connectivity in the session.
-
-```
-interface SyncStageConnectivityDelegate {
-    fun transmitterConnectivityChanged(connected: Boolean)
-    fun receiverConnectivityChanged(identifier: String, connected: Boolean)
-}
 ```
