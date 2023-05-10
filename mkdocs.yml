@@ -101,7 +101,6 @@ nav:
     - Test App: web/test-app.md
   - Getting ultra low latency experience: low-latency-experience.md
   - Recommendations: recommendations.md
-  - Known issues: known-issues.md
   - Help:
     - FAQ: help/faq.md
     - Reporting a bug: help/report-a-bug.md
