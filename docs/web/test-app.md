@@ -40,7 +40,7 @@ Follow these steps to create the Test App project.
 Firstly you will be asked to install Desktop Agent on your Mac.
 ![alt Install Desktop Agent](../assets/browser/setup-1.png "Install Desktop Agent")
 
-Once installed you will see
+Once installed and running you will see
 ![alt Install Desktop Agent Installed](../assets/browser/setup-2.png "Install Desktop Agent Installed")
 
 Input nickname of the user that will join the session

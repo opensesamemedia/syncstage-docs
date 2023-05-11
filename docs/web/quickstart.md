@@ -26,26 +26,9 @@ To use test application you need to install SyncStage Desktop Agent on your Mac.
 
 [Download SyncStage Desktop Agent for macOS](https://syncstage.s3.amazonaws.com/Agent/SyncStageAgent_1.0.0.dmg){ .md-button}
 
-
-### 3. Add SyncStageSecret to your .env file.
-Create or update a `.env` file with SyncStageSecrets:
-    ```bash
-    REACT_APP_SYNCSTAGE_SECRET_ID=
-    REACT_APP_SYNCSTAGE_SECRET_KEY=
-    ```
-
-
-### 4. Integrate the SyncStage class with your app.
+### 3. Integrate the SyncStage class with your app.
 Here you can find a list of:
 
 * [SDK Methods](sdk-methods.md)
 * [SDK Delegates](sdk-delegates.md)
 * [SDK Error Codes](sdk-error-codes.md)
-
-### 5. Switch to local SDK dependency
-To work with local SDK package run:
-
-```bash
-yarn remove @opensesamemedia/syncstage
-npm link ../syncstage-sdk-npm-package
-```

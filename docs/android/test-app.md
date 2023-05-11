@@ -1,6 +1,6 @@
 # Test App
 
-The best way to start you joyrney with SyncStage is by trying out our example project available on GitHub [SyncStage Test App for Android](https://github.com/opensesamemedia/syncstage-test-app-android){target=_blank}.
+The best way to start you journey with SyncStage is by trying out our example project available on GitHub [SyncStage Test App for Android](https://github.com/opensesamemedia/syncstage-test-app-android){target=_blank}.
 This tutorial shows you how to clone, build, and run the application on your device. The recommended development environment is Android Studio.
 
 ## Set up your development project
@@ -28,10 +28,13 @@ To build and run the app:
 
 1. Connect an Android device to your computer. 
 2. Follow the provided guidelines to activate developer options on your Android device and configure your system to detect the connected device.
-3. Alternatively, you have the option to utilize the Android Virtual Device (AVD) Manager to set up a virtual device.
-4. In Android Studio, click the Run menu option (or :fontawesome-solid-play: button)
-5. Select a device.
-6. Android Studio invokes Gradle to build the app, and then runs it.
+3. In Android Studio, click the Run menu option (or :fontawesome-solid-play: button)
+4. Select a device.
+5. Android Studio invokes Gradle to build the app, and then runs it.
+
+!!! note
+
+    Android SyncStage SDK is not optimized against x86-64 architecture. Audio transmission might not work correctly in using the virtual device (AVD).
 
 
 ## Use the app
