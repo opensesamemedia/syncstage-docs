@@ -2,7 +2,7 @@
 
 ```
 dependencies: [
-    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.2.0"))
+    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.3.0"))
 ]
 
 ```
@@ -39,12 +39,15 @@ Initializes the SDK SyncStage object.
 
 ```
 init(
+    applicationSecretId: Swift.String? = nil, 
     applicationSecretKey: String? = nil,
     completion: @escaping (_ error: SyncStageError?) -> Void
 )
 ```
 
 Constructor parameters:
+
+* `applicationSecretId` - if set to nil, SDK will look for applicationSecretId in the SyncStageSecret.plist file
 
 * `applicationSecretKey` - if set to nil, SDK will look for applicationSecretKey in the SyncStageSecret.plist file
 
