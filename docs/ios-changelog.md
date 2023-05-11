@@ -1,7 +1,12 @@
+### [Version 0.3.1 2023-04-14]
+#### Added
+* Audio quality and latency improvements
+* Change quality coefficient
+* Get quality coefficient
+
 ### [Version 0.3.0 2023-04-02]
 #### Added
 * TCP fallback resolving NAT issues
-* Audio quality and latency improvements
 
 ### [Version 0.2.0 2022-12-02]
 #### Added
