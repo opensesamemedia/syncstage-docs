@@ -25,5 +25,8 @@ Responsible for getting callbacks about users' connectivity in the session.
 interface ISyncStageConnectivityDelegate {
   transmitterConnectivityChanged(connected: boolean): void;
   receiverConnectivityChanged(identifier: string, connected: boolean): void;
+  desktopAgentReconnected(): void;
 }
 ```
+
+`transmitterConnectivityChanged` and `receiverConnectivityChanged` can be used to update connectivity indicator of particular connections. The `desktopAgentReconnected` callback is suggested to be used to trigger rebuild of the session state in the application (during the disconnection, new connections might be added or removed to the session which result in the ui state inconsistency).
