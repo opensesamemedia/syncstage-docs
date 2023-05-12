@@ -2,7 +2,7 @@
 
 * TCP fallback resolving NAT issues
 
-### [Version 0.2.0 2022-12-02]
+### [Version 0.0.2 2022-12-02]
 #### Added
 
 * Displaying network measurements
@@ -13,7 +13,7 @@
 
 #### Fixed
 
-### [Version 0.1.0 2022-11-18]
+### [Version 0.0.1 2022-11-18]
 #### Added
 
 * Create session
