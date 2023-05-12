@@ -4,12 +4,15 @@ Initializes the SDK SyncStage object.
 
 ```swift
 init(
+    applicationSecretId: String? = nil, 
     applicationSecretKey: String? = nil,
     completion: @escaping (_ error: SyncStageError?) -> Void
 )
 ```
 
 Constructor parameters:
+
+* `applicationSecretId` - if set to nil, SDK will look for applicationSecretId in the SyncStageSecret.plist file
 
 * `applicationSecretKey` - if set to nil, SDK will look for applicationSecretKey in the SyncStageSecret.plist file
 
@@ -129,8 +132,9 @@ isMicrophoneMuted() -> Bool
 Return error code if error occured
 
 ```swift
-changeReceiverVolume(identifier: Swift.String, volume: Swift.Float) -> SyncStageSDK.SyncStageErrorCode
+changeReceiverVolume(identifier: String, volume: Float) -> SyncStageSDK.SyncStageErrorCode
 ```
+
 Parameters:
 
 * `identifier`- Session receiver identifier.
@@ -141,8 +145,9 @@ Parameters:
 Returns receiver volume float value.
 
 ```swift
-getReceiverVolume(identifier: Swift.String) -> Swift.Float
+getReceiverVolume(identifier: String) -> Float
 ```
+
 Parameters:
 
 * `identifier`- Session receiver identifier.
@@ -161,13 +166,14 @@ Parameters:
 Returns direct monitor volume float value.
 
 ```swift
-getDirectMonitorVolume() -> Swift.Float
+getDirectMonitorVolume() -> Float
 ```
 ### Change direct monitor volume value
 
 ```swift
-changeDirectMonitorVolume(volume: Swift.Float)
+changeDirectMonitorVolume(volume: Float)
 ```
+
 Parameters:
 
 * `volume`- volume float value between 1 and 100.
@@ -178,6 +184,7 @@ Turns on / of internal microphone to be used instead of default audio input i.e.
 ```swift
 toggleInternalMic(enable: Bool)
 ```
+
 Parameters:
 
 * `enable`- `true` for turning on internal microphone
@@ -186,8 +193,9 @@ Parameters:
 Retruns session receiver measurements structure.
 
 ```swift
-getReceiverMeasurements(identifier: Swift.String) -> SyncStageSDK.Measurements
+getReceiverMeasurements(identifier: String) -> SyncStageSDK.Measurements
 ```
+
 Parameters:
 
 * `identifier`- session receiver identifier
@@ -201,6 +209,27 @@ func getTransmitterMeasurements() -> SyncStageSDK.Measurements
 Parameters:
 
 * `identifier`- session transmitter identifier.
+
+#### Change quality coefficient
+Change quality factor min 0.3 (highest performance) max 10.0 (highest quality) Default 2.0
+
+```
+func changeQualityCoefficient(identifier: String, quality: Double)
+```
+Parameters:
+
+* `identifier`- session receiver identifier.
+* `quality`- quality coefficient value.
+
+#### Get quality coefficient
+Returns quality coefficient.
+
+```
+func getQualityCoefficient(identifier: String) -> Double
+```
+Parameters:
+
+* `identifier`- session receiver identifier.
 
 ### Get SDK version
 Returns SDK version.

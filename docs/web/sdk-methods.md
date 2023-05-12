@@ -107,7 +107,11 @@ Parameters:
 
     Latitude and longitude are now optional parameters, in the future releases it will be used to further optimize the latency.
 
+!!! warning
 
+    SyncStage **Web** SDK is available only in a preview version. It is expected to be available to use by the end of May 2023.
+
+    
 ### Get session state
 
 Gets state of currently joined session.

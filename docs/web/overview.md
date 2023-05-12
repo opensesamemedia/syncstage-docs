@@ -1,3 +1,7 @@
+!!! warning
+
+    SyncStage **Web** SDK is available only in a preview version. It is expected to be available to use by the end of May 2023.
+
 SyncStage SDK for Web brings low latency communication capabilities to your desktop. 
 
 It consists of two componens:
@@ -7,8 +11,8 @@ It consists of two componens:
 
 SyncStage SDK for Web current version: `v0.0.1` ([View changelog](changelog.md))
 
-[Install SDK](quickstart.md){ .md-button .md-button--primary} [Test SyncStage Web SDK on macOS](https://syncstagebrowsersdktestapp.web.app/){ .md-button target=_blank }
-
+[Install SDK](quickstart.md){ .md-button .md-button--primary} 
+<!-- [Test SyncStage Web SDK on macOS](https://syncstagebrowsersdktestapp.web.app/){ .md-button target=_blank } -->
 
 ## Requirements 
 ### Browser

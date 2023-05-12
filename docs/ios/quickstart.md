@@ -17,7 +17,6 @@ The best way to start with SyncStage is by trying out our example project availa
 dependencies: [
     .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.3.1"))
 ]
-
 ```
 
 ### 2. Add the following permissions to info.plist. 
