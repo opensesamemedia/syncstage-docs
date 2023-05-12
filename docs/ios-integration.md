@@ -2,7 +2,7 @@
 
 ```
 dependencies: [
-    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.2.0"))
+    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.3.0"))
 ]
 
 ```
@@ -39,12 +39,15 @@ Initializes the SDK SyncStage object.
 
 ```
 init(
+    applicationSecretId: String? = nil, 
     applicationSecretKey: String? = nil,
     completion: @escaping (_ error: SyncStageError?) -> Void
 )
 ```
 
 Constructor parameters:
+
+* `applicationSecretId` - if set to nil, SDK will look for applicationSecretId in the SyncStageSecret.plist file
 
 * `applicationSecretKey` - if set to nil, SDK will look for applicationSecretKey in the SyncStageSecret.plist file
 
@@ -161,7 +164,7 @@ isMicrophoneMuted() -> Bool
 Return error code if error occured
 
 ```
-changeReceiverVolume(identifier: Swift.String, volume: Swift.Float) -> SyncStageSDK.SyncStageErrorCode
+changeReceiverVolume(identifier: String, volume: Float) -> SyncStageSDK.SyncStageErrorCode
 ```
 Parameters:
 
@@ -173,7 +176,7 @@ Parameters:
 Returns receiver volume float value.
 
 ```
-getReceiverVolume(identifier: Swift.String) -> Swift.Float
+getReceiverVolume(identifier: String) -> Float
 ```
 Parameters:
 
@@ -193,12 +196,12 @@ Parameters:
 Returns direct monitor volume float value.
 
 ```
-getDirectMonitorVolume() -> Swift.Float
+getDirectMonitorVolume() -> Float
 ```
 #### Change direct monitor volume value
 
 ```
-changeDirectMonitorVolume(volume: Swift.Float)
+changeDirectMonitorVolume(volume: Float)
 ```
 Parameters:
 
@@ -218,7 +221,7 @@ Parameters:
 Retruns session receiver measurements structure.
 
 ```
-getReceiverMeasurements(identifier: Swift.String) -> SyncStageSDK.Measurements
+getReceiverMeasurements(identifier: String) -> SyncStageSDK.Measurements
 ```
 Parameters:
 
@@ -233,6 +236,27 @@ func getTransmitterMeasurements() -> SyncStageSDK.Measurements
 Parameters:
 
 * `identifier`- session transmitter identifier.
+
+#### Change quality coefficient
+Change quality factor min 0.3 (highest performance) max 10.0 (highest quality) Default 2.0
+
+```
+func changeQualityCoefficient(identifier: String, quality: Double)
+```
+Parameters:
+
+* `identifier`- session receiver identifier.
+* `quality`- quality coefficient value.
+
+#### Get quality coefficient
+Returns quality coefficient.
+
+```
+func getQualityCoefficient(identifier: String) -> Double
+```
+Parameters:
+
+* `identifier`- session receiver identifier.
 
 #### Get SDK version
 Returns SDK version.
