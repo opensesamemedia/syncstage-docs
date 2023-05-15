@@ -1,3 +1,11 @@
+### [Version 0.3.0 2023-05-12]
+
+#### Fixed
+
+* Disabling the internet connection during a session leads to an app crash.
+* Losing network coverage results in the app crashing.
+* Users may be removed from a session when the app runs in the background and the screen is locked.
+
 ### [Version 0.2.0 2023-04-26]
 #### Added
 
@@ -24,7 +32,3 @@
 * Change stream volumes
 * Toggle internal microphone
 * Get network measurements
-
-#### Changed
-
-#### Fixed
