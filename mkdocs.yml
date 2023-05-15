@@ -91,14 +91,14 @@ nav:
       - Delegates: ios/sdk-delegates.md
     - Test App: ios/test-app.md      
     - Changelog: ios/changelog.md    
-  # - SyncStage SDK for Web:
-  #   - Overview: web/overview.md        
-  #   - Quickstart: web/quickstart.md
-  #   - Reference:
-  #     - Methods: web/sdk-methods.md
-  #     - Delegates: web/sdk-delegates.md
-  #     - Error codes: web/sdk-error-codes.md    
-  #   - Test App: web/test-app.md
+  - SyncStage SDK for Web:
+    - Overview: web/overview.md        
+    - Quickstart: web/quickstart.md
+    - Reference:
+      - Methods: web/sdk-methods.md
+      - Delegates: web/sdk-delegates.md
+      - Error codes: web/sdk-error-codes.md    
+    - Test App: web/test-app.md
   - Getting ultra low latency experience: low-latency-experience.md
   - Recommendations: recommendations.md
   - Help:
