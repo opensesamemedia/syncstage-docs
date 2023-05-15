@@ -7,8 +7,9 @@
 ### [Version 0.3.0 2023-04-02]
 #### Added
 * TCP fallback resolving NAT issues
+* Audio quality and latency improvements
 
-### [Version 0.0.2 2022-12-02]
+### [Version 0.2.0 2022-12-02]
 #### Added
 
 * Displaying network measurements
@@ -19,7 +20,7 @@
 
 #### Fixed
 
-### [Version 0.0.1 2022-11-18]
+### [Version 0.1.0 2022-11-18]
 #### Added
 
 * Create session

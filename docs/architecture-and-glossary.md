@@ -1,12 +1,15 @@
 ## Architecture
 
-![alt SyncStage architecture](assets/architecture.png "SyncStage architecture")
+![alt SyncStage architecture](assets/syncstage-architecture.png#only-light "SyncStage architecture")
+![alt SyncStage architecture](assets/syncstage-architecture-dark.png#only-dark "SyncStage architecture")
 
 ## Glossary
 
 * __SyncStage SDK__ - a library that we provide to you to integrate it into your mobile app.
 *  __Your mobile app__ - your custom mobile application that integrates SyncStage SDK.
-*  __Your backend__ - your server-side services that your mobile app is communicating with. It is responsible for managing your users.
+* __SyncStage browser SDK__ - a typescript / javascript library that we provide to you to integrate it into your web app.
+* __Desktop Agent__ - desktop application running in the background on the computer responsible for low latency audio streaming.
+*  __Your backend__ - your server-side services that your mobile or web app is communicating with. It is responsible for managing your users.
 *  __Your users__ - end users of your mobile app.
 *  __Studio Server__ - a low latency audio streaming server.
 *  __Session__ - a virtual room where up to 8 users can connect and enjoy a low-latency experience. One mobile app can join only one session at a time.
@@ -24,5 +27,3 @@
 *  __Direct monitor__ - SDK option which allows you to hear yourself on your headphones. It's very useful for jamming and singing use cases when the user wants to hear not only other musicians / backing tracks but also himself.
 *  __Transmitter stream__ - is a stream of microphone data that flows from your users' smartphones to the Studio Server.
 *  __Receiver streams__ - are incoming streams of all session participants that flow from the Studio Server to your users' smartphones.
-* __SyncStage SDK__ - a typescript / javascript library that we provide to you to integrate it into your web app.
-* __Desktop Agent__ - desktop application running in the background on the computer responsible for low latency audio streaming.

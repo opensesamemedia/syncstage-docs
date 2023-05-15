@@ -1,11 +1,6 @@
-## NPM package
+### Constructor 
 
-To get the latest npm package of the SyncStage SDK install it from: https://www.npmjs.com/package/@opensesamemedia/syncstage
-
-## SDK methods
-
-#### Constructor 
-```
+```typescript
 class SyncStage implements ISyncStage{
     constructor(
         public userDelegate: ISyncStageUserDelegate | null,
@@ -23,11 +18,11 @@ Constructor parameters:
 
 * `desktopAgentPort` - port for communication with local desktop agent, 18080 by default
 
-#### Initialize
+### Initialize
 
 Initializes the SDK SyncStage object.
 
-```
+```typescript
 async init(
         applicationSecretId: string,
         applicationSecretKey: string
@@ -40,37 +35,37 @@ Parameters:
 
 * `applicationSecretId` - id of secret for SDK provisioning
 
-#### Get is desktop agent connected
+### Get is desktop agent connected
 
 Checks if desktop agent is running and available on the localhost.
 
-```
+```typescript
 isDesktopAgentConnected(): boolean
 ```
 
 
-#### Get SDK version
+### Get SDK version
 
 Gets SDK version.
 
-```
+```typescript
 getSDKVersion(): string
 ```
 
 
-#### Get zones list
+### Get zones list
 
 Gets available Zones list, where a session can be created
 
-```
+```typescript
 async zoneList(): Promise<[IZonesInRegionsList | null, SyncStageSDKErrorCode]>
 ```
 
-#### Create a session
+### Create a session
 
 Creates a session in a given zone by a given user from your user pool.
 
-```
+```typescript
 async createSession(
     zoneId: string,
     userId: string
@@ -82,11 +77,11 @@ Parameters:
 * `zoneId` - zone in which we want to host our session
 * `userId` - id of your app user to match the data between SyncStage and your backend
 
-#### Join the session
+### Join the session
 
 Joins a particular session identified by `sessionCode`.
 
-```
+```typescript
 async join(
     sessionCode: string,
     userId: string,
@@ -108,30 +103,37 @@ Parameters:
 
 * `longitude` - current location longitude
 
-__Note:__ latitude and longitude are now optional parameters, in the future releases it will be used to improve the synchrinization throughout sessions.
+!!! note
 
-#### Get session state
+    Latitude and longitude are now optional parameters, in the future releases it will be used to further optimize the latency.
+
+!!! warning
+
+    SyncStage **Web** SDK is available only in a preview version. It is expected to be available to use by the end of May 2023.
+
+    
+### Get session state
 
 Gets state of currently joined session.
 
-```
+```typescript
 async session(): Promise<[ISession | null, SyncStageSDKErrorCode]> 
 ```
 
 
-#### Leave the session
+### Leave the session
 
 Leaves currently joined session.
 
-```
+```typescript
 async leave(): Promise<SyncStageSDKErrorCode> 
 ```
 
-#### Mute / unmute microphone
+### Mute / unmute microphone
 
 Enables or disables microphone stream.
 
-```
+```typescript
 async toggleMicrophone(mute: boolean): Promise<SyncStageSDKErrorCode>
 ```
 
@@ -139,18 +141,18 @@ Parameters:
 
 * `mute` - desired state of the mute option
 
-#### Is muted
+### Is muted
 
 Returns state of microphone stream.
 
-```
+```typescript
 async isMicrophoneMuted(): Promise<[boolean | null, SyncStageSDKErrorCode]>
 ```
 
-#### Get receiver network measurements
+### Get receiver network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
 
-```
+```typescript
 async getReceiverMeasurements(identifier: string): Promise<[IMeasurements | null, SyncStageSDKErrorCode]>
 ```
 
@@ -159,18 +161,18 @@ Parameters:
 * `identifier` - receiver's identifier
 
 
-#### Get transmitter network measurements
+### Get transmitter network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
 
-```
+```typescript
 async getTransmitterMeasurements(): Promise<[IMeasurements | null, SyncStageSDKErrorCode]>
 ```
 
 
-#### Register Desktop Agent Reconnected Callback
+### Register Desktop Agent Reconnected Callback
 In case of reconnection UI application should be aware of this fact, to refetch the session state to keep it synchronized.
 
-```
+```typescript
 registerDesktopAgentReconnectedCallback(onWebsocketReconnected: () => void): void;
 ```
 
@@ -179,56 +181,9 @@ Parameters:
 * `onWebsocketReconnected` - callback
 
 
-#### Unregister Desktop Agent Reconnected Callback
+### Unregister Desktop Agent Reconnected Callback
 Remove the callback in the SyncStage.
 
-```
+```typescript
 unregisterDesktopAgentReconnectedCallback(): void;
-```
-
-### SyncStage delegates
-SyncStage class provide two delegate:, `ISyncStageUserDelegate` and `ISyncStageConnectivityDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate` and `connectivityDelegate` anytime.
-
-#### SyncStageUserDelegate
-Responsible for getting callbacks about users' state in the session.
-
-```
-interface ISyncStageUserDelegate {
-  userJoined(connection: IConnection): void;
-  userLeft(identifier: string): void;
-  userMuted(identifier: string): void;
-  userUnmuted(identifier: string): void;
-  sessionOut(): void;
-}
-
-```
-
-#### SyncStageConnectivityDelegate
-Responsible for getting callbacks about users' connectivity in the session.
-
-```
-interface ISyncStageConnectivityDelegate {
-  transmitterConnectivityChanged(connected: boolean): void;
-  receiverConnectivityChanged(identifier: string, connected: boolean): void;
-}
-```
-
-### SyncStage SDK Error Codes
-
-Most of the SDK methods return SyncStageSDKErrorCode which can be decoded using following enum class.
-
-```
-enum SyncStageSDKErrorCode {
-    'UNKNOWN_ERROR'=-1, 
-    'OK'=0,
-    'CONFIGURATION_ERROR'=1,
-    'API_ERROR'=2,
-    'API_UNAUTHORIZED'=3,
-    'AUDIO_STREAMING_ERROR'=4,
-    'STREAM_DOES_NOT_EXIST'=5, 
-    'BAD_VOLUME_VALUE'=6,
-    'SESSION_NOT_JOINED'=7,
-    'AUDIO_SERVER_NOT_REACHABLE'=8,
-    'DESKTOP_AGENT_COMMUNICATION_ERROR' = 9,
-}
 ```
