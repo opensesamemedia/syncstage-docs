@@ -6,7 +6,7 @@ The SDK secrets are your credentials that authenticates requests associated with
 [Become an Early Access Deveoper](https://sync-stage.com/){ .md-button target=_blank}
 
 
-## Stat with an example project
+## Start with an example project
 The best way to start with SyncStage is by trying out our example project available on GitHub [SyncStage Test App on iOS](https://github.com/opensesamemedia/syncstage-test-app-ios){target=_blank}.
 
 
