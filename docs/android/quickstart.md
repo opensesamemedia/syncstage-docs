@@ -96,3 +96,9 @@ Service and additional permissions must be added to `AndroidManifest.xml`.
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 ```
+
+
+## Troubleshooting
+### SDK does not work as expected, but the application is building and running, what can I do about it?
+Some problems might occur if the application user did not grant all required permissions on their device. Before using the SyncStage object, make sure that all of the required permissions are granted.
+
