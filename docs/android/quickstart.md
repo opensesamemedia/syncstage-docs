@@ -3,10 +3,10 @@
 Before you start developing your application with the SyncStage SDK, you need to opt-in to Early Access Developer program and get your SyncStage SDK secrets. Once you have opted-in we will contact you to provide you with your SDK secrets.
 The SDK secrets are your credentials that authenticates requests associated with your project. 
 
-[Become an Early Access Deveoper](https://sync-stage.com/){ .md-button target=_blank}
+[Become an Early Access Developer](https://sync-stage.com/){ .md-button target=_blank}
 
 
-## Stat with an example project
+## Start with an example project
 The best way to start with SyncStage is by trying out our example project available on GitHub [SyncStage Test App for Android](https://github.com/opensesamemedia/syncstage-test-app-android){target=_blank}.
 
 
