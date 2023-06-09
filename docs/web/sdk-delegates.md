@@ -1,6 +1,6 @@
 !!! warning
 
-    SyncStage **Web** SDK is available only in a preview version. It is expected to be available to use by the end of May 2023.
+    SyncStage **Web** SDK is available only in a preview version. It is expected to be available to use by the end of June 2023.
 
 SyncStage class provide two delegate:, `ISyncStageUserDelegate` and `ISyncStageConnectivityDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate` and `connectivityDelegate` anytime.
 

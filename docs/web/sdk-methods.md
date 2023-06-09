@@ -109,7 +109,7 @@ Parameters:
 
 !!! warning
 
-    SyncStage **Web** SDK is available only in a preview version. It is expected to be available to use by the end of May 2023.
+    SyncStage **Web** SDK is available only in a preview version. It is expected to be available to use by the end of June 2023.
 
     
 ### Get session state

@@ -1,6 +1,6 @@
 !!! warning
 
-    SyncStage **Web** SDK is available only in a preview version. It is expected to be available to use by the end of May 2023.
+    SyncStage **Web** SDK is available only in a preview version. It is expected to be available to use by the end of June 2023.
 
 Most of the SDK methods return SyncStageSDKErrorCode which can be decoded using following enum class.
 
