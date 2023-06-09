@@ -89,6 +89,7 @@ nav:
     - Reference:
       - Methods: ios/sdk-methods.md
       - Delegates: ios/sdk-delegates.md
+      - Error codes: ios/sdk-error-codes.md      
     - Test App: ios/test-app.md      
     - Changelog: ios/changelog.md    
   - SyncStage SDK for Web:
