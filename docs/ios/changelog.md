@@ -1,3 +1,24 @@
+### [Version 0.4.0 2023-06-27]
+#### Added
+
+* Get best available server
+* Get server instances
+* Change latency optimization level
+* Get latency optimization level
+* SyncStage discovery delegate
+
+#### Changed
+
+* Create session parameters
+* Join session parameters
+
+#### Removed
+
+* Zone list (Replaced by: getServerInstances)
+* Change quality coefficient (Replaced by: changeLatencyOptimizationLevel)
+* Get quality coeffient (Replaced by: getLatencyOptimizationLevel)
+
+
 ### [Version 0.3.1 2023-04-14]
 #### Added
 * Audio quality and latency improvements

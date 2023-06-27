@@ -36,3 +36,13 @@ protocol SyncStageConnectivityDelegate: NSObject {
     func receiverConnectivityChanged(identifier: String, connected: Bool)
 }
 ```
+
+#### SyncStageDiscoveryDelegate
+Responsible for getting callbacks about available zones latency.
+
+```swift
+public protocol SyncStageDiscoveryDelegate: NSObject {
+    func discoveryResults(zones: [String])
+    func discoveryLatencyTestResults(results: [ZoneLatency])
+}
+```
