@@ -100,6 +100,7 @@ nav:
       - Delegates: web/sdk-delegates.md
       - Error codes: web/sdk-error-codes.md    
     - Test App: web/test-app.md
+    - Changelog: web/changelog.md
   - Getting ultra low latency experience: low-latency-experience.md
   - Recommendations: recommendations.md
   - Help:

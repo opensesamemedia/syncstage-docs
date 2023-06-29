@@ -1,17 +1,9 @@
-### [In progress]
-
+### [Version 0.1.0 2023-06-30]
 #### Added
 
-#### Changed
+All SyncStage SDK methods implemented. Works with Desktop Agent on MAC.
 
-#### Fixed
-
-### [Version 0.0.1 2023-05-XX]
-#### Added
-
-All methods implemented. Works with Desktop Agent on MAC.
-
-### [Version 0.1.1 2023-03-27]
+### [Version 0.0.1 2023-03-27]
 #### Added
 
 Mock methods for:

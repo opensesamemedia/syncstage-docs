@@ -39,8 +39,6 @@
 
 * Transmitter identifier is removed from the leave session method.
 
-#### Fixed
-
 ### [Version 0.1.0 2022-11-18]
 #### Added
 
@@ -49,7 +47,3 @@
 * Leave session
 * Mute streams
 * Change stream volumes
-
-#### Changed
-
-#### Fixed

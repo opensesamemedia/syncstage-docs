@@ -53,13 +53,24 @@ getSDKVersion(): string
 ```
 
 
-### Get zones list
+### Get best available server
 
-Gets available Zones list, where a session can be created
+Get best available server, where a session can be created
 
 ```typescript
-async zoneList(): Promise<[IZonesInRegionsList | null, SyncStageSDKErrorCode]>
+async getBestAvailableServer(): Promise<[IServerInstance | null, SyncStageSDKErrorCode]>
 ```
+
+
+### Get server instances
+
+Get server instances so you can select the server that is suitable for your session.
+
+```typescript
+  async getServerInstances(): Promise<[IServerInstances | null, SyncStageSDKErrorCode]>
+```
+
+
 
 ### Create a session
 
@@ -68,13 +79,15 @@ Creates a session in a given zone by a given user from your user pool.
 ```typescript
 async createSession(
     zoneId: string,
+    studioServerId: string,
     userId: string
 ): Promise<[ISessionIdentifier | null, SyncStageSDKErrorCode]>
 ```
 
 Parameters:
 
-* `zoneId` - zone in which we want to host our session
+* `zoneId` - zone in which your session is hosted
+* `studioServerId` - studio server where you are running your session
 * `userId` - id of your app user to match the data between SyncStage and your backend
 
 ### Join the session
@@ -85,9 +98,9 @@ Joins a particular session identified by `sessionCode`.
 async join(
     sessionCode: string,
     userId: string,
+    zoneId: string,
+    studioServerId: string,
     displayName?: string | null,
-    latitude?: number | null,
-    longitude?: number | null,
 ): Promise<[ISession | null, SyncStageSDKErrorCode]>
 ```
 
@@ -97,21 +110,12 @@ Parameters:
 
 * `userId` - id of your app user to match de data between SyncStage and your backend
 
+* `zoneId` - zone in which your session is hosted
+
+* `studioServerId` - studio server where you are running your session
+
 * `displayName` - your app user display name
 
-* `latitude` - current location latitude
-
-* `longitude` - current location longitude
-
-!!! note
-
-    Latitude and longitude are now optional parameters, in the future releases it will be used to further optimize the latency.
-
-!!! warning
-
-    SyncStage **Web** SDK is available only in a preview version. It is expected to be available to use by the end of June 2023.
-
-    
 ### Get session state
 
 Gets state of currently joined session.
@@ -187,3 +191,21 @@ Remove the callback in the SyncStage.
 ```typescript
 unregisterDesktopAgentReconnectedCallback(): void;
 ```
+
+<!-- Available in 0.1.0 but not tested - no ui -->
+<!-- ### Change latency optimization level
+Change the latency optimization level using of the following options: hightQuality, optimized, bestPerformance, ultraFast.
+
+```typescript
+async changeLatencyOptimizationLevel(level: number): Promise<SyncStageSDKErrorCode>
+```
+Parameters:
+
+* `level`- latency optimization level value.
+
+### Get latency optimization level
+Returns latency optimization level.
+
+```typescript
+async getLatencyOptimizationLevel(): Promise<[IZoneLatency | null, SyncStageSDKErrorCode]>
+``` -->

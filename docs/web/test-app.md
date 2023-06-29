@@ -46,11 +46,20 @@ Once installed and running you will see
 Input nickname of the user that will join the session
 ![alt Nickname](../assets/browser/profile.png "Nickname")
 
-You can now join the existing session
-![alt Nickname](../assets/browser/join.png "Nickname")
+Provide your application secret keys if they are not builded into the app.
+![alt Nickname](../assets/browser/secrets.png "Secrets")
 
-or create a new one
-![alt Nickname](../assets/browser/create.png "Nickname")
+
+You can choose if you want SyncStage to determine the best Studio server for you, or you want to select it manually
+![alt Nickname](../assets/browser/location-selection.png "Location selection")
+
+![alt Nickname](../assets/browser/location-auto.png "Location selection")
+
+![alt Nickname](../assets/browser/location-manual.png "Location selection")
+
+You can now join existing session or create a new one
+![alt Nickname](../assets/browser/join-or-create.png "Join or create")
+
 
 Enjoy your low latency session
-![alt Nickname](../assets/browser/session.png "Nickname")
+![alt Nickname](../assets/browser/session.png "Session")
