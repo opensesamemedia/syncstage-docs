@@ -1,3 +1,7 @@
+???+ warning
+
+    SyncStage SDK for Android is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
+
 # Test App
 
 The best way to start you journey with SyncStage is by trying out our example project available on GitHub [SyncStage Test App for Android](https://github.com/opensesamemedia/syncstage-test-app-android){target=_blank}.
@@ -40,20 +44,37 @@ To build and run the app:
 ## Use the app
 
 ### Create a session  
-You first provide an app username (in this example the first user is called ‘Mateusz’), select the New session button and select location of the deployment. To get the best latency experience choose the one that is the nearest to expected geolocation of your users. Once a session is created you will see yourself represented as ‘You’ and be able to share the session code, so that you can invite others. Share the code and wait for others to join you.
-![alt Create a Session](../assets/createsession.png "Create a Session")
+1. Provide a nickname, e.g. *User-1*.
+2. Click on the New Session button.
+3. Select a location of the Studio Server and click on Start.
+4. Share the session code and wait for others to join you.
+
+!!! note
+
+    To get the best latency experience, choose the one that is the nearest to expected geolocation of your users.
+
+
+| Provide nickname  |  Create a session | Select a location | Invite others |
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![alt Enter your name](../assets/android/profile.png)  |  ![alt Create a session](../assets/android/create_session.png) |  ![alt Select location](../assets/android/manual_selection.png) |  ![alt Invite others](../assets/android/session_1_user.png)
+
+
 
 ### Join a session
-The second user - in this example ‘Steve’ - inputs the session code and joins the session (NOTE: you will see on his device, he has the app username of the first user, ‘Mateusz’). Now you are ready to have a synchonous session together!
+1. Provide a nickname, e.g. *User-2*.
+2. Input the session code.
+3. Click on the Join button.
+4. Now *User-1* and *User-2* are ready to have a session together!
 
-![alt Join a session 1st user perspective](../assets/join_steve.png "Join a session 1st user perspective")
+| Provide a nickname | Join a session  |  Session | 
+:-------------------------:|:-------------------------:|:-------------------------:
+![alt Enter your name](../assets/android/profile.png){ width="200" }  |    ![alt Enter your name](../assets/android/join_session.png){ width="200" }  |  ![alt Create a session](../assets/android/user_2_joined.png){ width="200" }
 
-User Mateusz will be prompted that Steve has joined the session on his device. SyncStage’s audio pipeline supports sessions with up to 8 users. 
 
-![alt Join a session 2nd user perspective](../assets/join_mateusz.png "Join a session 2nd user perspective")
+Currently, SyncStage’s audio pipeline supports sessions with **up to 8 users. **
 
 
 
 ### Other functionalities
 
-You can control volume levels of all participants on your end, each app user can mix volumes according to one's needs. Anytime you can mute / unmute yourself or simply leave the session.
+You can control volume levels of all participants on your end, each app user can mix volumes according to their needs. Anytime you can mute / unmute yourself or simply leave the session.

@@ -1,6 +1,11 @@
-### [Version 0.4.0 2023-06-27]
+
+### 0.4.0 <small>June 27, 2023</small> { id="0.4.0" }
+
+SyncStage SDK v0.4.0 for iOS is the first production-ready release!
+
 #### Added
 
+* Security improvements
 * Get best available server
 * Get server instances
 * Change latency optimization level
@@ -14,23 +19,28 @@
 
 #### Removed
 
-* Zone list (Replaced by: getServerInstances)
-* Change quality coefficient (Replaced by: changeLatencyOptimizationLevel)
-* Get quality coeffient (Replaced by: getLatencyOptimizationLevel)
+* Zone list (Replaced by: [getServerInstances](../sdk-methods/#get-server-instances){ target=_blank})
+* Change quality coefficient (Replaced by: [changeLatencyOptimizationLevel](../sdk-methods/#change-latency-optimization-level){ target=_blank})
+* Get quality coeffient (Replaced by: [getLatencyOptimizationLevel](../sdk-methods/#get-latency-optimization-level){ target=_blank})
 
 
-### [Version 0.3.1 2023-04-14]
+???+ warning
+
+    SyncStage SDK v0.4.0 for iOS is incompatible with the previous SDK versions.
+
+
+### 0.3.1 <small>April 14, 2023</small> { id="0.3.1" }
 #### Added
 * Audio quality and latency improvements
 * Change quality coefficient
 * Get quality coefficient
 
-### [Version 0.3.0 2023-04-02]
+### 0.3.0 <small>April 2, 2023</small> { id="0.3.0" }
 #### Added
 * TCP fallback resolving NAT issues
 * Audio quality and latency improvements
 
-### [Version 0.2.0 2022-12-02]
+### 0.2.0 <small>December 2, 2022</small> { id="0.2.0" }
 #### Added
 
 * Displaying network measurements
@@ -39,7 +49,7 @@
 
 * Transmitter identifier is removed from the leave session method.
 
-### [Version 0.1.0 2022-11-18]
+### 0.1.0 <small>November 18, 2022</small> { id="0.1.0" }
 #### Added
 
 * Create session

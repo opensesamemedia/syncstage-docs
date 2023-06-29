@@ -1,9 +1,13 @@
-### [Version 0.1.0 2023-06-30]
+???+ warning
+
+    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
+
+### 0.1.0 <small>June 30, 2023</small> { id="0.1.0" }
 #### Added
 
 All SyncStage SDK methods implemented. Works with Desktop Agent on MAC.
 
-### [Version 0.0.1 2023-03-27]
+### 0.0.1 <small>March 27, 2023</small> { id="0.0.1" }
 #### Added
 
 Mock methods for:

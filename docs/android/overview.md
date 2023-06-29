@@ -1,5 +1,9 @@
-SyncStage SDK for Android current version: `v0.2.0` ([View changelog](changelog.md))
+???+ warning
 
+    SyncStage SDK for Android is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
+
+
+SyncStage SDK for Android current version: `v0.3.0` (PREVIEW-ONLY) ([View changelog](changelog.md))
 
 [Install SDK](quickstart.md){ .md-button .md-button--primary} [Get an example project](quickstart.md){ .md-button}
 

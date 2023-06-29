@@ -1,3 +1,7 @@
+???+ warning
+
+    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
+
 ### Constructor 
 
 ```typescript
