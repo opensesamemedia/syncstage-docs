@@ -29,7 +29,7 @@ To build and run the app:
 ## Use the app
 
 ### Create a session  
-You first provide an app username (in this example the first user is called ‘Mateusz’), select the New session button and select location of the deployment. To get the best latency experience choose the one that is the nearest to expected geolocation of your users. Once a session is created you will see yourself represented as ‘You’ and be able to share the session code, so that you can invite others. Share the code and wait for others to join you.
+You first provide an app username (in this example the first user is called ‘Mateusz’), then you can get a studio server using automated selection option where we provide you with the best available studio server, or you can select it manually from the list after disabling 'automated selection' option. To get the best latency experience choose the one that is the nearest to expected geolocation of your users. Next you can select the New session button. Once a session is created you will see yourself represented as ‘You’ and be able to share the session code, so that you can invite others. Share the code and wait for others to join you.
 ![alt Create a Session](../assets/createsession.png "Create a Session")
 
 ### Join a session
