@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 mkdocs-material = "*"
+mkdocs-glightbox = "*"
+mkdocs-video = "*"
+neoteroi-mkdocs = "*"
 
 [dev-packages]
 
