@@ -18,3 +18,6 @@ pipenv run mkdocs serve
 * `mkdocs -h` - Print help message and exit.
 
 
+## Extensions to be considered in future
+* Swagger https://blueswen.github.io/mkdocs-swagger-ui-tag/pet-store/ (or just use already installed https://www.neoteroi.dev/mkdocs-plugins/web/oad/)
+* Shared variables using Jinja2p https://github.com/fralau/mkdocs_macros_plugin 

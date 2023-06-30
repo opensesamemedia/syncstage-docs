@@ -37,11 +37,11 @@ To build and run the app:
 
 | Provide nickname  | Automated server discovery | Discovery results |
 :-------------------------:|:-------------------------:|:-------------------------:
-![alt Enter your name](../assets/ios/profile.png){ width="200" }  |  ![alt Automated server discovery](../assets/ios/automated_selection.png){ width="200" } |  ![alt Discovery results](../assets/ios/discovery_results.png){ width="200" }
+![alt Enter your name](../assets/ios/profile.png){ width="300" }  |  ![alt Automated server discovery](../assets/ios/automated_selection.png){ width="300" } |  ![alt Discovery results](../assets/ios/discovery_results.png){ width="300" }
 
 | Create a session | Invite others |
 :-------------------------:|:-------------------------:
-![alt Create a session](../assets/ios/create_session.png){ width="200" }  | ![alt Invite others](../assets/ios/session_1_user.png){ width="200" } 
+![alt Create a session](../assets/ios/create_session.png){ width="300" }  | ![alt Invite others](../assets/ios/session_1_user.png){ width="300" } 
 
 
 
@@ -58,11 +58,11 @@ To build and run the app:
 
 | Provide nickname  | Automated server discovery | Discovery results |
 :-------------------------:|:-------------------------:|:-------------------------:
-![alt Enter your name](../assets/ios/user_2_profile.png){ width="200" }  |  ![alt Automated server discovery](../assets/ios/user_2_automated_selection.png){ width="200" } |  ![alt Discovery results](../assets/ios/user_2_discovery_results.png){ width="200" }
+![alt Enter your name](../assets/ios/user_2_profile.png){ width="300" }  |  ![alt Automated server discovery](../assets/ios/user_2_automated_selection.png){ width="300" } |  ![alt Discovery results](../assets/ios/user_2_discovery_results.png){ width="300" }
 
 | Join a session | Invite others |
 :-------------------------:|:-------------------------:
-![alt Join a session](../assets/ios/join_session.png){ width="200" }  | ![alt Invite others](../assets/ios/user_2_joined.png){ width="200" } 
+![alt Join a session](../assets/ios/join_session.png){ width="300" }  | ![alt Invite others](../assets/ios/user_2_joined.png){ width="300" } 
 
 
 Currently, SyncStage’s audio pipeline supports sessions with **up to 8 users. **

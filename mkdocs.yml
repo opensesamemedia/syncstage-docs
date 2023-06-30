@@ -63,8 +63,8 @@ extra:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/css-v1.0.2.css
 
-      
 
 # Page tree
 nav:
@@ -107,7 +107,9 @@ nav:
     - Reporting a bug: help/report-a-bug.md
     - Reporting an issue in docs: help/report-an-issue-in-docs.md
     - Asking a question: help/ask-a-question.md
+  - Roadmap: roadmap.md    
   - Acknowledgements: acknowledgements.md
+
 
 # Extensions
 markdown_extensions:
@@ -129,3 +131,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - neoteroi.timeline
+
+
+plugins:
+   - glightbox
+   - mkdocs-video

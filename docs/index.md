@@ -6,4 +6,9 @@ What you need to do is integrate the SyncStage SDK into your application and we 
 
 SING, CELEBRATE. JAM, LEARN, LAUGH, MOURN, WIN, TEACH, LISTEN, PRAY, AND PLAY TOGETHER. THE POSSIBILITIES ARE ENDLESS.
 
-[![SyncStage](assets/youtube.png)](https://www.youtube.com/watch?v=ghHb7hmMbWc){target=_blank}
+[Become an Early Access Developer](https://console.sync-stage.com/request-a-demo){ .md-button target=_blank}
+
+
+## Promo video
+![type:video](https://www.youtube.com/embed/ghHb7hmMbWc)
+
