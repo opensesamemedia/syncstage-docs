@@ -29,20 +29,44 @@ To build and run the app:
 ## Use the app
 
 ### Create a session  
-You first provide an app username (in this example the first user is called ‘Mateusz’), then you can get a studio server using automated selection option where we provide you with the best available studio server, or you can select it manually from the list after disabling 'automated selection' option. To get the best latency experience choose the one that is the nearest to expected geolocation of your users. Next you can select the New session button. Once a session is created you will see yourself represented as ‘You’ and be able to share the session code, so that you can invite others. Share the code and wait for others to join you.
-![alt Create a Session](../assets/createsession.png "Create a Session")
+1. Provide a nickname, e.g. *User-1*.
+2. Let SyncStage find the best Studio Server location.
+3. Click on the New Session button.
+4. Share the session code and wait for others to join you.
+
+
+| Provide nickname  | Automated server discovery | Discovery results |
+:-------------------------:|:-------------------------:|:-------------------------:
+![alt Enter your name](../assets/ios/profile.png){ width="200" }  |  ![alt Automated server discovery](../assets/ios/automated_selection.png){ width="200" } |  ![alt Discovery results](../assets/ios/discovery_results.png){ width="200" }
+
+| Create a session | Invite others |
+:-------------------------:|:-------------------------:
+![alt Create a session](../assets/ios/create_session.png){ width="200" }  | ![alt Invite others](../assets/ios/session_1_user.png){ width="200" } 
+
+
 
 ### Join a session
-The second user - in this example ‘Steve’ - inputs the session code and joins the session (NOTE: you will see on his device, he has the app username of the first user, ‘Mateusz’). Now you are ready to have a synchonous session together!
+1. Provide a nickname, e.g. *User-2*.
+2. Let SyncStage find the best Studio Server location.
+3. Input the session code.
+4. Click on the Join button.
+5. Now *User-1* and *User-2* are ready to have a session together!
 
-![alt Join a session 1st user perspective](../assets/join_steve.png "Join a session 1st user perspective")
-
-User Mateusz will be prompted that Steve has joined the session on his device. SyncStage’s audio pipeline supports sessions with up to 8 users. 
-
-![alt Join a session 2nd user perspective](../assets/join_mateusz.png "Join a session 2nd user perspective")
+!!! note
+    Currently, Studio Server discovery results for users that are joining the session are ignored - they join the session in the same location as the session creator. This is going to change in future releases.
 
 
+| Provide nickname  | Automated server discovery | Discovery results |
+:-------------------------:|:-------------------------:|:-------------------------:
+![alt Enter your name](../assets/ios/user_2_profile.png){ width="200" }  |  ![alt Automated server discovery](../assets/ios/user_2_automated_selection.png){ width="200" } |  ![alt Discovery results](../assets/ios/user_2_discovery_results.png){ width="200" }
+
+| Join a session | Invite others |
+:-------------------------:|:-------------------------:
+![alt Join a session](../assets/ios/join_session.png){ width="200" }  | ![alt Invite others](../assets/ios/user_2_joined.png){ width="200" } 
+
+
+Currently, SyncStage’s audio pipeline supports sessions with **up to 8 users. **
 
 ### Other functionalities
 
-You can control volume levels of all participants on your end, each app user can mix volumes according to one's needs. Anytime you can mute / unmute yourself or simply leave the session.
+You can control volume levels of all participants on your end, each app user can mix volumes according to their needs. Anytime you can mute / unmute yourself or simply leave the session.
