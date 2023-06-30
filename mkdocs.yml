@@ -22,7 +22,6 @@ theme:
   features:
     - header.autohide    
     - content.tooltips
-      
   palette: 
     # Palette toggle for light mode
     - scheme: default
@@ -135,5 +134,6 @@ markdown_extensions:
 
 
 plugins:
+   - search
    - glightbox
    - mkdocs-video
