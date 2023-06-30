@@ -1,9 +1,12 @@
+???+ warning
+
+    SyncStage SDK for Android is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
 ## Before you begin
 
 Before you start developing your application with the SyncStage SDK, you need to opt-in to Early Access Developer program and get your SyncStage SDK secrets. Once you have opted-in we will contact you to provide you with your SDK secrets.
 The SDK secrets are your credentials that authenticates requests associated with your project. 
 
-[Become an Early Access Developer](https://sync-stage.com/){ .md-button target=_blank}
+[Become an Early Access Developer](https://console.sync-stage.com/request-a-demo){ .md-button target=_blank}
 
 
 ## Start with an example project
