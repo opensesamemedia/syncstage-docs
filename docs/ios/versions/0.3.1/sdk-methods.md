@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.4.0][0.4.0]{target=_blank}
-[0.4.0]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.4.0
+## [:octicons-tag-24: 0.3.1][0.3.1]{target=_blank}
+[0.3.1]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.3.1
 
 ### Initialize
 
@@ -21,29 +21,17 @@ Constructor parameters:
 
 * `completion` - closure informs if setup error occurs
 
-### Get best available server
+### Get zones list
 
-Get best available server, where a session can be created
+Gets available Zones list, where a session can be created
 
 ```swift
-getBestAvailableServer(completion: @escaping (Swift.Result<SyncStageSDK.ServerInstance, SyncStageSDK.SyncStageError>) -> Swift.Void)
+zoneList(completion: @escaping (Result<[Zone], Error>)
 ```
 
 Parameters:
 
-* `completion` - returns a server instance.
-
-### Get server instances
-
-Get server instances so you can select the server that is suitable for your session.
-
-```swift
-getServerInstances(completion: @escaping (Swift.Result<[SyncStageSDK.ServerInstance], SyncStageSDK.SyncStageError>) -> Swift.Void)
-```
-
-Parameters:
-
-* `completion` - returns a list of servers.
+* `completion` - returns zones list
 
 ### Create a session
 
@@ -53,7 +41,6 @@ Creates a session in a given zone by a given user from your user pool.
 createSession(
     zoneId: String,
     userId: String,
-    studioServerId: String,
     completion: @escaping (Result<SessionIdentifier, SyncStageError>) -> Void
 )
 ```
@@ -62,7 +49,6 @@ Parameters:
 
 * `zoneId` - zone in which we want to host our session
 * `userId` - id of your app user to match the data between SyncStage and your backend
-* `studioServerId` - id of the selected studio server
 * `completion` -  if succeeded returns a SessionIdentifier (session Id and session code)
 
 ### Join the session
@@ -74,8 +60,8 @@ join(
     sessionCode: String,
     userId: String,
     displayName: String? = nil,
-    zoneId: String,
-    studioServerId: String,
+    latitude: Decimal? = nil,
+    longitude: Decimal? = nil,
     completion: @escaping (Result<Session, SyncStageError>) -> Void
 )
 ```
@@ -88,11 +74,15 @@ Parameters:
 
 * `displayName` - your app user display name
 
-* `zoneId` - zone in which your session is hosted
+* `latitude` - current location latitude
 
-* `studioServerId` - studio server where you are running your session
+* `longitude` - current location longitude
 
 * `completion` - if succeeded returns a Session object
+
+!!! note
+
+    Latitude and longitude are now optional parameters, in the future releases it will be used to further optimize the latency.
 
 
 ### Get session state
@@ -223,22 +213,26 @@ Parameters:
 
 * `identifier`- session transmitter identifier.
 
-#### Change latency optimization level
-Change the latency optimization level using of the following options: hightQuality, optimized, bestPerformance, ultraFast.
+#### Change quality coefficient
+Change quality factor min 0.3 (highest performance) max 10.0 (highest quality) Default 2.0
 
 ```
-changeLatencyOptimizationLevel(value: SyncStageSDK.LatencyOptimizationLevel)
+func changeQualityCoefficient(identifier: String, quality: Double)
 ```
 Parameters:
 
-* `value`- latency optimization level value.
+* `identifier`- session receiver identifier.
+* `quality`- quality coefficient value.
 
-#### Get latency optimization level
-Returns latency optimization level.
+#### Get quality coefficient
+Returns quality coefficient.
 
 ```
-getLatencyOptimizationLevel() -> SyncStageSDK.LatencyOptimizationLevel
+func getQualityCoefficient(identifier: String) -> Double
 ```
+Parameters:
+
+* `identifier`- session receiver identifier.
 
 ### Get SDK version
 Returns SDK version.
@@ -246,7 +240,3 @@ Returns SDK version.
 ```swift
 getSDKVersion() -> String
 ```
-
-Older versions:
-
-* [0.4.0](versions/0.4.0/sdk-methods.md)

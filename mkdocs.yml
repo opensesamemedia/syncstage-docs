@@ -80,6 +80,11 @@ nav:
       - Methods: ios/sdk-methods.md
       - Delegates: ios/sdk-delegates.md
       - Error codes: ios/sdk-error-codes.md      
+      - Previous versions:
+        - 0.3.1:
+          - Methods: ios/versions/0.3.1/sdk-methods.md
+          - Delegates: ios/versions/0.3.1/sdk-delegates.md
+          - Error codes: ios/versions/0.3.1/sdk-error-codes.md        
     - Test App: ios/test-app.md      
     - Changelog: ios/changelog.md  
   - SyncStage SDK for Android (preview-only):
@@ -136,6 +141,7 @@ markdown_extensions:
 
 
 plugins:
-   - search
-   - glightbox
-   - mkdocs-video
+  - search
+  - glightbox
+  - mkdocs-video
+  - tags

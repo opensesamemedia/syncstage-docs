@@ -1,6 +1,6 @@
-## [:octicons-tag-24: 0.4.0][0.4.0]{target=_blank}
-[0.4.0]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.4.0
 
+## [:octicons-tag-24: 0.3.1][0.3.1]{target=_blank}
+[0.3.1]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.3.1
 
 ### SyncStage delegates
 SyncStage class provide two delegate:, `SyncStageUserDelegate` and `SyncStageConnectivityDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage.
@@ -37,15 +37,5 @@ protocol SyncStageConnectivityDelegate: NSObject {
     
     // called when the receiver loses partial connectivity for a specific user or when it recovers
     func receiverConnectivityChanged(identifier: String, connected: Bool)
-}
-```
-
-#### SyncStageDiscoveryDelegate
-Responsible for getting callbacks about available zones latency.
-
-```swift
-public protocol SyncStageDiscoveryDelegate: NSObject {
-    func discoveryResults(zones: [String])
-    func discoveryLatencyTestResults(results: [ZoneLatency])
 }
 ```
