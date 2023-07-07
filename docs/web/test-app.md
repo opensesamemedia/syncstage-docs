@@ -9,7 +9,7 @@ This tutorial shows you how to clone, build, and run the application on your dev
 
 !!! tip
 
-    [Click here](https://syncstagebrowsersdktestapp.web.app/){target=_blank} to use our hosted SyncStage Test App without writing a line of code.
+    [Click here](https://syncstage.web.app/){target=_blank} to use our hosted SyncStage Test App without writing a line of code.
 
 
 ## Get SyncStage Desktop Agent

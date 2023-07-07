@@ -12,7 +12,7 @@ It consists of two componens:
 SyncStage SDK for Web current version: `v0.1.0` (PREVIEW-ONLY) ([View changelog](changelog.md))
 
 [Install SDK](quickstart.md){ .md-button .md-button--primary} 
-<!-- [Test SyncStage Web SDK on macOS](https://syncstagebrowsersdktestapp.web.app/){ .md-button target=_blank } -->
+<!-- [Test SyncStage Web SDK on macOS](https://syncstage.web.app/){ .md-button target=_blank } -->
 
 ## Requirements 
 ### Browser
