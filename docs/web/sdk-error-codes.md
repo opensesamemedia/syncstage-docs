@@ -6,6 +6,7 @@ Most of the SDK methods return SyncStageSDKErrorCode which can be decoded using 
 
 ```typescript
 enum SyncStageSDKErrorCode {
+  'SYNCSTAGE_OPENED_IN_ANOTHER_TAB' = -1001,
   'API_UNAUTHORIZED' = -1000,
   'DESKTOP_AGENT_COMMUNICATION_ERROR' = -10,
   'UNKNOWN_ERROR' = -1,
