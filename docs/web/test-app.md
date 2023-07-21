@@ -16,7 +16,7 @@ This tutorial shows you how to clone, build, and run the application on your dev
 
 To use test application you need to install SyncStage Desktop Agent on your Mac.
 
-[Download SyncStage Desktop Agent for macOS](https://syncstage.s3.amazonaws.com/Agent/SyncStageAgent_1.0.0.dmg){ .md-button}
+[Download SyncStage Desktop Agent for macOS](https://public.sync-stage.com/agent/macos/prod/0.1.0/SyncStageAgent_0.1.0.dmg){ .md-button}
 
 ## Get a SyncStage SDK secret
 To run the SyncStage Test App you will need to add a SyncStageSecret to `.env.` file in your project.
