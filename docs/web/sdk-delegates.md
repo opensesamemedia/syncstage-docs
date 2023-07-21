@@ -2,7 +2,7 @@
 
     SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
 
-SyncStage class provide two delegate:, `ISyncStageUserDelegate` and `ISyncStageConnectivityDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate` and `connectivityDelegate` anytime.
+SyncStage class provide four delegates:, `ISyncStageUserDelegate`,  `ISyncStageConnectivityDelegate`, `ISyncStageDiscoveryDelegate` and `ISyncStageDesktopAgentDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate`, `connectivityDelegate`, `discoveryDelegate` and `desktopAgentDelegate` anytime.
 
 ### SyncStageUserDelegate
 Responsible for getting callbacks about users' state in the session.
@@ -36,8 +36,20 @@ interface ISyncStageConnectivityDelegate {
 Responsible for getting callbacks about available zones latency.
 
 ```typescript
-export default interface ISyncStageDiscoveryDelegate {
+interface ISyncStageDiscoveryDelegate {
   discoveryResults(zones: string[]): void;
   discoveryLatencyTestResults(results: IZoneLatency[]): void;
+}
+```
+
+
+
+### SyncStageDesktopAgentDelegate
+Responsible for getting callbacks with information if SyncStage Desktop Agent is already acquired by some other browser tab to prevent paralell access.
+
+```typescript
+interface ISyncStageDesktopAgentDelegate {
+  desktopAgentAquired(): void;
+  desktopAgentReleased(): void;
 }
 ```

@@ -7,8 +7,9 @@
 ```typescript
 class SyncStage implements ISyncStage{
     constructor(
-        public userDelegate: ISyncStageUserDelegate | null,
-        public connectivityDelegate: ISyncStageConnectivityDelegate | null,
+        userDelegate: ISyncStageUserDelegate | null,
+        connectivityDelegate: ISyncStageConnectivityDelegate | null,
+        desktopAgentDelegate: ISyncStageDesktopAgentDelegate | null,
         desktopAgentPort: number = 18080,
     );
 }
@@ -19,6 +20,8 @@ Constructor parameters:
 * `userDelegate` - delegate object to receive events about users in session state
 
 * `connectivityDelegate` - delegate object to receive events with information about stream connection to Studio Server state
+
+* `desktopAgentDelegate` - delegate object to receive events with information of desktop agent acqusition and release to prevent users from using SyncStage in multiple browser tabs at once
 
 * `desktopAgentPort` - port for communication with local desktop agent, 18080 by default
 
@@ -56,6 +59,15 @@ Gets SDK version.
 getSDKVersion(): string
 ```
 
+### Update Desktop Agent reconnected callback
+
+```typescript
+public updateOnDesktopAgentReconnected(onDesktopAgentReconnected: () => void): void
+```
+
+Parameters:
+
+* `onDesktopAgentReconnected` - method to be called when the Desktop Agent reconnect to the browser SDK. In this metod session state should be refetched and synchronized on the UI.
 
 ### Get best available server
 
