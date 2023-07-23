@@ -26,3 +26,15 @@ interface SyncStageConnectivityDelegate {
     fun receiverConnectivityChanged(identifier: String, connected: Boolean)
 }
 ```
+
+#### SyncStageDiscoveryDelegate
+Responsible for getting callbacks about available zones latency.
+
+```kotlin
+interface SyncStageDiscoveryDelegate {
+    fun discoveryResults(zones: List<String>)
+    fun discoveryLatencyTestResults(zoneLatencyMap: Map<String, Int>)
+}
+```
+
+The key of `zoneLatencyMap` is zoneId, and the value is latency represented in miliseconds.
