@@ -1,6 +1,3 @@
-???+ warning
-
-    SyncStage SDK for Android is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
 ## Before you begin
 
 Before you start developing your application with the SyncStage SDK, you need to opt-in to Early Access Developer program and get your SyncStage SDK secrets. Once you have opted-in we will contact you to provide you with your SDK secrets.
@@ -69,7 +66,7 @@ Please note that most of those notifications must accepted by user explicitly.
 
 SyncStageSecret.json is assigned to one application. File contains confidential credentials that allow access to your SyncStage resources. 
 
-!!! warning
+!!! security "Security tip"
 
     We strongly recommend storing applicationSecretKey securely in your backend and provide it as a parameter at SyncStage SDK object instantiation. Having implemented the supply of the applicationSecretKey from your protected backend, you can remove that parameter from the .json.
 
@@ -99,6 +96,9 @@ Service and additional permissions must be added to `AndroidManifest.xml`.
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 ```
+
+### 6. Handle exiting application gracefully
+Use a method for stopping and cleaning app all the SDK's background tasks. See [here](../sdk-methods/#stop-and-dispose){ target=_blank}) for more details.
 
 
 ## Troubleshooting

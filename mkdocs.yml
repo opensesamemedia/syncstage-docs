@@ -73,6 +73,16 @@ nav:
   - What is SyncStage?: index.md
   - Architecture & Glossary: architecture-and-glossary.md
   # - Available platforms: platforms.md
+  - SyncStage SDK for Android:
+    - Overview: android/overview.md
+    - Quickstart: android/quickstart.md
+    - Reference:
+      - Methods: android/sdk-methods.md
+      - Delegates: android/sdk-delegates.md
+      - Error codes: android/sdk-error-codes.md
+    - Test App: android/test-app.md
+    - Changelog: android/changelog.md
+    - Known issues: android/known-issues.md  
   - SyncStage SDK for iOS:
     - Overview: ios/overview.md
     - Quickstart: ios/quickstart.md
@@ -87,16 +97,6 @@ nav:
           - Error codes: ios/versions/0.3.1/sdk-error-codes.md        
     - Test App: ios/test-app.md      
     - Changelog: ios/changelog.md  
-  - SyncStage SDK for Android (preview-only):
-    - Overview: android/overview.md
-    - Quickstart: android/quickstart.md
-    - Reference:
-      - Methods: android/sdk-methods.md
-      - Delegates: android/sdk-delegates.md
-      - Error codes: android/sdk-error-codes.md
-    - Test App: android/test-app.md
-    - Changelog: android/changelog.md
-    - Known issues: android/known-issues.md
   - SyncStage SDK for Web (preview-only):
     - Overview: web/overview.md        
     - Quickstart: web/quickstart.md
@@ -106,6 +106,7 @@ nav:
       - Error codes: web/sdk-error-codes.md    
     - Test App: web/test-app.md
     - Changelog: web/changelog.md
+    - Known issues: web/known-issues.md    
   - Getting ultra low latency experience: low-latency-experience.md
   - Recommendations: recommendations.md
   - Help:

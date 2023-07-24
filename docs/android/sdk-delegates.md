@@ -1,6 +1,5 @@
-???+ warning
-
-    SyncStage SDK for Android is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
+## [:octicons-tag-24: 0.4.0][0.4.0]{target=_blank}
+[0.4.0]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.4.0
 
 SyncStage class provide two delegates: `SyncStageUserDelegate` and `SyncStageConnectivityDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate` and `connectivityDelegate` anytime.
 

@@ -1,7 +1,3 @@
-???+ warning
-
-    SyncStage SDK for Android is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
-
 ### 0.4.0 <small>July 21, 2023</small> { id="0.4.0" }
 
 #### Added

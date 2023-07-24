@@ -1,6 +1,6 @@
 ???+ warning
 
-    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
+    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
     
 Most of the SDK methods return SyncStageSDKErrorCode which can be decoded using following enum class.
 

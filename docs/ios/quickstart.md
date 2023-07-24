@@ -37,7 +37,7 @@ SyncStage SDK requires the audio background mode to be enabled to allow streamin
 
 SyncStageSecret.plist is assigned to one application. File contains confidential credentials that allow access to your SyncStage resources. 
 
-!!! warning
+!!! security "Security tip"
     
     We strongly recommend storing applicationSecretKey securely in your backend and provide it as a parameter at SyncStage SDK object instantiation. Having implemented the supply of the applicationSecretKey from your protected backend, you can remove that parameter from the .plist.
 
