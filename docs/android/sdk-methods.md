@@ -1,6 +1,5 @@
-???+ warning
-
-    SyncStage SDK for Android is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
+## [:octicons-tag-24: 0.4.0][0.4.0]{target=_blank}
+[0.4.0]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.4.0
 
 ### Constructor 
 ```kotlin

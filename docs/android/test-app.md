@@ -1,7 +1,3 @@
-???+ warning
-
-    SyncStage SDK for Android is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
-
 # Test App
 
 The best way to start you journey with SyncStage is by trying out our example project available on GitHub [SyncStage Test App for Android](https://github.com/opensesamemedia/syncstage-test-app-android){target=_blank}.
@@ -45,30 +41,39 @@ To build and run the app:
 
 ### Create a session  
 1. Provide a nickname, e.g. *User-1*.
-2. Click on the New Session button.
-3. Select a location of the Studio Server and click on Start.
+2. Let SyncStage find the best Studio Server location.
+3. Click on the New Session button.
 4. Share the session code and wait for others to join you.
 
-!!! note
 
-    To get the best latency experience, choose the one that is the nearest to expected geolocation of your users.
+| Provide nickname  | Automated server discovery | Discovery results |
+:-------------------------:|:-------------------------:|:-------------------------:
+![alt Enter your name](../assets/android/profile.jpg){ width="300" }  |  ![alt Automated server discovery](../assets/android/automated_selection.jpg){ width="300" } |  ![alt Discovery results](../assets/android/discovery_results.jpg){ width="300" }
 
-
-| Provide nickname  |  Create a session | Select a location | Invite others |
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![alt Enter your name](../assets/android/profile.png)  |  ![alt Create a session](../assets/android/create_session.png) |  ![alt Select location](../assets/android/manual_selection.png) |  ![alt Invite others](../assets/android/session_1_user.png)
+| Create a session | Invite others |
+:-------------------------:|:-------------------------:
+![alt Create a session](../assets/android/create_session.jpg){ width="300" }  | ![alt Invite others](../assets/android/session_1_user.jpg){ width="300" } 
 
 
 
 ### Join a session
 1. Provide a nickname, e.g. *User-2*.
-2. Input the session code.
-3. Click on the Join button.
-4. Now *User-1* and *User-2* are ready to have a session together!
+2. Let SyncStage find the best Studio Server location.
+3. Input the session code.
+4. Click on the Join button.
+5. Now *User-1* and *User-2* are ready to have a session together!
 
-| Provide a nickname | Join a session  |  Session | 
+!!! note
+    Currently, Studio Server discovery results for users that are joining the session are ignored - they join the session in the same location as the session creator. This is going to change in future releases.
+
+
+| Provide nickname  | Automated server discovery | Discovery results |
 :-------------------------:|:-------------------------:|:-------------------------:
-![alt Enter your name](../assets/android/profile.png){ width="200" }  |    ![alt Enter your name](../assets/android/join_session.png){ width="200" }  |  ![alt Create a session](../assets/android/user_2_joined.png){ width="200" }
+![alt Enter your name](../assets/android/user_2_profile.jpg){ width="300" }  |  ![alt Automated server discovery](../assets/android/user_2_automated_selection.jpg){ width="300" } |  ![alt Discovery results](../assets/android/user_2_discovery_results.jpg){ width="300" }
+
+| Join a session | Invite others |
+:-------------------------:|:-------------------------:
+![alt Join a session](../assets/android/join_session.jpg){ width="300" }  | ![alt Invite others](../assets/android/user_2_joined.jpg){ width="300" } 
 
 
 Currently, SyncStage’s audio pipeline supports sessions with **up to 8 users. **
