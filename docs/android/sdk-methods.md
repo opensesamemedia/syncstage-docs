@@ -45,12 +45,20 @@ Gets SyncStage SDK version
 fun getSDKVersion(): String
 ```
 
-### Get zone list
+### Get best available server
 
-Gets available zone list, where a session can be created
+Get best available server, where a session can be created
 
 ```kotlin
-suspend fun zoneList(): Pair<ZonesInRegionsList?, SyncStageSDKErrorCode> 
+suspend fun getBestAvailableServer(): Pair<ServerInstance?, SyncStageSDKErrorCode>
+```
+
+### Get server instances
+
+Get server instances so you can select the server that is suitable for your session.
+
+```kotlin
+suspend fun getServerInstances(): Pair<List<ServerInstance>?, SyncStageSDKErrorCode> 
 ```
 
 ### Create a session
@@ -60,6 +68,7 @@ Creates a session in a given zone by a given user from your user pool.
 ```kotlin
 suspend fun createSession(
     zoneId: String,
+    studioServerId: String,
     userId: String
 ): Pair<SessionIdentifier?, SyncStageSDKErrorCode>
 ```
@@ -67,6 +76,7 @@ suspend fun createSession(
 Parameters:
 
 * `zoneId` - zone in which we want to host our session
+* `studioServerId` - id of the selected studio server
 * `userId` - id of your app user to match the data between SyncStage and your backend
 
 ### Join the session
@@ -78,9 +88,9 @@ suspend fun join(
     sessionCode: String,
     userId: String,
     displayName: String? = null,
-    latitude: Double? = null,
-    longitude: Double? = null,
-): Pair<Session?, SyncStageSDKErrorCode> {
+    zoneId: String,
+    studioServerId: String,
+): Pair<Session?, SyncStageSDKErrorCode> 
 ```
 
 Parameters:
@@ -91,13 +101,10 @@ Parameters:
 
 * `displayName` - your app user display name
 
-* `latitude` - current location latitude
+* `zoneId` - zone in which your session is hosted
 
-* `longitude` - current location longitude
+* `studioServerId` - studio server where you are running your session
 
-!!! note
-
-    Latitude and longitude are now optional parameters, in the future releases it will be used to further optimize the latency.
 
 
 ### Get session state
@@ -212,4 +219,25 @@ Returns Mesurements object with network delay, jitter, and calculated network qu
 
 ```kotlin
 fun getTransmitterMeasurements(): Measurements
+```
+
+
+### Stop and dispose
+This method stops and cleans up all background tasks SDK performs. 
+
+```kotlin
+fun stop()
+```
+
+!!! warning
+    It is crucial to call it onDestroy of the Activity where SyncStage has been initialized in.
+
+
+```kotlin
+    override fun onDestroy() {
+        if (isFinishing) {
+            syncStage.stop()
+        }
+        super.onDestroy()
+    }
 ```

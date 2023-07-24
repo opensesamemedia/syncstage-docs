@@ -2,6 +2,26 @@
 
     SyncStage SDK for Android is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage.
 
+### 0.4.0 <small>July 21, 2023</small> { id="0.4.0" }
+
+#### Added
+
+* Security improvements
+* Get best available server
+* Get server instances
+* SyncStage discovery delegate
+* stop() method for disposing all SyncStage background threads
+
+#### Changed
+
+* Create session parameters
+* Join session parameters
+
+#### Removed
+
+* Zone list (Replaced by: [getServerInstances](../sdk-methods/#get-server-instances){ target=_blank})
+
+
 ### 0.3.0 <small>May 12, 2023</small> { id="0.3.0" }
 
 #### Fixed

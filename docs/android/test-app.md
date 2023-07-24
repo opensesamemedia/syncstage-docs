@@ -78,3 +78,21 @@ Currently, SyncStage’s audio pipeline supports sessions with **up to 8 users. 
 ### Other functionalities
 
 You can control volume levels of all participants on your end, each app user can mix volumes according to their needs. Anytime you can mute / unmute yourself or simply leave the session.
+
+
+## Enable crashlytics
+You can track any issues in your app with SyncStage SDK using Firebase and crashlytics. In order to enable this feature you need to create a project in Firebase console and add `google-services.json` credentials to the `app/` directory and uncomment following lines in `app/build.gradle` file:
+
+```groovy
+...
+//    // TO BE UNCOMMENTED FOR CRASHLYTICS
+//    id 'com.google.gms.google-services'
+//    id 'com.google.firebase.crashlytics'
+...
+//    // TO BE UNCOMMENTED FOR CRASHLYTICS
+//    implementation platform('com.google.firebase:firebase-bom:31.2.2')
+//    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+//    implementation 'com.google.firebase:firebase-analytics-ktx'
+...
+
+```
