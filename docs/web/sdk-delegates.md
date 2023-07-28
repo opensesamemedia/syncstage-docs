@@ -1,8 +1,17 @@
-???+ warning
+???+ note
 
     SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
 
-SyncStage class provide four delegates:, `ISyncStageUserDelegate`,  `ISyncStageConnectivityDelegate`, `ISyncStageDiscoveryDelegate` and `ISyncStageDesktopAgentDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate`, `connectivityDelegate`, `discoveryDelegate` and `desktopAgentDelegate` anytime.
+SyncStage class provide four delegates:
+
+* `ISyncStageUserDelegate`
+* `ISyncStageConnectivityDelegate`
+* `ISyncStageDiscoveryDelegate`
+* `ISyncStageDesktopAgentDelegate`
+ 
+which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. 
+
+You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate`, `connectivityDelegate`, `discoveryDelegate`, and `desktopAgentDelegate` anytime.
 
 ### SyncStageUserDelegate
 Responsible for getting callbacks about users' state in the session.

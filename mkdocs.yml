@@ -100,6 +100,7 @@ nav:
   - SyncStage SDK for Web (preview-only):
     - Overview: web/overview.md        
     - Quickstart: web/quickstart.md
+    - Desktop Agent: web/desktop-agent.md    
     - Reference:
       - Methods: web/sdk-methods.md
       - Delegates: web/sdk-delegates.md

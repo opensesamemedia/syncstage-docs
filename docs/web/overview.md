@@ -1,13 +1,13 @@
-???+ warning
+???+ note
 
     SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
 
 SyncStage SDK for Web brings low latency communication capabilities to your desktop. 
 
-It consists of two componens:
+It consists of two components:
 
 * SyncStage Web SDK (TypeScript & JavaScript) embedded into your web application.
-* SyncStage Agent running on your destkop.
+* SyncStage Agent running on your desktop.
 
 SyncStage SDK for Web current version: `v0.1.0` (PREVIEW-ONLY) ([View changelog](changelog.md))
 
@@ -15,7 +15,7 @@ SyncStage SDK for Web current version: `v0.1.0` (PREVIEW-ONLY) ([View changelog]
 [Test SyncStage Web SDK on macOS](https://syncstage.web.app/){ .md-button target=_blank }
 
 ## Why do I need SyncStage Agent?
-To provide low-latency capabilities SyncStage uses platform-specific optimizations, not available from the browser's engine. Therefore, we introduced a SyncStage Agent, an application that be installed in the system and run in the background. 
+To provide low-latency capabilities SyncStage uses platform-specific optimizations, not available from the browser's engine. Therefore, we have introduced a SyncStage Agent, an application that be installed in the system and run in the background. 
 
 ## Requirements 
 ### Browser
@@ -35,7 +35,7 @@ SyncStage Agent, necessary to establish audio communications, is currently avail
 | Browser                              | Support                        |       Comment             |
 | ------------------------------------ | -----------------------------: | ------------------------: |
 | :fontawesome-brands-apple: MacOS     |  :fontawesome-solid-check:{ .icon-check }     |                           |
-| :fontawesome-brands-windows: Windws  |  :fontawesome-solid-x:{ .icon-x }         |   Work in progress        |
+| :fontawesome-brands-windows: Windows  |  :fontawesome-solid-x:{ .icon-x }         |   Work in progress        |
 | :fontawesome-brands-linux: Linux     |  :fontawesome-solid-x:{ .icon-x }         |   Work in progress        |
 
 

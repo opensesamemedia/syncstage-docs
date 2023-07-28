@@ -11,7 +11,7 @@ If your users are connecting from distant places, they will probably not be able
 Application users connected to low quality networks with high traffic, or with a bad range of a mobile or WiFi signal may have problems with bandwidth consistency. In these scenarios, those application users' latency will fluctuate. High jitter can badly impact the overall audio latency. To help notify your application users of their network quality at their current location - you can get a network quality indicator to present in your application.
 
 ## Latency Optimization Level
-Each use case has its own latency and quality requirements. For voice communications, voice clarity is the key, whereas sub-100ms latency isn't required. For real-time music collaboration, there is nothing more imporant that low and stable latency. To address the needs of multiple use cases SyncStage offers `Latency Optimization Level` parameter that allows for setting up trade-off between latency level and network fluctuations resiliency. The table below shows available modes.
+Each use case has its own latency and quality requirements. For voice communications, voice clarity is the key, whereas sub-100ms latency isn't required. For real-time music collaboration, there is nothing more imporant than low and stable latency. To address the needs of multiple use cases SyncStage offers `Latency Optimization Level` parameter that allows for setting up trade-off between latency level and network fluctuations resiliency. The table below shows available modes.
 
 
 | Level name                           | Description                     
@@ -19,7 +19,7 @@ Each use case has its own latency and quality requirements. For voice communicat
 | High Quality                         |  SyncStage tries to maintain the highest possible quality regardless of the network fluctuations.          |
 | Optimized                            |  Similar to High Quality but a bit more focused on reducing latency.                                       |
 | Best Performance                     |  SyncStage is focused on delivering low latency. In poor network conditions, cracks in audio can occur.    |
-| Ultra Fast                           |  SyncStage is focused on delivering possibly low and stable latency. Good network conditions neeeded.      |
+| Ultra Fast                           |  SyncStage is focused on delivering possibly low and stable latency. Good network conditions needed.      |
 
 
 Currently, Latency Optimization Level parameter **is only available on iOS.** We are working to bring it to Android and Web SDK for MacOS. 
