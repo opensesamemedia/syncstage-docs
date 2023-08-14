@@ -4,6 +4,7 @@
 #### Added
 
 * Session recording
+* Analytics
 
 ### 0.4.0 <small>June 27, 2023</small> { id="0.4.0" }
 
