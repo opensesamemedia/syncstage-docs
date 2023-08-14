@@ -1,4 +1,10 @@
 
+### 0.5.0 <small>August 14, 2023</small> { id="0.5.0" }
+
+#### Added
+
+* Session recording
+
 ### 0.4.0 <small>June 27, 2023</small> { id="0.4.0" }
 
 SyncStage SDK v0.4.0 for iOS is the first production-ready release!

@@ -240,6 +240,24 @@ Returns latency optimization level.
 getLatencyOptimizationLevel() -> SyncStageSDK.LatencyOptimizationLevel
 ```
 
+#### Start session recording
+
+```
+func startRecording(completion: @escaping (SyncStageError?) -> Void)
+```
+Parameters:
+
+* `completion` - closure informs if start session recording error occurs
+
+#### Stop session recording
+
+```
+func stopRecording(completion: @escaping (SyncStageError?) -> Void)
+```
+Parameters:
+
+* `completion` - closure informs if stop session recording error occurs
+
 ### Get SDK version
 Returns SDK version.
 
