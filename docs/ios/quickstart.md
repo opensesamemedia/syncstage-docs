@@ -25,6 +25,7 @@ dependencies: [
 Privacy - Microphone Usage Description (Need microphone access for audio recording)
 Privacy - Camera Usage Description (No need for camera access), required by ffmpeg
 Privacy - Location When In Use Usage Description, required to get better service results
+Privacy - Location Default Accuracy Reduced, set it to YES, no need for accurate location.
 
 ```
 
