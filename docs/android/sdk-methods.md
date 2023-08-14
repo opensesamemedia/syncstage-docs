@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.4.0][0.4.0]{target=_blank}
-[0.4.0]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.4.0
+## [:octicons-tag-24: 0.5.0][0.5.0]{target=_blank}
+[0.5.0]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.5.0
 
 ### Constructor 
 ```kotlin
@@ -35,6 +35,18 @@ Parameters:
 
 * `onCompleted` - callback informing about the result of initialization with `SyncStageSDKErrorCode`
 
+
+### Start session recording
+
+```kotlin
+fun startRecording(): SyncStageSDKErrorCode
+```
+
+### Stop session recording
+
+```kotlin
+fun stopRecording(): SyncStageSDKErrorCode
+```
 
 ### Get SyncStage SDK version
 

@@ -1,3 +1,8 @@
+### 0.5.0 <small>August 14, 2023</small> { id="0.5.0" }
+
+#### Added
+
+* Session recording
 ### 0.4.1 <small>August 11, 2023</small> { id="0.4.1" }
 #### Changed
 
