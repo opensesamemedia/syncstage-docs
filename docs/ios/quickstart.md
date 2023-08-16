@@ -15,7 +15,7 @@ The best way to start with SyncStage is by trying out our example project availa
 
 ```
 dependencies: [
-    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.4.0"))
+    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.5.0"))
 ]
 ```
 
@@ -24,6 +24,8 @@ dependencies: [
 ```
 Privacy - Microphone Usage Description (Need microphone access for audio recording)
 Privacy - Camera Usage Description (No need for camera access), required by ffmpeg
+Privacy - Location When In Use Usage Description, required to get better service results
+Privacy - Location Default Accuracy Reduced, set it to YES, no need for accurate location.
 
 ```
 

@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.5.0][0.5.0]{target=_blank}
-[0.5.0]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.5.0
+## [:octicons-tag-24: 0.4.0][0.4.0]{target=_blank}
+[0.4.0]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.4.0
 
 ### Initialize
 
@@ -240,24 +240,6 @@ Returns latency optimization level.
 getLatencyOptimizationLevel() -> SyncStageSDK.LatencyOptimizationLevel
 ```
 
-#### Start session recording
-
-```
-func startRecording(completion: @escaping (SyncStageError?) -> Void)
-```
-Parameters:
-
-* `completion` - closure informs if start session recording error occurs
-
-#### Stop session recording
-
-```
-func stopRecording(completion: @escaping (SyncStageError?) -> Void)
-```
-Parameters:
-
-* `completion` - closure informs if stop session recording error occurs
-
 ### Get SDK version
 Returns SDK version.
 
@@ -268,4 +250,3 @@ getSDKVersion() -> String
 Older versions:
 
 * [0.4.0](versions/0.4.0/sdk-methods.md)
-* [0.3.1](versions/0.3.1/sdk-methods.md)

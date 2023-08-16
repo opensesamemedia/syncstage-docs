@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.5.0][0.5.0]{target=_blank}
-[0.5.0]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.5.0
+## [:octicons-tag-24: 0.4.0][0.4.0]{target=_blank}
+[0.4.0]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.4.0
 
 Most of the SDK methods return SyncStageSDKErrorCode which can be decoded using the following enum.
 

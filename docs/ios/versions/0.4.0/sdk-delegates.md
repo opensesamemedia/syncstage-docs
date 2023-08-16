@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.5.0][0.5.0]{target=_blank}
-[0.5.0]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.5.0
+## [:octicons-tag-24: 0.4.0][0.4.0]{target=_blank}
+[0.4.0]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.4.0
 
 
 ### SyncStage delegates
@@ -21,12 +21,6 @@ protocol SyncStageUserDelegate: NSObject {
 
     // called when a user unmutes himself
     func userUnmuted(identifier: String)
-    
-    // called when session recording started
-    func sessionRecordingStarted()
-    
-    // called when session recording stopped
-    func sessionRecordingStopped()
 
     // called when the your application lose connectivity with Studio Server, after a while user will be dismissed from the session
     func sessionOut()
