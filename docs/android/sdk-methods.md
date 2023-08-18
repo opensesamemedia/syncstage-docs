@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.4.0][0.4.0]{target=_blank}
-[0.4.0]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.4.0
+## [:octicons-tag-24: 0.4.1][0.4.1]{target=_blank}
+[0.4.1]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.4.1
 
 ### Constructor 
 ```kotlin
