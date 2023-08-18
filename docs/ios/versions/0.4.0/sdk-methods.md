@@ -246,7 +246,3 @@ Returns SDK version.
 ```swift
 getSDKVersion() -> String
 ```
-
-Older versions:
-
-* [0.4.0](versions/0.4.0/sdk-methods.md)
