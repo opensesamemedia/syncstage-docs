@@ -1,8 +1,18 @@
-### 0.4.1 <small>August 11, 2023</small> { id="0.4.1" }
+### 0.5.0 <small>August 18, 2023</small> { id="0.5.0" }
+
+#### Added
+
+* Session recording
+
 #### Changed
 
-* Improved auto input output device switching, when headphones are connected / disconnected
-* SyncStage gathers analytics data for product improvement
+* Improved handover handling
+
+### 0.4.1 <small>August 18, 2023</small> { id="0.4.1" }
+#### Changed
+
+* Improved auto input output device switching when headphones are connected / disconnected
+* SyncStage collects analytics data for product improvement
 
 ### 0.4.0 <small>July 21, 2023</small> { id="0.4.0" }
 

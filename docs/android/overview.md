@@ -1,4 +1,4 @@
-SyncStage SDK for Android current version: `v0.4.1` ([View changelog](changelog.md))
+SyncStage SDK for Android current version: `v0.5.0` ([View changelog](changelog.md))
 
 [Install SDK](quickstart.md){ .md-button .md-button--primary} [Get an example project](quickstart.md){ .md-button}
 
