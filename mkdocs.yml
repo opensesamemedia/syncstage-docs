@@ -108,7 +108,12 @@ nav:
     - Reference:
       - Methods: web/sdk-methods.md
       - Delegates: web/sdk-delegates.md
-      - Error codes: web/sdk-error-codes.md    
+      - Error codes: web/sdk-error-codes.md   
+      - Previous versions:
+        - 0.1.0:
+          - Methods: web/versions/0.1.0/sdk-methods.md
+          - Delegates: web/versions/0.1.0/sdk-delegates.md
+          - Error codes: web/versions/0.1.0/sdk-error-codes.md  
     - Test App: web/test-app.md
     - Changelog: web/changelog.md
     - Known issues: web/known-issues.md    
