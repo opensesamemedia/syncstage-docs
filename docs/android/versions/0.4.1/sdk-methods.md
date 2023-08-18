@@ -1,9 +1,7 @@
-## [:octicons-tag-24: 0.5.0][0.5.0]{target=_blank}
-[0.5.0]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.5.0
+## [:octicons-tag-24: 0.4.1][0.4.1]{target=_blank}
+[0.4.1]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.4.1
 
-
-### General
-#### Constructor 
+### Constructor 
 ```kotlin
 SyncStage(
         private val ctx: Context,
@@ -20,7 +18,7 @@ Constructor parameters:
 
 * `connectivityDelegate` - delegate object to receive events with information about stream connection to Studio Server state
 
-#### Initialize
+### Initialize
 
 Initializes the SDK SyncStage object.
 
@@ -38,28 +36,7 @@ Parameters:
 * `onCompleted` - callback informing about the result of initialization with `SyncStageSDKErrorCode`
 
 
-#### Stop and dispose
-This method stops and cleans up all background tasks SDK performs. 
-
-```kotlin
-fun stop()
-```
-
-!!! note
-    It is crucial to call it onDestroy of the Activity where SyncStage has been initialized in.
-
-
-```kotlin
-    override fun onDestroy() {
-        if (isFinishing) {
-            syncStage.stop()
-        }
-        super.onDestroy()
-    }
-```
-
-
-#### Get SyncStage SDK version
+### Get SyncStage SDK version
 
 Gets SyncStage SDK version
 
@@ -67,7 +44,7 @@ Gets SyncStage SDK version
 fun getSDKVersion(): String
 ```
 
-#### Get best available server
+### Get best available server
 
 Get best available server, where a session can be created
 
@@ -75,7 +52,7 @@ Get best available server, where a session can be created
 suspend fun getBestAvailableServer(): Pair<ServerInstance?, SyncStageSDKErrorCode>
 ```
 
-#### Get server instances
+### Get server instances
 
 Get server instances so you can select the server that is suitable for your session.
 
@@ -83,10 +60,7 @@ Get server instances so you can select the server that is suitable for your sess
 suspend fun getServerInstances(): Pair<List<ServerInstance>?, SyncStageSDKErrorCode> 
 ```
 
-
-### Session
-
-#### Create a session
+### Create a session
 
 Creates a session in a given zone by a given user from your user pool.
 
@@ -104,7 +78,7 @@ Parameters:
 * `studioServerId` - id of the selected studio server
 * `userId` - id of your app user to match the data between SyncStage and your backend
 
-#### Join the session
+### Join the session
 
 Joins a particular session identified by `sessionCode`.
 
@@ -132,7 +106,7 @@ Parameters:
 
 
 
-#### Get session state
+### Get session state
 
 Gets state of currently joined session.
 
@@ -145,16 +119,15 @@ Parameters:
 * `completion` - returns session state
 
 
-#### Leave the session
+### Leave the session
 
 Leaves currently joined session.
 
 ```kotlin
 suspend fun leave(): SyncStageSDKErrorCode
 ```
-### Audio setup
 
-#### Mute / unmute microphone
+### Mute / unmute microphone
 
 Enables or disables microphone stream.
 
@@ -166,7 +139,7 @@ Parameters:
 
 * `mute`- desired state of the mute option
 
-#### Is muted
+### Is muted
 
 Returns state of microphone stream.
 
@@ -174,7 +147,7 @@ Returns state of microphone stream.
 fun isMicrophoneMuted(): Boolean
 ```
 
-#### Turn on / of direct monitor
+### Turn on / of direct monitor
 Turns on / of direct monitor.
 
 ```kotlin
@@ -185,14 +158,14 @@ Parameters:
 
 * `enable`- `true` for turning on direct monitor
 
-#### Get direct monitor volume
+### Get direct monitor volume
 Returns current direct monitor volume.
 
 ```kotlin
 fun getDirectMonitorVolume(): Int
 ```
 
-#### Change direct monitor volume
+### Change direct monitor volume
 Changes volume of the direct monitor.
 
 ```kotlin
@@ -203,14 +176,14 @@ Parameters:
 
 * `volume`- value from range [0;100]
 
-#### Get direct monitor state
+### Get direct monitor state
 Gets direct monitor enabled state
 
 ```kotlin
 fun getDirectMonitorEnabled(): Boolean
 ```
 
-#### Turn on / of internal microphone
+### Turn on / of internal microphone
 Turns on / of internal microphone to be used instead of default audio input i.e. headphones mic.
 
 ```kotlin
@@ -221,16 +194,14 @@ Parameters:
 
 * `enable`- `true` for turning on internal microphone
 
-#### Get internal microphone state
+### Get internal microphone state
 Gets internal microphone enabled state
 
 ```kotlin
 fun getInternalMicEnabled(): Boolean
 ```
 
-### Network measurements
-
-#### Get receiver network measurements
+### Get receiver network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
 
 ```kotlin
@@ -242,22 +213,30 @@ Parameters:
 * `identifier`- receiver's identifier
 
 
-#### Get transmitter network measurements
+### Get transmitter network measurements
 Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
 
 ```kotlin
 fun getTransmitterMeasurements(): Measurements
 ```
 
-### Session recording
-#### Start recording
+
+### Stop and dispose
+This method stops and cleans up all background tasks SDK performs. 
 
 ```kotlin
-fun startRecording(): SyncStageSDKErrorCode
+fun stop()
 ```
 
-#### Stop recording
+!!! warning
+    It is crucial to call it onDestroy of the Activity where SyncStage has been initialized in.
+
 
 ```kotlin
-fun stopRecording(): SyncStageSDKErrorCode
+    override fun onDestroy() {
+        if (isFinishing) {
+            syncStage.stop()
+        }
+        super.onDestroy()
+    }
 ```

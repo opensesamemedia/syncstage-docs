@@ -81,10 +81,14 @@ nav:
       - Delegates: android/sdk-delegates.md
       - Error codes: android/sdk-error-codes.md
       - Previous versions:
+        - 0.4.1:
+          - Methods: android/versions/0.4.1/sdk-methods.md
+          - Delegates: android/versions/0.4.1/sdk-delegates.md
+          - Error codes: android/versions/0.4.1/sdk-error-codes.md      
         - 0.4.0:
           - Methods: android/versions/0.4.0/sdk-methods.md
           - Delegates: android/versions/0.4.0/sdk-delegates.md
-          - Error codes: android/versions/0.4.0/sdk-error-codes.md        
+          - Error codes: android/versions/0.4.0/sdk-error-codes.md 
     - Test App: android/test-app.md
     - Changelog: android/changelog.md
     - Known issues: android/known-issues.md  
