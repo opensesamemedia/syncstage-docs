@@ -38,6 +38,11 @@ theme:
 
 # Customization
 extra:
+  latest_android_sdk_version: v0.5.0
+  latest_ios_sdk_version: v0.5.0
+  latest_web_sdk_version: v0.1.0
+  latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.1.1/SyncStageAgent_0.1.1.dmg
+
   consent:
     title: Cookie consent
     description: >- 
@@ -61,6 +66,7 @@ extra:
     provider: google
     property: G-7YFZKQNWH4
 
+    
 
 extra_css:
   - stylesheets/extra.css
@@ -160,3 +166,4 @@ plugins:
   - glightbox
   - mkdocs-video
   - tags
+  - macros

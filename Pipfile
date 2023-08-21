@@ -8,6 +8,7 @@ mkdocs-material = "*"
 mkdocs-glightbox = "*"
 mkdocs-video = "*"
 neoteroi-mkdocs = "*"
+mkdocs-macros-plugin = "*"
 
 [dev-packages]
 
