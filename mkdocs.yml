@@ -40,7 +40,7 @@ theme:
 extra:
   latest_android_sdk_version: v0.5.0
   latest_ios_sdk_version: v0.5.0
-  latest_web_sdk_version: v0.1.0
+  latest_web_sdk_version: v0.2.0
   latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.2.0/SyncStageAgent_0.2.0.dmg
 
   consent:
@@ -123,7 +123,12 @@ nav:
     - Reference:
       - Methods: web/sdk-methods.md
       - Delegates: web/sdk-delegates.md
-      - Error codes: web/sdk-error-codes.md    
+      - Error codes: web/sdk-error-codes.md   
+      - Previous versions:
+        - 0.1.0:
+          - Methods: web/versions/0.1.0/sdk-methods.md
+          - Delegates: web/versions/0.1.0/sdk-delegates.md
+          - Error codes: web/versions/0.1.0/sdk-error-codes.md  
     - Test App: web/test-app.md
     - Changelog: web/changelog.md
     - Known issues: web/known-issues.md    
