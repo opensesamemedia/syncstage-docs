@@ -4,6 +4,11 @@ To provide low-latency capabilities SyncStage uses platform-specific optimizatio
 
 
 ## Changelog
+### 0.2.0 <small>August 22, 2023</small> { id="0.2.0" }
+#### Added
+
+* Session recording
+
 ### 0.1.1 <small>July 25, 2023</small> { id="0.1.1" }
 #### Added
 
