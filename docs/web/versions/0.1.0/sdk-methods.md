@@ -188,18 +188,6 @@ Returns Mesurements object with network delay, jitter, and calculated network qu
 async getTransmitterMeasurements(): Promise<[IMeasurements | null, SyncStageSDKErrorCode]>
 ```
 
-### Start recording
-
-```typescript
-async startRecording(): Promise<SyncStageSDKErrorCode>
-```
-
-### Stop recording
-
-```typescript
-async stopRecording(): Promise<SyncStageSDKErrorCode>
-```
-
 
 ### Register Desktop Agent Reconnected Callback
 In case of reconnection UI application should be aware of this fact, to refetch the session state to keep it synchronized.
