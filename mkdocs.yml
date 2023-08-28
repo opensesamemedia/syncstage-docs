@@ -77,7 +77,6 @@ extra_css:
 # Page tree
 nav:
   # - SyncStage:
-  - Swagger: swagger.md
   - What is SyncStage?: index.md
   - Architecture & Glossary: architecture-and-glossary.md
   - SyncStage SDK for Android:
@@ -134,6 +133,7 @@ nav:
     - Changelog: web/changelog.md
     - Known issues: web/known-issues.md    
   - Getting ultra low latency experience: low-latency-experience.md
+  - Developer API: developer-api/swagger.md
   - Recommendations: recommendations.md
   - Help:
     - FAQ: help/faq.md
