@@ -71,6 +71,7 @@ extra:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/css-v1.0.2.css
+  - stylesheets/neoteroi-mkdocs.min.css
 
 
 # Page tree
@@ -78,7 +79,6 @@ nav:
   # - SyncStage:
   - What is SyncStage?: index.md
   - Architecture & Glossary: architecture-and-glossary.md
-  # - Available platforms: platforms.md
   - SyncStage SDK for Android:
     - Overview: android/overview.md
     - Quickstart: android/quickstart.md
@@ -133,13 +133,14 @@ nav:
     - Changelog: web/changelog.md
     - Known issues: web/known-issues.md    
   - Getting ultra low latency experience: low-latency-experience.md
+  - Developer API: developer-api/swagger.md
   - Recommendations: recommendations.md
   - Help:
     - FAQ: help/faq.md
     - Reporting a bug: help/report-a-bug.md
     - Reporting an issue in docs: help/report-an-issue-in-docs.md
     - Asking a question: help/ask-a-question.md
-  - Roadmap: roadmap.md    
+  # - Roadmap: roadmap.md    
   - Acknowledgements: acknowledgements.md
 
 
@@ -165,10 +166,10 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - neoteroi.timeline
 
-
 plugins:
   - search
   - glightbox
   - mkdocs-video
   - tags
   - macros
+  - swagger-ui-tag
