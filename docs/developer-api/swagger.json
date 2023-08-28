@@ -1666,7 +1666,7 @@
             "description": "JWT Authorization header"
         }
     },
-    "host": "https://api.sync-stage.com",
+    "host": "api.sync-stage.com",
     "schemes": [
         "https"
     ],
