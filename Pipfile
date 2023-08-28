@@ -9,6 +9,8 @@ mkdocs-glightbox = "*"
 mkdocs-video = "*"
 neoteroi-mkdocs = "*"
 mkdocs-macros-plugin = "*"
+pymdown-extensions = "*"
+mkdocs-swagger-ui-tag = "*"
 
 [dev-packages]
 
