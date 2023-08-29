@@ -1,3 +1,12 @@
+
+
+## Music Collaboration with SyncStage Guide
+
+We have prepared a guide explaining everything you need to now to have a low latency music collaboration with SyncStage.
+
+[Download Music Collaboration with SyncStage Guide](https://public.sync-stage.com/docs/Music+Collaboration+with+SyncStage+-+Manual.pdf){ .md-button target=_blank}
+
+
 ## Distance impact
 
 Each session can be created in one of multiple zones around the world. Make sure that the application users that are going to join the session are within geographical proximity to the zone location. Best experience is within 250 miles / 400 kilometers radius from the zone. You can freely choose the zone of the deployment during the ‘Create Session’ step.
