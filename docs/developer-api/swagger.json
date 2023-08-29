@@ -88,12 +88,99 @@
                         "schema": {
                             "$ref": "#/definitions/IRecordingsResponse"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/usage": {
+            "get": {
+                "summary": "getUsage",
+                "description": "",
+                "tags": [
+                    "Usage"
+                ],
+                "operationId": "getUsage.get./developer/usage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "type": "string",
+                        "description": "Date in format YYYY-MM-DD",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "to",
+                        "type": "string",
+                        "description": "Date in format YYYY-MM-DD (this day will be included until 23:59:59.999Z)",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usage data",
+                        "schema": {
+                            "$ref": "#/definitions/IUsageResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
                     }
                 }
             }
         }
     },
     "definitions": {
+        "IErrorResponse": {
+            "properties": {
+                "error": {
+                    "title": "IErrorResponse.error",
+                    "type": "string"
+                },
+                "statusCode": {
+                    "title": "IErrorResponse.statusCode",
+                    "type": "string"
+                },
+                "message": {
+                    "title": "IErrorResponse.message",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "IErrorResponse.type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "error",
+                "statusCode",
+                "message",
+                "type"
+            ],
+            "additionalProperties": false,
+            "title": "IErrorResponse",
+            "type": "object"
+        },
         "IStem": {
             "properties": {
                 "stemId": {
@@ -217,6 +304,78 @@
                 "title": "IRecordingsResponse.[]"
             },
             "title": "IRecordingsResponse.[]",
+            "type": "array"
+        },
+        "IConnection": {
+            "properties": {
+                "userId": {
+                    "title": "IConnection.userId",
+                    "type": "string"
+                },
+                "displayName": {
+                    "title": "IConnection.displayName",
+                    "type": "string"
+                },
+                "startedAt": {
+                    "title": "IConnection.startedAt",
+                    "type": "string"
+                },
+                "closedAt": {
+                    "title": "IConnection.closedAt",
+                    "type": "string"
+                },
+                "duration": {
+                    "title": "IConnection.duration",
+                    "type": "number"
+                },
+                "sessionCode": {
+                    "title": "IConnection.sessionCode",
+                    "type": "string"
+                },
+                "projectId": {
+                    "title": "IConnection.projectId",
+                    "type": "string"
+                },
+                "projectName": {
+                    "title": "IConnection.projectName",
+                    "type": "string"
+                },
+                "applicationId": {
+                    "title": "IConnection.applicationId",
+                    "type": "string"
+                },
+                "applicationName": {
+                    "title": "IConnection.applicationName",
+                    "type": "string"
+                },
+                "platformName": {
+                    "title": "IConnection.platformName",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "userId",
+                "displayName",
+                "startedAt",
+                "closedAt",
+                "duration",
+                "sessionCode",
+                "projectId",
+                "projectName",
+                "applicationId",
+                "applicationName",
+                "platformName"
+            ],
+            "additionalProperties": false,
+            "title": "IConnection",
+            "type": "object"
+        },
+        "IUsageResponse": {
+            "items": {
+                "$ref": "#/definitions/IConnection",
+                "title": "IUsageResponse.[]"
+            },
+            "title": "IUsageResponse.[]",
             "type": "array"
         }
     },
