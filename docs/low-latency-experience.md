@@ -52,5 +52,5 @@ Below there is a list of audio interfaces we have tested on:
 * Behringer U-PHORIA UMC22
 * Behringer U-PHORIA UMC2
 
-### Collected data by the SDK
+## Collected data by the SDK
 In order to provide best experience with SyncStage, SDK gathers information about location of users and their network operators.
