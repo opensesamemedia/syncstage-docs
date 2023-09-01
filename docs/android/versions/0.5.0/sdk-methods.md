@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.5.1][0.5.1]{target=_blank}
-[0.5.1]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.5.1
+## [:octicons-tag-24: 0.5.0][0.5.0]{target=_blank}
+[0.5.0]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.5.0
 
 
 ### General

@@ -1,3 +1,9 @@
+### 0.5.1 <small>September 1, 2023</small> { id="0.5.1" }
+
+#### Changed
+
+* Fixed crash on latency measurement timeouts
+
 ### 0.5.0 <small>August 18, 2023</small> { id="0.5.0" }
 
 #### Added
