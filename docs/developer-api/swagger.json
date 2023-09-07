@@ -63,7 +63,7 @@
         "/developer/recordings": {
             "get": {
                 "summary": "getSessionRecordings",
-                "description": "",
+                "description": "Get Recordings for a session (Developer API)",
                 "tags": [
                     "Recordings"
                 ],
@@ -104,7 +104,7 @@
         "/developer/usage": {
             "get": {
                 "summary": "getUsage",
-                "description": "",
+                "description": "Gets usage data of organization. Max allowed query time span from-to equals 31 days. API returns closed connections within timespan in UTC.",
                 "tags": [
                     "Usage"
                 ],
@@ -136,6 +136,111 @@
                         "description": "Usage data",
                         "schema": {
                             "$ref": "#/definitions/IUsageResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/sessions/create": {
+            "post": {
+                "summary": "createSessionDeveloper",
+                "description": "Create a new session (Developer API)",
+                "tags": [
+                    "Sessions"
+                ],
+                "operationId": "createSessionDeveloper.post./developer/sessions/create",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Session Info",
+                        "schema": {
+                            "$ref": "#/definitions/ICreateSession"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/sessions/list": {
+            "get": {
+                "summary": "listSessionsDeveloper",
+                "description": "List sessions, with filtering on 'Session Name' or Tags (Developer API)",
+                "tags": [
+                    "Recordings"
+                ],
+                "operationId": "listSessionsDeveloper.get./developer/sessions/list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "projectId",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "nextToken",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "maxResults",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "sessionName",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "tagKey",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "tagValue",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of Sessions",
+                        "schema": {
+                            "$ref": "#/definitions/ISession"
                         }
                     },
                     "401": {
@@ -296,6 +401,121 @@
             ],
             "additionalProperties": false,
             "title": "IRecording",
+            "type": "object"
+        },
+        "ISession": {
+            "properties": {
+                "sessionId": {
+                    "title": "ISession.sessionId",
+                    "type": "string"
+                },
+                "sessionPublicCode": {
+                    "title": "ISession.sessionPublicCode",
+                    "type": "string"
+                },
+                "sessionName": {
+                    "title": "ISession.sessionName",
+                    "type": "string"
+                },
+                "organizationId": {
+                    "title": "ISession.organizationId",
+                    "type": "string"
+                },
+                "projectId": {
+                    "title": "ISession.projectId",
+                    "type": "string"
+                },
+                "createdAt": {
+                    "$ref": "#/definitions/Date",
+                    "title": "ISession.createdAt"
+                },
+                "updatedAt": {
+                    "$ref": "#/definitions/Date",
+                    "title": "ISession.updatedAt"
+                },
+                "sessionState": {
+                    "title": "ISession.sessionState",
+                    "type": "string"
+                },
+                "createdByUserId": {
+                    "title": "ISession.createdByUserId",
+                    "type": "string"
+                },
+                "secondsUsed": {
+                    "title": "ISession.secondsUsed",
+                    "type": "number"
+                },
+                "recordingStatus": {
+                    "title": "ISession.recordingStatus",
+                    "type": "string"
+                },
+                "tags": {
+                    "title": "ISession.tags"
+                },
+                "participants": {
+                    "items": {
+                        "title": "ISession.participants.[]",
+                        "type": "string"
+                    },
+                    "title": "ISession.participants",
+                    "type": "array"
+                },
+                "sessionType": {
+                    "title": "ISession.sessionType",
+                    "type": "string"
+                },
+                "admissionEnabled": {
+                    "title": "ISession.admissionEnabled",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "sessionId",
+                "sessionPublicCode",
+                "sessionName",
+                "organizationId",
+                "projectId",
+                "createdAt",
+                "updatedAt",
+                "sessionState",
+                "createdByUserId",
+                "secondsUsed",
+                "recordingStatus"
+            ],
+            "additionalProperties": false,
+            "title": "ISession",
+            "type": "object"
+        },
+        "ICreateSession": {
+            "properties": {
+                "sessionId": {
+                    "title": "ICreateSession.sessionId",
+                    "type": "string"
+                },
+                "sessionCode": {
+                    "title": "ICreateSession.sessionCode",
+                    "type": "string"
+                },
+                "sessionName": {
+                    "title": "ICreateSession.sessionName",
+                    "type": "string"
+                },
+                "createdAt": {
+                    "$ref": "#/definitions/Date",
+                    "title": "ICreateSession.createdAt"
+                },
+                "tags": {
+                    "title": "ICreateSession.tags"
+                }
+            },
+            "required": [
+                "sessionId",
+                "sessionCode",
+                "sessionName",
+                "createdAt"
+            ],
+            "additionalProperties": false,
+            "title": "ICreateSession",
             "type": "object"
         },
         "IRecordingsResponse": {
