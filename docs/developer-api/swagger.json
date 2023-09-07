@@ -79,7 +79,13 @@
                         "in": "query",
                         "name": "sessionCode",
                         "type": "string",
-                        "required": true
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "sessionId",
+                        "type": "string",
+                        "required": false
                     }
                 ],
                 "responses": {
@@ -152,24 +158,34 @@
         },
         "/developer/sessions/create": {
             "post": {
-                "summary": "createSessionDeveloper",
+                "summary": "createSession",
                 "description": "Create a new session (Developer API)",
                 "tags": [
                     "Sessions"
                 ],
-                "operationId": "createSessionDeveloper.post./developer/sessions/create",
+                "operationId": "createSession.post./developer/sessions/create",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Body required in the request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ICreateSessionRequest"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Session Info",
                         "schema": {
-                            "$ref": "#/definitions/ICreateSession"
+                            "$ref": "#/definitions/ICreateSessionResponse"
                         }
                     },
                     "401": {
@@ -186,12 +202,12 @@
         },
         "/developer/sessions/list": {
             "get": {
-                "summary": "listSessionsDeveloper",
+                "summary": "listSessions",
                 "description": "List sessions, with filtering on 'Session Name' or Tags (Developer API)",
                 "tags": [
                     "Recordings"
                 ],
-                "operationId": "listSessionsDeveloper.get./developer/sessions/list",
+                "operationId": "listSessions.get./developer/sessions/list",
                 "consumes": [
                     "application/json"
                 ],
@@ -426,12 +442,12 @@
                     "type": "string"
                 },
                 "createdAt": {
-                    "type": "string",
-                    "title": "ISession.createdAt"
+                    "title": "ISession.createdAt",
+                    "type": "string"
                 },
                 "updatedAt": {
-                    "type": "string",
-                    "title": "ISession.updatedAt"
+                    "title": "ISession.updatedAt",
+                    "type": "string"
                 },
                 "sessionState": {
                     "title": "ISession.sessionState",
@@ -486,26 +502,26 @@
             "title": "ISession",
             "type": "object"
         },
-        "ICreateSession": {
+        "ICreateSessionResponse": {
             "properties": {
                 "sessionId": {
-                    "title": "ICreateSession.sessionId",
+                    "title": "ICreateSessionResponse.sessionId",
                     "type": "string"
                 },
                 "sessionCode": {
-                    "title": "ICreateSession.sessionCode",
+                    "title": "ICreateSessionResponse.sessionCode",
                     "type": "string"
                 },
                 "sessionName": {
-                    "title": "ICreateSession.sessionName",
+                    "title": "ICreateSessionResponse.sessionName",
                     "type": "string"
                 },
                 "createdAt": {
-                    "type": "string",
-                    "title": "ICreateSession.createdAt"
+                    "title": "ICreateSessionResponse.createdAt",
+                    "type": "string"
                 },
                 "tags": {
-                    "title": "ICreateSession.tags"
+                    "title": "ICreateSessionResponse.tags"
                 }
             },
             "required": [
@@ -515,7 +531,33 @@
                 "createdAt"
             ],
             "additionalProperties": false,
-            "title": "ICreateSession",
+            "title": "ICreateSessionResponse",
+            "type": "object"
+        },
+        "ICreateSessionRequest": {
+            "properties": {
+                "sessionName": {
+                    "title": "ICreateSessionRequest.sessionName",
+                    "type": "string"
+                },
+                "projectId": {
+                    "title": "ICreateSessionRequest.projectId",
+                    "type": "string"
+                },
+                "organizationId": {
+                    "title": "ICreateSessionRequest.organizationId",
+                    "type": "string"
+                },
+                "tags": {
+                    "title": "ICreateSessionRequest.tags"
+                }
+            },
+            "required": [
+                "projectId",
+                "organizationId"
+            ],
+            "additionalProperties": false,
+            "title": "ICreateSessionRequest",
             "type": "object"
         },
         "IRecordingsResponse": {
