@@ -426,11 +426,11 @@
                     "type": "string"
                 },
                 "createdAt": {
-                    "$ref": "#/definitions/Date",
+                    "type": "string",
                     "title": "ISession.createdAt"
                 },
                 "updatedAt": {
-                    "$ref": "#/definitions/Date",
+                    "type": "string",
                     "title": "ISession.updatedAt"
                 },
                 "sessionState": {
@@ -501,7 +501,7 @@
                     "type": "string"
                 },
                 "createdAt": {
-                    "$ref": "#/definitions/Date",
+                    "type": "string",
                     "title": "ICreateSession.createdAt"
                 },
                 "tags": {
