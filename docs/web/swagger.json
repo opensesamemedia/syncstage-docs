@@ -138,9 +138,6 @@
                   "jwt": {
                     "type": "string"
                   },
-                  "refreshToken": {
-                    "type": "string"
-                  },
                   "expiresIn": {
                     "type": "integer"
                   }
