@@ -1,0 +1,157 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "SyncStage Web SDK API",
+      "version": "1.0.0"
+    },
+    "schemes": [
+      "https"
+    ],
+    "host": "api.sync-stage.com",
+    "paths": {
+      "/sdk/web/login": {
+        "post": {
+          "tags": [
+            "Authorization"
+          ],
+          "description": "Method for geting Web SDK tokens using SyncStage secret",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectInfo": {
+                    "type": "object",
+                    "properties": {
+                      "projectName": {
+                        "type": "string"
+                      },
+                      "projectUuid": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "applicationInfo": {
+                    "type": "object",
+                    "properties": {
+                      "applicationUuid": {
+                        "type": "string"
+                      },
+                      "applicationName": {
+                        "type": "string"
+                      },
+                      "applicationPlatformName": {
+                        "type": "string"
+                      },
+                      "applicationPlatformUuid": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "applicationSecret": {
+                    "type": "object",
+                    "properties": {
+                      "applicationSecretId": {
+                        "type": "string"
+                      },
+                      "applicationSecretKey": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "configurationVersion": {
+                    "type": "number"
+                  },
+                  "issuedBy": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "uniqueItems": false,
+                "type": "object",
+                "properties": {
+                  "jwt": {
+                    "type": "string"
+                  },
+                  "refreshToken": {
+                    "type": "string"
+                  },
+                  "expiresIn": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          }
+        }
+      },
+      "/sdk/web/refresh": {
+        "post": {
+          "tags": [
+            "Authorization"
+          ],
+          "description": "Method for geting Web SDK token refresh token",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "refreshToken": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "uniqueItems": false,
+                "type": "object",
+                "properties": {
+                  "jwt": {
+                    "type": "string"
+                  },
+                  "refreshToken": {
+                    "type": "string"
+                  },
+                  "expiresIn": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          }
+        }
+      }
+    }
+  }

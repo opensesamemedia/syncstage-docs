@@ -1,6 +1,12 @@
-???+ note
+### 0.3.0 <small>September 15, 2023</small> { id="0.3.0" }
+#### Modified
 
-    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
+* Init method now accepts expiriting in time token instead of SynsStage Secret.
+* SyncStage constructor extended with onTokenExpired callback parameter.
+
+#### Added
+* New error code for expired token
+* Method for updating token
 
 ### 0.2.0 <small>August 18, 2023</small> { id="0.2.0" }
 #### Added
