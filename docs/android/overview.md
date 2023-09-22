@@ -28,6 +28,3 @@ The SyncStage low latency capabilities were tested on a series of physical devic
 * Google Pixel 4a
 
 The list is constantly getting longer. Setting up a SyncStage audio session without verifying the latency was tested **on numerous other Android devices.**
-
-
-

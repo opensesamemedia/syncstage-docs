@@ -1,6 +1,15 @@
+### 0.6.0 <small>September 22, 2023</small> { id="0.6.0" }
+
+#### Added
+
+* Methods for managing latency optimization level
+#### Fixed
+
+* Fixed sampling frequency issues on some devices with Android < 12
+
 ### 0.5.1 <small>September 1, 2023</small> { id="0.5.1" }
 
-#### Changed
+#### Fixed
 
 * Fixed crash on latency measurement timeouts
 

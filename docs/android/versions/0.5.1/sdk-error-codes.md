@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.6.0][0.6.0]{target=_blank}
-[0.6.0]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.6.0
+## [:octicons-tag-24: 0.5.1][0.5.1]{target=_blank}
+[0.5.1]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.5.1
 
 Most of the SDK methods return SyncStageSDKErrorCode which can be decoded using following enum class.
 
