@@ -205,7 +205,7 @@
                 "summary": "listSessions",
                 "description": "List sessions, with filtering on 'Session Name' or Tags (Developer API)",
                 "tags": [
-                    "Recordings"
+                    "Sessions"
                 ],
                 "operationId": "listSessions.get./developer/sessions/list",
                 "consumes": [
@@ -258,6 +258,122 @@
                         "schema": {
                             "$ref": "#/definitions/ISession"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/streaming/files": {
+            "get": {
+                "summary": "listSoundFiles",
+                "description": "List sound files available.",
+                "tags": [
+                    "Streaming"
+                ],
+                "operationId": "listSoundFiles.get./developer/streaming/files",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "List of Files",
+                        "schema": {
+                            "$ref": "#/definitions/ISoundFileListResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/streaming/start": {
+            "post": {
+                "summary": "startStreaming",
+                "description": "Start streaming file in particular session",
+                "tags": [
+                    "Streaming"
+                ],
+                "operationId": "startStreaming.post./developer/streaming/start",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "sessionId",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "soundFileName",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Streaming started"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/streaming/stop": {
+            "post": {
+                "summary": "stopStreaming",
+                "description": "Stop streaming file in particular session",
+                "tags": [
+                    "Streaming"
+                ],
+                "operationId": "stopStreaming.post./developer/streaming/stop",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "sessionId",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Streaming stopped"
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -638,6 +754,33 @@
                 "title": "IUsageResponse.[]"
             },
             "title": "IUsageResponse.[]",
+            "type": "array"
+        },
+        "ISoundFile": {
+            "properties": {
+                "name": {
+                    "title": "ISoundFile.name",
+                    "type": "string"
+                },
+                "url": {
+                    "title": "ISoundFile.url",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "url"
+            ],
+            "additionalProperties": false,
+            "title": "ISoundFile",
+            "type": "object"
+        },
+        "ISoundFileListResponse": {
+            "items": {
+                "$ref": "#/definitions/ISoundFile",
+                "title": "ISoundFileListResponse.[]"
+            },
+            "title": "ISoundFileListResponse.[]",
             "type": "array"
         }
     },
