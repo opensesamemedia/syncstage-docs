@@ -14,7 +14,7 @@
           "tags": [
             "Authorization"
           ],
-          "description": "Method for geting Web SDK tokens using SyncStage secret",
+          "description": "Method for getting Web SDK tokens using SyncStage secret",
           "consumes": [
             "application/json"
           ],

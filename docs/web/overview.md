@@ -5,7 +5,7 @@ It consists of two components:
 * SyncStage Web SDK (TypeScript & JavaScript) embedded into your web application.
 * SyncStage Agent running on your desktop.
 
-SyncStage SDK for Web latest version: `{{ latest_web_sdk_version }}` (PREVIEW-ONLY) ([View changelog](changelog.md))
+SyncStage SDK for Web latest version: `{{ latest_web_sdk_version }}` ([View changelog](changelog.md))
 
 [Get SDK](quickstart.md){ .md-button .md-button--primary}
 [Test SyncStage Web SDK on macOS](https://syncstage.web.app/){ .md-button target=_blank }

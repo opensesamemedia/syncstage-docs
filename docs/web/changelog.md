@@ -1,7 +1,7 @@
 ### 0.3.0 <small>September 15, 2023</small> { id="0.3.0" }
 #### Modified
 
-* Init method now accepts expiriting in time token instead of SynsStage Secret.
+* Init method now accepts a time-limited token instead of a SyncStage Secret.
 * SyncStage constructor extended with onTokenExpired callback parameter.
 
 #### Added
