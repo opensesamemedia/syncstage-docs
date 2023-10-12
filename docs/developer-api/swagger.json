@@ -599,6 +599,10 @@
                 "admissionEnabled": {
                     "title": "ISession.admissionEnabled",
                     "type": "boolean"
+                },
+                "activeConnections": {
+                    "title": "ISession.activeConnections",
+                    "type": "number"
                 }
             },
             "required": [
