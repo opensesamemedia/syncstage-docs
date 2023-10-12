@@ -5,7 +5,7 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/developer-api/login": {
+        "/developer/login": {
             "post": {
                 "tags": [
                     "Authorization"
@@ -93,55 +93,6 @@
                         "description": "List of recordings",
                         "schema": {
                             "$ref": "#/definitions/IRecordingsResponse"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "schema": {
-                            "$ref": "#/definitions/IErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/developer/usage": {
-            "get": {
-                "summary": "getUsage",
-                "description": "Gets usage data of organization. Max allowed query time span from-to equals 31 days. API returns closed connections within timespan in UTC.",
-                "tags": [
-                    "Usage"
-                ],
-                "operationId": "getUsage.get./developer/usage",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "from",
-                        "type": "string",
-                        "description": "Date in format YYYY-MM-DD",
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "to",
-                        "type": "string",
-                        "description": "Date in format YYYY-MM-DD (this day will be included until 23:59:59.999Z)",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Usage data",
-                        "schema": {
-                            "$ref": "#/definitions/IUsageResponse"
                         }
                     },
                     "401": {
@@ -374,6 +325,55 @@
                 "responses": {
                     "200": {
                         "description": "Streaming stopped"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/usage": {
+            "get": {
+                "summary": "getUsage",
+                "description": "Gets usage data of organization. Max allowed query time span from-to equals 31 days. API returns closed connections within timespan in UTC.",
+                "tags": [
+                    "Usage"
+                ],
+                "operationId": "getUsage.get./developer/usage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "from",
+                        "type": "string",
+                        "description": "Date in format YYYY-MM-DD",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "to",
+                        "type": "string",
+                        "description": "Date in format YYYY-MM-DD (this day will be included until 23:59:59.999Z)",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usage data",
+                        "schema": {
+                            "$ref": "#/definitions/IUsageResponse"
+                        }
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -754,33 +754,6 @@
                 "title": "IUsageResponse.[]"
             },
             "title": "IUsageResponse.[]",
-            "type": "array"
-        },
-        "ISoundFile": {
-            "properties": {
-                "name": {
-                    "title": "ISoundFile.name",
-                    "type": "string"
-                },
-                "url": {
-                    "title": "ISoundFile.url",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "name",
-                "url"
-            ],
-            "additionalProperties": false,
-            "title": "ISoundFile",
-            "type": "object"
-        },
-        "ISoundFileListResponse": {
-            "items": {
-                "$ref": "#/definitions/ISoundFile",
-                "title": "ISoundFileListResponse.[]"
-            },
-            "title": "ISoundFileListResponse.[]",
             "type": "array"
         }
     },
