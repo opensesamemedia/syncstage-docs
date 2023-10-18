@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.5.0][0.5.0]{target=_blank}
-[0.5.0]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.5.0
+## [:octicons-tag-24: 0.5.1][0.5.1]{target=_blank}
+[0.5.1]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.5.1
 
 ### General
 
@@ -74,6 +74,7 @@ Parameters:
 * `zoneId` - zone in which we want to host our session
 * `userId` - id of your app user to match the data between SyncStage and your backend
 * `studioServerId` - id of the selected studio server
+* `preferFastRouting` - prefer fast routing allows better network performance
 * `completion` -  if succeeded returns a SessionIdentifier (session Id and session code)
 
 #### Join the session
@@ -87,6 +88,7 @@ func join(
     displayName: String? = nil,
     zoneId: String,
     studioServerId: String,
+    preferFastRouting: Swift.Bool = false,
     completion: @escaping (Result<Session, SyncStageError>) -> Void
 )
 ```
