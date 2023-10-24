@@ -1,8 +1,15 @@
+### 0.6.0 <small>October 24, 2023</small> { id="0.6.0" }
+
+#### Modified
+* Modified `init` method of the `SyncStage` class
+
+
 ### 0.5.2 <small>September 22, 2023</small> { id="0.5.2" }
 
 #### Added
 
 * Methods for managing latency optimization level
+
 #### Fixed
 
 * Fixed sampling frequency issues on some devices with Android < 12

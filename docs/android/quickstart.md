@@ -68,7 +68,7 @@ SyncStageSecret.json is assigned to one application. File contains confidential 
 
 !!! security "Security tip"
 
-    We strongly recommend storing applicationSecretKey securely in your backend and provide it as a parameter at SyncStage SDK object instantiation. Having implemented the supply of the applicationSecretKey from your protected backend, you can remove that parameter from the .json.
+    We strongly recommend storing SyncStageSecret.json securely in your backend and provide it as a parameter at SyncStage SDK object instantiation. Having implemented the supply of the SyncStageSecret.json from your protected backend, you can remove the .json from the build.
 
 ### 4. Integrate the SyncStage class with your app
 
