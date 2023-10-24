@@ -1,4 +1,4 @@
-### 0.6.0 <small>September 22, 2023</small> { id="0.6.0" }
+### 0.5.2 <small>September 22, 2023</small> { id="0.5.2" }
 
 #### Added
 
@@ -6,6 +6,7 @@
 #### Fixed
 
 * Fixed sampling frequency issues on some devices with Android < 12
+* Improved TCP/UDP switching
 
 ### 0.5.1 <small>September 1, 2023</small> { id="0.5.1" }
 

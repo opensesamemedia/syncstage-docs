@@ -1,3 +1,11 @@
+### 0.5.1 <small>October 18, 2023</small> { id="0.5.1" }
+
+#### Added
+
+* Session name
+* Session tags
+* Prefer fast routing option
+
 
 ### 0.5.0 <small>August 14, 2023</small> { id="0.5.0" }
 
