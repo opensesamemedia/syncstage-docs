@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.5.2][0.5.2]{target=_blank}
-[0.5.2]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.5.2
+## [:octicons-tag-24: 0.5.1][0.5.1]{target=_blank}
+[0.5.1]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.5.1
 
 
 ### General
@@ -247,31 +247,6 @@ Returns Mesurements object with network delay, jitter, and calculated network qu
 
 ```kotlin
 fun getTransmitterMeasurements(): Measurements
-```
-
-### Latency Optimization Level
-Click [here](../../low-latency-experience/#latency-optimization-level){ target=_blank} to learn more about the Latency Optimization Level.
-#### Change latency Optimization Level
-Change the latency optimization level using of the following options:
-
-* hightQuality
-* optimized
-* bestPerformance
-* ultraFast
-
-```kotlin
-fun changeLatencyOptimizationLevel(value: LatencyOptimizationLevel)
-```
-Parameters:
-
-* `value`- latency optimization level value.
-
-
-#### Get Latency Optimization Level
-Returns latency optimization level.
-
-```kotlin
-fun getLatencyOptimizationLevel(): LatencyOptimizationLevel
 ```
 
 ### Session recording

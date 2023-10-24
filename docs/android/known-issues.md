@@ -1,5 +1,5 @@
 ## SDK
-SyncStage SDK `0.5.1` for Android contains some known issues. However, we are diligently working to resolve them in upcoming releases.
+SyncStage SDK `0.5.2` for Android contains some known issues. However, we are diligently working to resolve them in upcoming releases.
 
 * When headphones without a microphone are connected, the internal microphone must be manually enabled.
 * Bluetooth audio devices, e.g. headsets, speakers, are not yet fully supported.
