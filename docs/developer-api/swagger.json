@@ -245,10 +245,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Confirmation",
-                        "schema": {
-                            "$ref": "#/definitions/string"
-                        }
+                        "description": "Confirmation"
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -893,8 +890,46 @@
             },
             "title": "IUsageResponse.[]",
             "type": "array"
+        },
+        "ISoundFile": {
+            "properties": {
+                "name": {
+                    "title": "ISoundFile.name",
+                    "type": "string"
+                },
+                "url": {
+                    "title": "ISoundFile.url",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "url"
+            ],
+            "additionalProperties": false,
+            "title": "ISoundFile",
+            "type": "object"
+        },
+        "ISoundFileListResponse": {
+            "items": {
+                "$ref": "#/definitions/ISoundFile",
+                "title": "ISoundFileListResponse.[]"
+            },
+            "title": "ISoundFileListResponse.[]",
+            "type": "array"
         }
     },
-    "securityDefinitions": {},
+    "securityDefinitions": {
+        "BearerAuth": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header"
+        }
+      },
+      "security": [
+        {
+          "BearerAuth": []
+        }
+      ],
     "host": "api.sync-stage.com"
 }
