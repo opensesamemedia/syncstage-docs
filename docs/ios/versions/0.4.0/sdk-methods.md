@@ -224,7 +224,7 @@ Parameters:
 * `identifier`- session transmitter identifier.
 
 #### Change latency optimization level
-Change the latency optimization level using of the following options: hightQuality, optimized, bestPerformance, ultraFast.
+Change the latency optimization level using of the following options: Quality, optimized, bestPerformance, ultraFast.
 
 ```
 changeLatencyOptimizationLevel(value: SyncStageSDK.LatencyOptimizationLevel)

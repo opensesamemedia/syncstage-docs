@@ -222,7 +222,7 @@ unregisterDesktopAgentReconnectedCallback(): void;
 
 <!-- Available in 0.1.0 but not tested - no ui -->
 <!-- ### Change latency optimization level
-Change the latency optimization level using of the following options: hightQuality, optimized, bestPerformance, ultraFast.
+Change the latency optimization level using of the following options: highQuality, optimized, bestPerformance, ultraFast.
 
 ```typescript
 async changeLatencyOptimizationLevel(level: number): Promise<SyncStageSDKErrorCode>

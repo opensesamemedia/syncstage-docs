@@ -254,7 +254,7 @@ Click [here](../../low-latency-experience/#latency-optimization-level){ target=_
 #### Change latency Optimization Level
 Change the latency optimization level using of the following options:
 
-* hightQuality
+* highQuality
 * optimized
 * bestPerformance
 * ultraFast
