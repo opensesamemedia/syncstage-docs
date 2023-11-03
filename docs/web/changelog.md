@@ -1,4 +1,4 @@
-### 0.4.0 <small>September 15, 2023</small> { id="0.4.0" }
+### 0.4.0 <small>November 3, 2023</small> { id="0.4.0" }
 #### Added
 * getDesktopAgentProtocolHandler method - returns URI that opens Desktop Agent on Windows
 
