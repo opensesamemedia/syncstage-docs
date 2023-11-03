@@ -1,3 +1,7 @@
+???+ note
+
+    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
+
 ### Constructor 
 
 ```typescript
@@ -5,9 +9,7 @@ class SyncStage implements ISyncStage{
     constructor(
         userDelegate: ISyncStageUserDelegate | null,
         connectivityDelegate: ISyncStageConnectivityDelegate | null,
-        discoveryDelegate: ISyncStageDiscoveryDelegate | null,
         desktopAgentDelegate: ISyncStageDesktopAgentDelegate | null,
-        onTokenExpired: (() => Promise<string>) | null,
         desktopAgentPort: number = 18080,
     );
 }
@@ -17,13 +19,9 @@ Constructor parameters:
 
 * `userDelegate` - delegate object to receive events about users in session state
 
-* `discoveryDelegate` - delegate object responsible for getting callbacks about available zones latency.
-
 * `connectivityDelegate` - delegate object to receive events with information about stream connection to Studio Server state
 
 * `desktopAgentDelegate` - delegate object to receive events with information of desktop agent acqusition and release to prevent users from using SyncStage in multiple browser tabs at once
-
-* `onTokenExpired` - callback to be called when `jwt` expires, callback should return new refetched `jwt`
 
 * `desktopAgentPort` - port for communication with local desktop agent, 18080 by default
 
@@ -33,24 +31,16 @@ Initializes the SDK SyncStage object.
 
 ```typescript
 async init(
-        jwt: string,
+        applicationSecretId: string,
+        applicationSecretKey: string
     ): Promise<SyncStageSDKErrorCode>
 ```
 
 Parameters:
 
-* `jwt` - token obtained in the [provisioning](provisioning.md) process.
+* `applicationSecretKey` - secret for SDK provisioning
 
-
-### Update JWT
-
-You can update JWT anytime you want, even before expiration takes place.
-
-```typescript
-async updateToken(jwt: string): Promise<SyncStageSDKErrorCode>
-```
-
-* `jwt` - token obtained in the [provisioning](provisioning.md) process.
+* `applicationSecretId` - id of secret for SDK provisioning
 
 ### Get is desktop agent connected
 
@@ -230,11 +220,6 @@ Remove the callback in the SyncStage.
 unregisterDesktopAgentReconnectedCallback(): void;
 ```
 
-### Get URI for opening SyncStage Agent on Windows
-```typescript
-getDesktopAgentProtocolHandler(): string;
-```
-
 <!-- Available in 0.1.0 but not tested - no ui -->
 <!-- ### Change latency optimization level
 Change the latency optimization level using of the following options: hightQuality, optimized, bestPerformance, ultraFast.
@@ -252,4 +237,3 @@ Returns latency optimization level.
 ```typescript
 async getLatencyOptimizationLevel(): Promise<[IZoneLatency | null, SyncStageSDKErrorCode]>
 ``` -->
-

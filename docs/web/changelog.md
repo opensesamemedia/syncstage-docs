@@ -1,6 +1,21 @@
-???+ note
+### 0.4.0 <small>September 15, 2023</small> { id="0.4.0" }
+#### Added
+* getDesktopAgentProtocolHandler method - returns URI that opens Desktop Agent on Windows
 
-    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
+#### Modified
+
+* Init method, removed agent port parameter.
+
+
+### 0.3.0 <small>September 15, 2023</small> { id="0.3.0" }
+#### Modified
+
+* Init method now accepts a time-limited token instead of a SyncStage Secret.
+* SyncStage constructor extended with onTokenExpired callback parameter.
+
+#### Added
+* New error code for expired token
+* Method for updating token
 
 ### 0.2.0 <small>August 18, 2023</small> { id="0.2.0" }
 #### Added

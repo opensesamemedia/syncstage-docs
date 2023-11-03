@@ -230,11 +230,6 @@ Remove the callback in the SyncStage.
 unregisterDesktopAgentReconnectedCallback(): void;
 ```
 
-### Get URI for opening SyncStage Agent on Windows
-```typescript
-getDesktopAgentProtocolHandler(): string;
-```
-
 <!-- Available in 0.1.0 but not tested - no ui -->
 <!-- ### Change latency optimization level
 Change the latency optimization level using of the following options: hightQuality, optimized, bestPerformance, ultraFast.
@@ -252,4 +247,3 @@ Returns latency optimization level.
 ```typescript
 async getLatencyOptimizationLevel(): Promise<[IZoneLatency | null, SyncStageSDKErrorCode]>
 ``` -->
-
