@@ -1,6 +1,7 @@
 ### 0.6.0 <small>October 24, 2023</small> { id="0.6.0" }
 
 #### Modified
+
 * Modified `init` method of the `SyncStage` class
 
 
