@@ -38,11 +38,7 @@ theme:
 
 # Customization
 extra:
-<<<<<<< HEAD
   latest_android_sdk_version: v0.6.0
-=======
-  latest_android_sdk_version: v0.5.2
->>>>>>> 7f3c5bbafa477772cc75c16d549bb205323fd7ec
   latest_ios_sdk_version: v0.5.1
   latest_web_sdk_version: v0.2.0
   latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.2.0/SyncStageAgent_0.2.0.dmg
@@ -91,13 +87,10 @@ nav:
       - Delegates: android/sdk-delegates.md
       - Error codes: android/sdk-error-codes.md
       - Previous versions:
-<<<<<<< HEAD
         - 0.5.2:
           - Methods: android/versions/0.5.2/sdk-methods.md
           - Delegates: android/versions/0.5.2/sdk-delegates.md
           - Error codes: android/versions/0.5.2/sdk-error-codes.md   
-=======
->>>>>>> 7f3c5bbafa477772cc75c16d549bb205323fd7ec
         - 0.5.1:
           - Methods: android/versions/0.5.1/sdk-methods.md
           - Delegates: android/versions/0.5.1/sdk-delegates.md
