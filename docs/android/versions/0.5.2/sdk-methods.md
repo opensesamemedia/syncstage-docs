@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.6.0][0.6.0]{target=_blank}
-[0.6.0]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.6.0
+## [:octicons-tag-24: 0.5.2][0.5.2]{target=_blank}
+[0.5.2]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.5.2
 
 
 ### General
@@ -26,14 +26,14 @@ Initializes the SDK SyncStage object.
 
 ```kotlin
 fun init(
-        syncStageSecret: String? = null,
+        applicationSecretKey: String? = null,
         onCompleted: (errorCode: SyncStageSDKErrorCode) -> Unit = {},
     )
 ```
 
 Parameters:
 
-* `syncStageSecret` - if set to null, SDK will look for the SyncStageSecret.json file
+* `applicationSecretKey` - if set to null, SDK will look for applicationSecretKey in the SyncStageSecret.json file
 
 * `onCompleted` - callback informing about the result of initialization with `SyncStageSDKErrorCode`
 
