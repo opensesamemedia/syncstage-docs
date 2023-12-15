@@ -1,6 +1,3 @@
-???+ note
-
-    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
 ## Before you begin
 
 Before you start developing your application with the SyncStage SDK, you need to opt-in to Early Access Developer program and get your SyncStage SDK secrets. Once you have opted-in we will contact you to provide you with your SDK secrets.
@@ -24,6 +21,8 @@ To get the latest npm package of the SyncStage SDK install it from: <https://www
 
 To use test application you need to install SyncStage Desktop Agent on your Mac.
 [Download SyncStage Desktop Agent for macOS]({{ latest_desktop_agent_for_macos_url }}){ .md-button}
+
+### 3. Integrate [provisioning](provisioning.md) into your app backend
 
 ### 3. Integrate the SyncStage class with your app
 

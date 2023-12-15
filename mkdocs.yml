@@ -40,8 +40,8 @@ theme:
 extra:
   latest_android_sdk_version: v0.6.0
   latest_ios_sdk_version: v0.5.1
-  latest_web_sdk_version: v0.2.0
-  latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.2.0/SyncStageAgent_0.2.0.dmg
+  latest_web_sdk_version: v0.3.0
+  latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.3.0/SyncStageAgent_0.3.0.dmg
 
   consent:
     title: Cookie consent
@@ -132,15 +132,24 @@ nav:
           - Error codes: ios/versions/0.3.1/sdk-error-codes.md        
     - Test App: ios/test-app.md      
     - Changelog: ios/changelog.md  
-  - SyncStage SDK for Web (preview-only):
+  - SyncStage SDK for Web:
     - Overview: web/overview.md
     - Quickstart: web/quickstart.md
+    - Provisioning: web/provisioning.md
     - Desktop Agent: web/desktop-agent.md    
     - Reference:
       - Methods: web/sdk-methods.md
       - Delegates: web/sdk-delegates.md
       - Error codes: web/sdk-error-codes.md   
       - Previous versions:
+        - 0.3.0:
+          - Methods: web/versions/0.3.0/sdk-methods.md
+          - Delegates: web/versions/0.3.0/sdk-delegates.md
+          - Error codes: web/versions/0.3.0/sdk-error-codes.md  
+        - 0.2.0:
+          - Methods: web/versions/0.2.0/sdk-methods.md
+          - Delegates: web/versions/0.2.0/sdk-delegates.md
+          - Error codes: web/versions/0.2.0/sdk-error-codes.md  
         - 0.1.0:
           - Methods: web/versions/0.1.0/sdk-methods.md
           - Delegates: web/versions/0.1.0/sdk-delegates.md

@@ -4,6 +4,17 @@ To provide low-latency capabilities SyncStage uses platform-specific optimizatio
 
 
 ## Changelog
+### 0.3.0 <small>December 15, 2023</small> { id="0.3.0" }
+#### Added
+
+* Support for all the main browsers
+* Opening Desktop Agent from the browser
+
+???+ note
+
+    SyncStage Desktop Agent v0.3.0 for MacOS is incompatible Web SDK versions older than v0.3.0.
+
+
 ### 0.2.0 <small>August 22, 2023</small> { id="0.2.0" }
 #### Added
 

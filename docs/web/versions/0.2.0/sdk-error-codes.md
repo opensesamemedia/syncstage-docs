@@ -1,8 +1,11 @@
+???+ note
+
+    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
+    
 Most of the SDK methods return SyncStageSDKErrorCode which can be decoded using following enum class.
 
 ```typescript
 enum SyncStageSDKErrorCode {
-  'TOKEN_EXPIRED' = -1002,
   'SYNCSTAGE_OPENED_IN_ANOTHER_TAB' = -1001,
   'API_UNAUTHORIZED' = -1000,
   'DESKTOP_AGENT_COMMUNICATION_ERROR' = -10,
