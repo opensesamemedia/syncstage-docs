@@ -22,6 +22,8 @@ To get the latest npm package of the SyncStage SDK install it from: <https://www
 To use test application you need to install SyncStage Desktop Agent on your Mac.
 [Download SyncStage Desktop Agent for macOS]({{ latest_desktop_agent_for_macos_url }}){ .md-button}
 
+### 3. Integrate [provisioning](provisioning.md) into your app backend
+
 ### 3. Integrate the SyncStage class with your app
 
 Here you can find a list of:

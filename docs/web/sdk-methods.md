@@ -8,7 +8,6 @@ class SyncStage implements ISyncStage{
         discoveryDelegate: ISyncStageDiscoveryDelegate | null,
         desktopAgentDelegate: ISyncStageDesktopAgentDelegate | null,
         onTokenExpired: (() => Promise<string>) | null,
-        desktopAgentPort: number = 18080,
     );
 }
 ```
@@ -24,8 +23,6 @@ Constructor parameters:
 * `desktopAgentDelegate` - delegate object to receive events with information of desktop agent acqusition and release to prevent users from using SyncStage in multiple browser tabs at once
 
 * `onTokenExpired` - callback to be called when `jwt` expires, callback should return new refetched `jwt`
-
-* `desktopAgentPort` - port for communication with local desktop agent, 18080 by default
 
 ### Initialize
 

@@ -1,11 +1,7 @@
 # Test App
 
 The best way to start you joyrney with SyncStage is by trying out our example project available on GitHub [SyncStage Test App for Web](https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester){target=_blank}.
-This tutorial shows you how to clone, build, and run the application on your device.
-
-!!! tip
-
-    [Click here](https://syncstage.web.app/){target=_blank} to use our hosted SyncStage Test App without writing a line of code.
+This tutorial shows you how to clone, build, and run the application on your device or on AWS Amplify.
 
 
 ## Get SyncStage Desktop Agent
@@ -15,29 +11,34 @@ To use test application you need to install SyncStage Desktop Agent on your Mac.
 [Download SyncStage Desktop Agent for macOS]({{ latest_desktop_agent_for_macos_url }}){ .md-button}
 
 ## Get a SyncStage SDK secret
-To run the SyncStage Test App you will need to add a SyncStageSecret to `.env.` file in your project.
+
+To run the SyncStage Test App you will need to add a SyncStageSecret to the backend (as a file using docker-compose deployment or as a secret in Amplify deployment).
 
 **Don't know how to get the secret file?** See our [Quickstart Guide](quickstart.md) for more details.
 
 
 ## Set up your development project
-Follow these steps to create the Test App project.
+Follow these steps to run the Test App project on your local machine.
 
-1. Clone or download the [SyncStage Test App for Web](https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester){target=_blank} repository from GitHub.
-2. Enter the project directory.
-3. Create `.env` file with SyncStageSecrets inside the project directory.
-    ```bash
-    REACT_APP_SYNCSTAGE_SECRET_ID=
-    REACT_APP_SYNCSTAGE_SECRET_KEY=
-    ```
-4. Start the Test App using the command below:
-   ```bash
-    yarn start
-   ```
+1. Create `.env` file within `web-applivation` directory and fill it with following variables:
+
+```
+REACT_APP_DOCKER_COMPOSE_BACKEND=true
+REACT_APP_BACKEND_BASE_PATH=http://localhost:3000/api
+```
+
+2. Ensure Docker and docker-compose are installed on your machine.
+3. Copy the SyncStageSecret.json file into the `backend/src` path.
+4. Open a terminal and navigate to the root directory of the repository.
+5. Run the following command: `docker-compose up`
+6. The application will start and you can access it in your browser at `http://localhost:3001` (it might take some time to load, because it runs in development mode)
 
 ## Use the app
 
-Firstly you will be asked to install Desktop Agent on your Mac.
+Firstly you will be asked to login. Credentials are defined in `backend\src\user-db.json` file for docker-compose deployment or in the AWS Cognito using AWS Amplify deployment [(learn more)](https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester){target=_blank}.
+![alt Install Desktop Agent](../assets/browser/login.png "Login")
+
+Then you will be asked to install Desktop Agent on your Mac.
 ![alt Install Desktop Agent](../assets/browser/setup-1.png "Install Desktop Agent")
 
 Once installed and running you will see
@@ -45,9 +46,6 @@ Once installed and running you will see
 
 Input nickname of the user that will join the session
 ![alt Nickname](../assets/browser/profile.png "Nickname")
-
-Provide your application secret keys if they are not builded into the app.
-![alt Nickname](../assets/browser/secrets.png "Secrets")
 
 
 You can choose if you want SyncStage to determine the best Studio server for you, or you want to select it manually
