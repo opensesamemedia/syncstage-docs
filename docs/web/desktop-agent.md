@@ -8,9 +8,9 @@ To provide low-latency capabilities SyncStage uses platform-specific optimizatio
 #### Added
 
 * Support for all the main browsers
-* Opening from the link
+* Opening Desktop Agent from the browser
 
-???+ warning
+???+ note
 
     SyncStage Desktop Agent v0.3.0 for MacOS is incompatible Web SDK versions older than v0.3.0.
 
