@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.5.2][0.5.2]{target=_blank}
-[0.5.2]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.5.2
+## [:octicons-tag-24: 0.5.1][0.5.1]{target=_blank}
+[0.5.1]: https://github.com/opensesamemedia/syncstage-test-app-android/releases/tag/0.5.1
 
 SyncStage class provide two delegates: `SyncStageUserDelegate` and `SyncStageConnectivityDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage. You can define those object and provide to the SyncStage constructor or update public SyncStage properties `userDelegate` and `connectivityDelegate` anytime.
 

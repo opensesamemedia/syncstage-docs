@@ -38,10 +38,9 @@ theme:
 
 # Customization
 extra:
-  latest_android_sdk_version: v0.5.1
-  latest_ios_sdk_version: v0.5.0
-  latest_web_sdk_version: v0.3.0
-  latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.3.0/SyncStageAgent_0.3.0.dmg
+  latest_android_sdk_version: v0.5.2
+  latest_web_sdk_version: v0.4.0
+  latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.4.0/SyncStageAgent_0.3.0.dmg
 
   consent:
     title: Cookie consent
@@ -87,6 +86,10 @@ nav:
       - Delegates: android/sdk-delegates.md
       - Error codes: android/sdk-error-codes.md
       - Previous versions:
+        - 0.5.1:
+          - Methods: android/versions/0.5.1/sdk-methods.md
+          - Delegates: android/versions/0.5.1/sdk-delegates.md
+          - Error codes: android/versions/0.5.1/sdk-error-codes.md   
         - 0.5.0:
           - Methods: android/versions/0.5.0/sdk-methods.md
           - Delegates: android/versions/0.5.0/sdk-delegates.md
@@ -110,6 +113,10 @@ nav:
       - Delegates: ios/sdk-delegates.md
       - Error codes: ios/sdk-error-codes.md      
       - Previous versions:
+        - 0.5.0:
+          - Methods: ios/versions/0.5.0/sdk-methods.md
+          - Delegates: ios/versions/0.5.0/sdk-delegates.md
+          - Error codes: ios/versions/0.5.0/sdk-error-codes.md      
         - 0.4.0:
           - Methods: ios/versions/0.4.0/sdk-methods.md
           - Delegates: ios/versions/0.4.0/sdk-delegates.md
@@ -130,6 +137,10 @@ nav:
       - Delegates: web/sdk-delegates.md
       - Error codes: web/sdk-error-codes.md   
       - Previous versions:
+        - 0.3.0:
+          - Methods: web/versions/0.3.0/sdk-methods.md
+          - Delegates: web/versions/0.3.0/sdk-delegates.md
+          - Error codes: web/versions/0.3.0/sdk-error-codes.md  
         - 0.2.0:
           - Methods: web/versions/0.2.0/sdk-methods.md
           - Delegates: web/versions/0.2.0/sdk-delegates.md
