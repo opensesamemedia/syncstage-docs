@@ -4,9 +4,6 @@
 * getDesktopAgentProtocolHandler method - returns URI that opens Desktop Agent.
 * Init method now accepts a time-limited token instead of a SyncStage Secret.
 * SyncStage constructor extended with onTokenExpired callback parameter.
-
-#### Modified
-
 * Init method, removed agent port parameter.
 
 #### Added
