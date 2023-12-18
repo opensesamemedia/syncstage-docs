@@ -1,6 +1,6 @@
 SyncStage SDK for Web brings low latency communication capabilities to your desktop.
 
-It consists of two three:
+It consists of two components:
 
 * SyncStage Web SDK (TypeScript & JavaScript) embedded into your web application.
 * SyncStage Agent running on your desktop.
