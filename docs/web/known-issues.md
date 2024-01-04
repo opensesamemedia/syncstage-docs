@@ -1,2 +1,2 @@
 ## SDK
-SyncStage Web SDK `0.3.0` does not have any know issues
+SyncStage Web SDK `0.4.0` does not have any know issues

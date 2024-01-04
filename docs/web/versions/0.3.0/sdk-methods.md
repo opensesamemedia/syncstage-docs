@@ -66,15 +66,15 @@ Gets SDK version.
 getSDKVersion(): string
 ```
 
-### Update SDK to SyncStage backend connected callback
+### Update Desktop Agent reconnected callback
 
 ```typescript
-public updateOnWebsocketReconnected(onWebsocketReconnected: () => void): void
+public updateOnDesktopAgentReconnected(onDesktopAgentReconnected: () => void): void
 ```
 
 Parameters:
 
-* `onWebsocketReconnected` - method to be called when the browser SDK reconencts to the SyncStage services. Session state should be refetched and synchronized on the UI in this callback.
+* `onDesktopAgentReconnected` - method to be called when the Desktop Agent reconnect to the browser SDK. In this metod session state should be refetched and synchronized on the UI.
 
 ### Get best available server
 
