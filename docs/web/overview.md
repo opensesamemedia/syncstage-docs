@@ -22,6 +22,6 @@ SyncStage Agent, necessary to establish audio communications, is currently avail
 
 | Browser                              | Support                        |       Comment             |
 | ------------------------------------ | -----------------------------: | ------------------------: |
-| :fontawesome-brands-apple: MacOS     |  :fontawesome-solid-check:{ .icon-check }     |                           |
+| :fontawesome-brands-apple: macOS     |  :fontawesome-solid-check:{ .icon-check }     |                           |
 | :fontawesome-brands-windows: Windows  |  :fontawesome-solid-plus-minus:{ .icon-plus-minus }         |   Preview only        |
 | :fontawesome-brands-linux: Linux     |  :fontawesome-solid-x:{ .icon-x }         |   Work in progress        |

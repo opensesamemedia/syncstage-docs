@@ -137,7 +137,9 @@ nav:
     - Overview: web/overview.md
     - Quickstart: web/quickstart.md
     - Provisioning: web/provisioning.md
-    - Desktop Agent: web/desktop-agent.md    
+    - Desktop Agent:
+      - macOS: web/desktop-agent-macos.md
+      - Windows: web/desktop-agent-windows.md
     - Reference:
       - Methods: web/sdk-methods.md
       - Delegates: web/sdk-delegates.md
