@@ -6,7 +6,7 @@ To provide low-latency capabilities SyncStage uses platform-specific optimizatio
 [Latest SyncStage Desktop Agent for Windows]({{ latest_desktop_agent_for_windows_url }}){ .md-button}
 
 ### Versions
-#### 0.1.0 <small>January 4, 2024</small> { id="0.4.0" }
+#### 0.1.0 <small>January 4, 2024</small> { id="0.1.0" }
 ##### Compatibility
 * Compatible with Web SDK >= 0.4.0
   

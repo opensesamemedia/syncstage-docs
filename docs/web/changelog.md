@@ -1,4 +1,7 @@
 
+### 0.4.1 <small>January 4, 2024</small> { id="0.4.1" }
+* Fixed service websocket URL
+
 ### 0.4.0 <small>January 4, 2024</small> { id="0.4.0" }
 #### Modified
 * Added new error code NO_INPUT_DEVICE, returned on join session when no input device is detected
