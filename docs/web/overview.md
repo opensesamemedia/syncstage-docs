@@ -8,7 +8,7 @@ It consists of two components:
 SyncStage SDK for Web latest version: `{{ latest_web_sdk_version }}` ([View changelog](changelog.md))
 
 [Get SDK](quickstart.md){ .md-button .md-button--primary}
-[Test SyncStage Web SDK on macOS](https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester){ .md-button target=_blank }
+[Test SyncStage Web SDK](https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester){ .md-button target=_blank }
 
 ## Why do I need SyncStage Agent?
 
@@ -22,6 +22,6 @@ SyncStage Agent, necessary to establish audio communications, is currently avail
 
 | Browser                              | Support                        |       Comment             |
 | ------------------------------------ | -----------------------------: | ------------------------: |
-| :fontawesome-brands-apple: MacOS     |  :fontawesome-solid-check:{ .icon-check }     |                           |
-| :fontawesome-brands-windows: Windows  |  :fontawesome-solid-x:{ .icon-x }         |   Work in progress        |
+| :fontawesome-brands-apple: macOS     |  :fontawesome-solid-check:{ .icon-check }     |                           |
+| :fontawesome-brands-windows: Windows  |  :fontawesome-solid-plus-minus:{ .icon-plus-minus }         |   Preview only        |
 | :fontawesome-brands-linux: Linux     |  :fontawesome-solid-x:{ .icon-x }         |   Work in progress        |

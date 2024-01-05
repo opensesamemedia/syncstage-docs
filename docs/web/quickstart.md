@@ -19,12 +19,20 @@ To get the latest npm package of the SyncStage SDK install it from: <https://www
 
 ### 2. Get SyncStage Desktop Agent
 
+#### macOS
 To use test application you need to install SyncStage Desktop Agent on your Mac.
 [Download SyncStage Desktop Agent for macOS]({{ latest_desktop_agent_for_macos_url }}){ .md-button}
 
+
+#### Windows
+To use test application you need to install SyncStage Desktop Agent on your PC.
+**Desktop agent for Windows is preview-only, it does not implement all of the methods yet, and does not provide low latency performance yet - [learn more](known-issues.md).** 
+
+[Download SyncStage Desktop Agent for Windows]({{ latest_desktop_agent_for_windows_url }}){ .md-button}
+
 ### 3. Integrate [provisioning](provisioning.md) into your app backend
 
-### 3. Integrate the SyncStage class with your app
+### 4. Integrate the SyncStage class with your app
 
 Here you can find a list of:
 
