@@ -54,7 +54,7 @@ interface ISyncStageDiscoveryDelegate {
 
 
 ### SyncStageDesktopAgentDelegate
-Responsible for getting callbacks with information if SyncStage Desktop Agent is already acquired by some other browser tab to prevent paralell access.
+Responsible for getting callbacks with information if SyncStage Desktop Agent is already acquired by some other browser tab to prevent parallel access.
 
 ```typescript
 interface ISyncStageDesktopAgentDelegate {
