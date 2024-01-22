@@ -8,13 +8,53 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - name: Create GitHub deployment
+        uses: chrnorm/deployment-action@v2
+        id: deployment
+        with:
+          token: '${{ github.token }}'
+          environment: Production
+          environment-url: https://docs.sync-stage.com/
+
+      - name: Update deployment status (in progress)
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          state: 'in_progress'
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Puthon
+        uses: actions/setup-python@v2
         with:
           python-version: 3.9
+      
       - name: Install pipenv
-        run: pip install pipenv                  
+        run: pip install pipenv
+
       - name: Install dependencies
         run: pipenv install
+
       - name: Deploy mkdocs
         run: pipenv run mkdocs gh-deploy --force
+
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          state: 'success'
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: '${{ github.token }}'
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          state: 'failure'
