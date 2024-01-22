@@ -1,6 +1,6 @@
 # Test App
 
-The best way to start you joyrney with SyncStage is by trying out our example project available on GitHub [SyncStage Test App for Web](https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester){target=_blank}.
+The best way to start you journey with SyncStage is by trying out our example project available on GitHub [SyncStage Test App for Web](https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester){target=_blank}.
 This tutorial shows you how to clone, build, and run the application on your device or on AWS Amplify.
 
 
@@ -20,7 +20,7 @@ To run the SyncStage Test App you will need to add a SyncStageSecret to the back
 ## Set up your development project
 Follow these steps to run the Test App project on your local machine.
 
-1. Create `.env` file within `web-applivation` directory and fill it with following variables:
+1. Create `.env` file within `web-application` directory and fill it with following variables:
 
 ```
 REACT_APP_DOCKER_COMPOSE_BACKEND=true

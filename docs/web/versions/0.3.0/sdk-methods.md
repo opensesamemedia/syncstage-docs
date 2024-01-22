@@ -20,7 +20,7 @@ Constructor parameters:
 
 * `connectivityDelegate` - delegate object to receive events with information about stream connection to Studio Server state
 
-* `desktopAgentDelegate` - delegate object to receive events with information of desktop agent acqusition and release to prevent users from using SyncStage in multiple browser tabs at once
+* `desktopAgentDelegate` - delegate object to receive events with information of desktop agent acquisition and release to prevent users from using SyncStage in multiple browser tabs at once
 
 * `onTokenExpired` - callback to be called when `jwt` expires, callback should return new refetched `jwt`
 
@@ -177,7 +177,7 @@ async isMicrophoneMuted(): Promise<[boolean | null, SyncStageSDKErrorCode]>
 ```
 
 ### Get receiver network measurements
-Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
+Returns Measurements object with network delay, jitter, and calculated network quality indicators.
 
 ```typescript
 async getReceiverMeasurements(identifier: string): Promise<[IMeasurements | null, SyncStageSDKErrorCode]>
@@ -189,7 +189,7 @@ Parameters:
 
 
 ### Get transmitter network measurements
-Returns Mesurements object with network delay, jitter, and calculated network quality indicators.
+Returns Measurements object with network delay, jitter, and calculated network quality indicators.
 
 ```typescript
 async getTransmitterMeasurements(): Promise<[IMeasurements | null, SyncStageSDKErrorCode]>
