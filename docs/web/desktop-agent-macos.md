@@ -3,6 +3,12 @@ To provide low-latency capabilities SyncStage uses platform-specific optimizatio
 [Latest SyncStage Desktop Agent for macOS]({{ latest_desktop_agent_for_macos_url }}){ .md-button}
 
 ### Versions
+#### 0.3.1 <small>March 19, 2024</small> { id="0.3.1" }
+##### Changelog
+###### Added
+* Direct monitor
+* DAW interface
+
 #### 0.3.0 <small>December 15, 2023</small> { id="0.3.0" }
 ##### Compatibility
 * Compatible with Web SDK >= 0.3.0
