@@ -1,3 +1,21 @@
+### 0.4.2 <small>March 19, 2024</small> { id="0.4.2" }
+
+#### Modified
+* Fixed communication issues with SyncStage Desktop Agent
+* Updated SyncStageErrorCodes list
+    * Changed `SYNCSTAGE_OPENED_IN_ANOTHER_TAB` value
+    * Added `NOT_IN_SESSION`, `SYNCSTAGE_SERVICE_COMMUNICATION_ERROR`, `TIMEOUT_ERROR`
+    * Removed `DESKTOP_AGENT_COMMUNICATION_ERROR`
+* Extended ISyncStageDesktopAgentDelegate with two methods:
+    * `desktopAgentConnectionKeepAlive(): void`
+    *  `desktopAgentLostConnection(): void`
+* Updated flow of test application which improves user experience, and reorganizes the project structure:
+    * Caching last selected location, nickname
+    * Auto SyncStage initialization
+    * Joining session from URL
+    * Desktop Agent Link indicator (based on keep alive callbacks from `ISyncStageDesktopAgentDelegate`)
+    * Updated routing and navigation
+* Added session code to `ISession` and `ISessionInfo` interfaces
 
 ### 0.4.1 <small>January 4, 2024</small> { id="0.4.1" }
 * Fixed service websocket URL

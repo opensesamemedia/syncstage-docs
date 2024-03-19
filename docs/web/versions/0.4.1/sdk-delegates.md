@@ -52,7 +52,7 @@ interface ISyncStageDiscoveryDelegate {
 
 
 ### SyncStageDesktopAgentDelegate
-Responsible for getting callbacks with information if SyncStage Desktop Agent is already acquired by some other browser tab to prevent parallel access, and general Desktop Agent connection events.
+Responsible for getting callbacks with information if SyncStage Desktop Agent is already acquired by some other browser tab to prevent paralell access, and general Desktop Agent connection events.
 
 ```typescript
 interface ISyncStageDesktopAgentDelegate {
@@ -60,7 +60,5 @@ interface ISyncStageDesktopAgentDelegate {
   desktopAgentReleased(): void;
   desktopAgentConnected(): void;
   desktopAgentDisconnected(): void;
-  desktopAgentConnectionKeepAlive(): void; // Triggered every 5s informing that Desktop Agent is connected and alive
-  desktopAgentLostConnection(): void; // Reports unexpected connection loss or lack of keep alive
 }
 ```
