@@ -207,7 +207,7 @@ Parameters:
 * `volume`- volume float value between 1 and 100.
 
 #### Is direct monitor enabled
-Returns a Bool indicates if the direct monitor is enabled
+Returns a Bool indicating if the direct monitor is enabled
 
 ```swift
 func isDirectMonitorEnabled() -> Bool
