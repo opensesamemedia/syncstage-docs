@@ -1,3 +1,11 @@
+### 0.5.2 <small>March 19, 2024</small> { id="0.5.2" }
+
+#### Added
+
+* Session code
+* Is direct monitor enabled
+
+
 ### 0.5.1 <small>October 18, 2023</small> { id="0.5.1" }
 
 #### Added

@@ -22,13 +22,15 @@ theme:
   features:
     - header.autohide    
     - content.tooltips
+    - navigation.top
+
   palette: 
     # Palette toggle for light mode
-    - scheme: default
-      media: "(prefers-color-scheme: light)"
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode        
+    # - scheme: default
+    #   media: "(prefers-color-scheme: light)"
+    #   toggle:
+    #     icon: material/brightness-7
+    #     name: Switch to dark mode     
     # Palette toggle for dark mode
     - scheme: slate
       media: "(prefers-color-scheme: dark)"

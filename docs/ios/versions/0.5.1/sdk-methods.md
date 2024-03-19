@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.5.2][0.5.2]{target=_blank}
-[0.5.2]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.5.2
+## [:octicons-tag-24: 0.5.1][0.5.1]{target=_blank}
+[0.5.1]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.5.1
 
 ### General
 
@@ -205,13 +205,6 @@ func changeDirectMonitorVolume(volume: Float)
 Parameters:
 
 * `volume`- volume float value between 1 and 100.
-
-#### Is direct monitor enabled
-Returns a Bool indicating if the direct monitor is enabled
-
-```swift
-func isDirectMonitorEnabled() -> Bool
-```
 
 #### Turn on / of internal microphone
 Turns on / of internal microphone to be used instead of default audio input i.e. headphones mic.
