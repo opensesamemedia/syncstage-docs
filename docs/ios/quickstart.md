@@ -15,7 +15,7 @@ The best way to start with SyncStage is by trying out our example project availa
 
 ```
 dependencies: [
-    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.5.1"))
+    .package(url: "https://github.com/opensesamemedia/SyncStageSwiftPackage.git", .upToNextMajor(from: "0.5.2"))
 ]
 ```
 
