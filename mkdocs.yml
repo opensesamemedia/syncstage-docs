@@ -7,7 +7,7 @@ site_description: >-
   SyncStage is a patent pending infrastructure platform that allows any application developer to create a synchronous audio experience within their application.
 
 # Copyright
-copyright: Copyright &copy; 2023 Open Sesame Media, Inc.
+copyright: Copyright &copy; 2024 Open Sesame Media, Inc.
 
 # Configuration
 theme:
@@ -42,7 +42,7 @@ theme:
 extra:
   latest_android_sdk_version: v0.6.0
   latest_ios_sdk_version: v0.5.2
-  latest_web_sdk_version: v0.4.1
+  latest_web_sdk_version: v0.4.2
   latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.3.0/SyncStageAgent_0.3.0.dmg
   latest_desktop_agent_for_windows_url: https://public.sync-stage.com/agent/windows/prod/0.1.0/SyncStageAgent_0.1.0.exe
 
@@ -149,8 +149,13 @@ nav:
     - Reference:
       - Methods: web/sdk-methods.md
       - Delegates: web/sdk-delegates.md
+      - Data interfaces: web/sdk-data-interfaces.md
       - Error codes: web/sdk-error-codes.md   
       - Previous versions:
+        - 0.4.1:
+          - Methods: web/versions/0.4.1/sdk-methods.md
+          - Delegates: web/versions/0.4.1/sdk-delegates.md
+          - Error codes: web/versions/0.4.1/sdk-error-codes.md  
         - 0.3.0:
           - Methods: web/versions/0.3.0/sdk-methods.md
           - Delegates: web/versions/0.3.0/sdk-delegates.md

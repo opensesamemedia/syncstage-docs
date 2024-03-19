@@ -2,12 +2,10 @@ Most of the SDK methods return SyncStageSDKErrorCode which can be decoded using 
 
 ```typescript
 enum SyncStageSDKErrorCode {
-  'TOKEN_EXPIRED' = -2002,
-  'SYNCSTAGE_OPENED_IN_ANOTHER_TAB' = -2001,
-  'NOT_IN_SESSION' = -1001,
+  'TOKEN_EXPIRED' = -1002,
+  'SYNCSTAGE_OPENED_IN_ANOTHER_TAB' = -1001,
   'API_UNAUTHORIZED' = -1000,
-  'SYNCSTAGE_SERVICE_COMMUNICATION_ERROR' = -11,
-  'TIMEOUT_ERROR' = -10,
+  'DESKTOP_AGENT_COMMUNICATION_ERROR' = -10,
   'UNKNOWN_ERROR' = -1,
   'OK' = 0,
   'CONFIGURATION_ERROR' = 1,
