@@ -1,16 +1,18 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "SyncStage Public Developer API",
-        "version": "1.0.0"
+        "title": "syncstage-developer-console",
+        "version": "1"
     },
     "paths": {
-        "/developer-api/login": {
-            "post": {
+        "/developer/usage": {
+            "get": {
+                "summary": "getUsage",
+                "description": "Gets usage data of organization. Max allowed query time span from-to equals 31 days. API returns closed connections within timespan in UTC.",
                 "tags": [
-                    "Authorization"
+                    "Usage"
                 ],
-                "description": "Method for singin in to developer API, returning jwt must be used in bearer Authorization in other methods",
+                "operationId": "getUsage.get./developer/usage",
                 "consumes": [
                     "application/json"
                 ],
@@ -19,51 +21,116 @@
                 ],
                 "parameters": [
                     {
-                        "name": "Body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "required": [
-                                "token"
-                            ],
-                            "properties": {
-                                "token": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "in": "query",
+                        "name": "from",
+                        "type": "string",
+                        "description": "Date in ISO 8601 format e.g. 2023-10-18T14:33:06Z",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "to",
+                        "type": "string",
+                        "description": "Date in ISO 8601 format e.g. 2023-10-18T14:33:06Z",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "projectId",
+                        "type": "string",
+                        "description": "Multi-valued query string - can be provided more than once",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "sessionId",
+                        "type": "string",
+                        "description": "Multi-valued query string - can be provided more than once",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "sessionName",
+                        "type": "string",
+                        "description": "Multi-valued query string - can be provided more than once",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "tagKey",
+                        "type": "string",
+                        "description": "Multi-valued query string - can be provided more than once",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "tagValue",
+                        "type": "string",
+                        "description": "Multi-valued query string - can be provided more than once",
+                        "required": false
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success",
+                        "description": "Usage data",
                         "schema": {
-                            "uniqueItems": false,
-                            "type": "object",
-                            "properties": {
-                                "jwt": {
-                                    "type": "string"
-                                },
-                                "authorizationType": {
-                                    "type": "string"
-                                },
-                                "expiresIn": {
-                                    "type": "integer"
-                                }
-                            }
+                            "$ref": "#/definitions/IUsageResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/login": {
+            "post": {
+                "summary": "loginDeveloperAPI",
+                "description": "",
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "loginDeveloperAPI.post./developer/login",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Body required in the request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ILoginDeveloperAPIRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Login response",
+                        "schema": {
+                            "$ref": "#/definitions/ILoginDeveloperAPIResponse"
                         }
                     },
                     "401": {
                         "description": "Unauthorized"
                     }
-                },
-                "security": []
+                }
             }
         },
         "/developer/recordings": {
             "get": {
                 "summary": "getSessionRecordings",
-                "description": "",
+                "description": "Get Recordings for a session (Developer API)",
                 "tags": [
                     "Recordings"
                 ],
@@ -79,7 +146,13 @@
                         "in": "query",
                         "name": "sessionCode",
                         "type": "string",
-                        "required": true
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "sessionId",
+                        "type": "string",
+                        "required": false
                     }
                 ],
                 "responses": {
@@ -101,14 +174,99 @@
                 }
             }
         },
-        "/developer/usage": {
-            "get": {
-                "summary": "getUsage",
-                "description": "",
+        "/developer/sessions/create": {
+            "post": {
+                "summary": "createSession",
+                "description": "Create a new session (Developer API)",
                 "tags": [
-                    "Usage"
+                    "Sessions"
                 ],
-                "operationId": "getUsage.get./developer/usage",
+                "operationId": "createSession.post./developer/sessions/create",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Body required in the request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ICreateSessionRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Session Info",
+                        "schema": {
+                            "$ref": "#/definitions/ICreateSessionResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/sessions/stop": {
+            "post": {
+                "summary": "stopSession",
+                "description": "Stop a session (Developer API)",
+                "tags": [
+                    "Sessions"
+                ],
+                "operationId": "stopSession.post./developer/sessions/stop",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Body required in the request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/IStopSessionRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Confirmation"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/sessions/list": {
+            "get": {
+                "summary": "listSessions",
+                "description": "List sessions, with filtering on 'Session Name' or Tags (Developer API)",
+                "tags": [
+                    "Sessions"
+                ],
+                "operationId": "listSessions.get./developer/sessions/list",
                 "consumes": [
                     "application/json"
                 ],
@@ -118,25 +276,163 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "name": "from",
+                        "name": "projectId",
                         "type": "string",
-                        "description": "Date in format YYYY-MM-DD",
                         "required": true
                     },
                     {
                         "in": "query",
-                        "name": "to",
+                        "name": "nextToken",
                         "type": "string",
-                        "description": "Date in format YYYY-MM-DD (this day will be included until 23:59:59.999Z)",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "maxResults",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "sessionName",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "tagKey",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "tagValue",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of Sessions",
+                        "schema": {
+                            "$ref": "#/definitions/ISession"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/streaming/files": {
+            "get": {
+                "summary": "listSoundFiles",
+                "description": "List sound files available.",
+                "tags": [
+                    "Streaming"
+                ],
+                "operationId": "listSoundFiles.get./developer/streaming/files",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "List of Files",
+                        "schema": {
+                            "$ref": "#/definitions/ISoundFileListResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/IErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/developer/streaming/start": {
+            "post": {
+                "summary": "startStreaming",
+                "description": "Start streaming file in particular session",
+                "tags": [
+                    "Streaming"
+                ],
+                "operationId": "startStreaming.post./developer/streaming/start",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "sessionId",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "soundFileName",
+                        "type": "string",
                         "required": true
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Usage data",
+                        "description": "Streaming started"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden",
                         "schema": {
-                            "$ref": "#/definitions/IUsageResponse"
+                            "$ref": "#/definitions/IErrorResponse"
                         }
+                    }
+                }
+            }
+        },
+        "/developer/streaming/stop": {
+            "post": {
+                "summary": "stopStreaming",
+                "description": "Stop streaming file in particular session",
+                "tags": [
+                    "Streaming"
+                ],
+                "operationId": "stopStreaming.post./developer/streaming/stop",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "sessionId",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Streaming stopped"
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -152,6 +448,49 @@
         }
     },
     "definitions": {
+        "ILoginDeveloperAPIRequest": {
+            "properties": {
+                "token": {
+                    "title": "ILoginDeveloperAPIRequest.token",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "token"
+            ],
+            "additionalProperties": false,
+            "title": "ILoginDeveloperAPIRequest",
+            "type": "object"
+        },
+        "ILoginDeveloperAPIResponse": {
+            "properties": {
+                "jwt": {
+                    "title": "ILoginDeveloperAPIResponse.jwt",
+                    "type": "string"
+                },
+                "authorizationType": {
+                    "title": "ILoginDeveloperAPIResponse.authorizationType",
+                    "type": "string"
+                },
+                "expiresIn": {
+                    "title": "ILoginDeveloperAPIResponse.expiresIn",
+                    "type": "number"
+                },
+                "expiresAt": {
+                    "title": "ILoginDeveloperAPIResponse.expiresAt",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "jwt",
+                "authorizationType",
+                "expiresIn",
+                "expiresAt"
+            ],
+            "additionalProperties": false,
+            "title": "ILoginDeveloperAPIResponse",
+            "type": "object"
+        },
         "IErrorResponse": {
             "properties": {
                 "error": {
@@ -249,6 +588,21 @@
                     "title": "IRecording.sessionCode",
                     "type": "string"
                 },
+                "sessionName": {
+                    "title": "IRecording.sessionName",
+                    "type": "string"
+                },
+                "tags": {
+                    "title": "IRecording.tags"
+                },
+                "projectId": {
+                    "title": "IRecording.projectId",
+                    "type": "string"
+                },
+                "projectName": {
+                    "title": "IRecording.projectName",
+                    "type": "string"
+                },
                 "startDate": {
                     "title": "IRecording.startDate",
                     "type": "string"
@@ -286,6 +640,10 @@
                 "recordingId",
                 "sessionId",
                 "sessionCode",
+                "sessionName",
+                "tags",
+                "projectId",
+                "projectName",
                 "startDate",
                 "createdAt",
                 "endAt",
@@ -296,6 +654,147 @@
             ],
             "additionalProperties": false,
             "title": "IRecording",
+            "type": "object"
+        },
+        "ISession": {
+            "properties": {
+                "sessionId": {
+                    "title": "ISession.sessionId",
+                    "type": "string"
+                },
+                "sessionPublicCode": {
+                    "title": "ISession.sessionPublicCode",
+                    "type": "string"
+                },
+                "sessionName": {
+                    "title": "ISession.sessionName",
+                    "type": "string"
+                },
+                "organizationId": {
+                    "title": "ISession.organizationId",
+                    "type": "string"
+                },
+                "projectId": {
+                    "title": "ISession.projectId",
+                    "type": "string"
+                },
+                "createdAt": {
+                    "title": "ISession.createdAt",
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "title": "ISession.updatedAt",
+                    "type": "string"
+                },
+                "sessionState": {
+                    "title": "ISession.sessionState",
+                    "type": "string"
+                },
+                "createdByUserId": {
+                    "title": "ISession.createdByUserId",
+                    "type": "string"
+                },
+                "secondsUsed": {
+                    "title": "ISession.secondsUsed",
+                    "type": "number"
+                },
+                "recordingStatus": {
+                    "title": "ISession.recordingStatus",
+                    "type": "string"
+                },
+                "tags": {
+                    "title": "ISession.tags"
+                },
+                "activeConnections": {
+                    "title": "ISession.activeConnections",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "sessionId",
+                "sessionPublicCode",
+                "sessionName",
+                "organizationId",
+                "projectId",
+                "createdAt",
+                "updatedAt",
+                "sessionState",
+                "createdByUserId",
+                "secondsUsed",
+                "recordingStatus",
+                "activeConnections"
+            ],
+            "additionalProperties": false,
+            "title": "ISession",
+            "type": "object"
+        },
+        "ICreateSessionResponse": {
+            "properties": {
+                "sessionId": {
+                    "title": "ICreateSessionResponse.sessionId",
+                    "type": "string"
+                },
+                "sessionCode": {
+                    "title": "ICreateSessionResponse.sessionCode",
+                    "type": "string"
+                },
+                "sessionName": {
+                    "title": "ICreateSessionResponse.sessionName",
+                    "type": "string"
+                },
+                "createdAt": {
+                    "title": "ICreateSessionResponse.createdAt",
+                    "type": "string"
+                },
+                "tags": {
+                    "title": "ICreateSessionResponse.tags"
+                }
+            },
+            "required": [
+                "sessionId",
+                "sessionCode",
+                "sessionName",
+                "createdAt"
+            ],
+            "additionalProperties": false,
+            "title": "ICreateSessionResponse",
+            "type": "object"
+        },
+        "IStopSessionRequest": {
+            "properties": {
+                "sessionId": {
+                    "title": "IStopSessionRequest.sessionId",
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "title": "IStopSessionRequest",
+            "type": "object"
+        },
+        "ICreateSessionRequest": {
+            "properties": {
+                "sessionName": {
+                    "title": "ICreateSessionRequest.sessionName",
+                    "type": "string"
+                },
+                "projectId": {
+                    "title": "ICreateSessionRequest.projectId",
+                    "type": "string"
+                },
+                "organizationId": {
+                    "title": "ICreateSessionRequest.organizationId",
+                    "type": "string"
+                },
+                "tags": {
+                    "title": "ICreateSessionRequest.tags"
+                }
+            },
+            "required": [
+                "projectId",
+                "organizationId"
+            ],
+            "additionalProperties": false,
+            "title": "ICreateSessionRequest",
             "type": "object"
         },
         "IRecordingsResponse": {
@@ -328,9 +827,20 @@
                     "title": "IConnection.duration",
                     "type": "number"
                 },
+                "sessionId": {
+                    "title": "IConnection.sessionId",
+                    "type": "string"
+                },
                 "sessionCode": {
                     "title": "IConnection.sessionCode",
                     "type": "string"
+                },
+                "sessionName": {
+                    "title": "IConnection.sessionName",
+                    "type": "string"
+                },
+                "tags": {
+                    "title": "IConnection.tags"
                 },
                 "projectId": {
                     "title": "IConnection.projectId",
@@ -359,7 +869,10 @@
                 "startedAt",
                 "closedAt",
                 "duration",
+                "sessionId",
                 "sessionCode",
+                "sessionName",
+                "tags",
                 "projectId",
                 "projectName",
                 "applicationId",
@@ -377,23 +890,46 @@
             },
             "title": "IUsageResponse.[]",
             "type": "array"
+        },
+        "ISoundFile": {
+            "properties": {
+                "name": {
+                    "title": "ISoundFile.name",
+                    "type": "string"
+                },
+                "url": {
+                    "title": "ISoundFile.url",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "url"
+            ],
+            "additionalProperties": false,
+            "title": "ISoundFile",
+            "type": "object"
+        },
+        "ISoundFileListResponse": {
+            "items": {
+                "$ref": "#/definitions/ISoundFile",
+                "title": "ISoundFileListResponse.[]"
+            },
+            "title": "ISoundFileListResponse.[]",
+            "type": "array"
         }
     },
     "securityDefinitions": {
-        "bearerAuth": {
-            "name": "Authorization",
-            "in": "header",
-            "type": "apiKey",
-            "description": "JWT Authorization header"
+        "BearerAuth": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header"
         }
-    },
-    "host": "api.sync-stage.com",
-    "schemes": [
-        "https"
-    ],
-    "security": [
+      },
+      "security": [
         {
-            "bearerAuth": []
+          "BearerAuth": []
         }
-    ]
+      ],
+    "host": "api.sync-stage.com"
 }

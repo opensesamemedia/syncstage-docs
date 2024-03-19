@@ -1,7 +1,3 @@
-???+ note
-
-    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
-
 ### Constructor 
 
 ```typescript
@@ -9,8 +5,9 @@ class SyncStage implements ISyncStage{
     constructor(
         userDelegate: ISyncStageUserDelegate | null,
         connectivityDelegate: ISyncStageConnectivityDelegate | null,
+        discoveryDelegate: ISyncStageDiscoveryDelegate | null,
         desktopAgentDelegate: ISyncStageDesktopAgentDelegate | null,
-        desktopAgentPort: number = 18080,
+        onTokenExpired: (() => Promise<string>) | null,
     );
 }
 ```
@@ -19,11 +16,13 @@ Constructor parameters:
 
 * `userDelegate` - delegate object to receive events about users in session state
 
+* `discoveryDelegate` - delegate object responsible for getting callbacks about available zones latency.
+
 * `connectivityDelegate` - delegate object to receive events with information about stream connection to Studio Server state
 
 * `desktopAgentDelegate` - delegate object to receive events with information of desktop agent acquisition and release to prevent users from using SyncStage in multiple browser tabs at once
 
-* `desktopAgentPort` - port for communication with local desktop agent, 18080 by default
+* `onTokenExpired` - callback to be called when `jwt` expires, callback should return new refetched `jwt`
 
 ### Initialize
 
@@ -31,16 +30,24 @@ Initializes the SDK SyncStage object.
 
 ```typescript
 async init(
-        applicationSecretId: string,
-        applicationSecretKey: string
+        jwt: string,
     ): Promise<SyncStageSDKErrorCode>
 ```
 
 Parameters:
 
-* `applicationSecretKey` - secret for SDK provisioning
+* `jwt` - token obtained in the [provisioning](provisioning.md) process.
 
-* `applicationSecretId` - id of secret for SDK provisioning
+
+### Update JWT
+
+You can update JWT anytime you want, even before expiration takes place.
+
+```typescript
+async updateToken(jwt: string): Promise<SyncStageSDKErrorCode>
+```
+
+* `jwt` - token obtained in the [provisioning](provisioning.md) process.
 
 ### Get is desktop agent connected
 
@@ -188,6 +195,18 @@ Returns Measurements object with network delay, jitter, and calculated network q
 async getTransmitterMeasurements(): Promise<[IMeasurements | null, SyncStageSDKErrorCode]>
 ```
 
+### Start recording
+
+```typescript
+async startRecording(): Promise<SyncStageSDKErrorCode>
+```
+
+### Stop recording
+
+```typescript
+async stopRecording(): Promise<SyncStageSDKErrorCode>
+```
+
 
 ### Register Desktop Agent Reconnected Callback
 In case of reconnection UI application should be aware of this fact, to refetch the session state to keep it synchronized.
@@ -208,6 +227,11 @@ Remove the callback in the SyncStage.
 unregisterDesktopAgentReconnectedCallback(): void;
 ```
 
+### Get URI for opening SyncStage Agent on Windows
+```typescript
+getDesktopAgentProtocolHandler(): string;
+```
+
 <!-- Available in 0.1.0 but not tested - no ui -->
 <!-- ### Change latency optimization level
 Change the latency optimization level using of the following options: highQuality, optimized, bestPerformance, ultraFast.
@@ -225,3 +249,4 @@ Returns latency optimization level.
 ```typescript
 async getLatencyOptimizationLevel(): Promise<[IZoneLatency | null, SyncStageSDKErrorCode]>
 ``` -->
+

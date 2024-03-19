@@ -1,6 +1,24 @@
-???+ note
 
-    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
+### 0.4.1 <small>January 4, 2024</small> { id="0.4.1" }
+* Fixed service websocket URL
+
+### 0.4.0 <small>January 4, 2024</small> { id="0.4.0" }
+#### Modified
+* Added new error code NO_INPUT_DEVICE, returned on join session when no input device is detected
+* Added two methods to the ISyncStageDesktopAgentDelegate interface: desktopAgentConnected and desktopAgentDisconnected
+* Renamed method updateOnDesktopAgentReconnected to updateOnWebsocketReconnected
+* Updated the test app to be compatible with the SDK 0.4.0
+
+### 0.3.0 <small>December 15, 2023</small> { id="0.3.0" }
+#### Modified
+* getDesktopAgentProtocolHandler method - returns URI that opens Desktop Agent.
+* Init method now accepts a time-limited token instead of a SyncStage Secret.
+* SyncStage constructor extended with onTokenExpired callback parameter.
+* Init method, removed agent port parameter.
+
+#### Added
+* New error code for expired token
+* Method for updating token
 
 ### 0.2.0 <small>August 18, 2023</small> { id="0.2.0" }
 #### Added

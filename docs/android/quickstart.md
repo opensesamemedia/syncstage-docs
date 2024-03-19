@@ -13,7 +13,7 @@ The best way to start with SyncStage is by trying out our example project availa
 [Learn more](test-app.md){ .md-button }
 
 ## Use SyncStage SDK in your application
-### 1. Add package dependency.
+### 1. Add package dependency
 In the `settings.gradle` add SyncStage maven repository under `dependencyResolutionManagement` block. Please define `githubProperties` which will be used for package repository authentication.
 
 ```java
@@ -48,7 +48,7 @@ gpr.key=
 
 Under `gpr.usr` please provide you GitHub login, and under `gpr.key` paste GitHub token with `read:packages` permission. For information how to generate token please refer [here](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token){target=_blank}.
 
-### 2. Add the following permissions to AndroidManifest.xml. 
+### 2. Add the following permissions to AndroidManifest.xml
 
 ```xml
 <uses-permission android:name="android.permission.RECORD_AUDIO"/>
@@ -62,16 +62,16 @@ Under `gpr.usr` please provide you GitHub login, and under `gpr.key` paste GitHu
 
 Please note that most of those notifications must accepted by user explicitly.
 
-### 3. Add SyncStageSecret.json to your Android Studio project to the assets folder.
+### 3. Add SyncStageSecret.json to your Android Studio project to the assets folder
 
 SyncStageSecret.json is assigned to one application. File contains confidential credentials that allow access to your SyncStage resources. 
 
 !!! security "Security tip"
 
-    We strongly recommend storing applicationSecretKey securely in your backend and provide it as a parameter at SyncStage SDK object instantiation. Having implemented the supply of the applicationSecretKey from your protected backend, you can remove that parameter from the .json.
+    We strongly recommend storing SyncStageSecret.json securely in your backend and provide it as a parameter at SyncStage SDK object instantiation. Having implemented the supply of the SyncStageSecret.json from your protected backend, you can remove the .json from the build.
 
+### 4. Integrate the SyncStage class with your app
 
-### 4. Integrate the SyncStage class with your app.
 Here you can find a list of:
 
 * [SDK Methods](sdk-methods.md)
@@ -98,10 +98,11 @@ Service and additional permissions must be added to `AndroidManifest.xml`.
 ```
 
 ### 6. Handle exiting application gracefully
+
 Use a method for stopping and cleaning app all the SDK's background tasks. See [here](../sdk-methods/#stop-and-dispose){ target=_blank}) for more details.
 
-
 ## Troubleshooting
-### SDK does not work as expected, but the application is building and running, what can I do about it?
-Some problems might occur if the application user did not grant all required permissions on their device. Before using the SyncStage object, make sure that all of the required permissions are granted.
 
+### SDK does not work as expected, but the application is building and running, what can I do about it?
+
+Some problems might occur if the application user did not grant all required permissions on their device. Before using the SyncStage object, make sure that all of the required permissions are granted.

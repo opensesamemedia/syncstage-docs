@@ -20,7 +20,7 @@ If your users are connecting from distant places, they will probably not be able
 Application users connected to low quality networks with high traffic, or with a bad range of a mobile or WiFi signal may have problems with bandwidth consistency. In these scenarios, those application users' latency will fluctuate. High jitter can badly impact the overall audio latency. To help notify your application users of their network quality at their current location - you can get a network quality indicator to present in your application.
 
 ## Latency Optimization Level
-Each use case has its own latency and quality requirements. For voice communications, voice clarity is the key, whereas sub-100ms latency isn't required. For real-time music collaboration, there is nothing more imporant than low and stable latency. To address the needs of multiple use cases SyncStage offers `Latency Optimization Level` parameter that allows for setting up trade-off between latency level and network fluctuations resiliency. The table below shows available modes.
+Each use case has its own latency and quality requirements. For voice communications, voice clarity is the key, whereas sub-100ms latency isn't required. For real-time music collaboration, there is nothing more important than low and stable latency. To address the needs of multiple use cases SyncStage offers `Latency Optimization Level` parameter that allows for setting up trade-off between latency level and network fluctuations resiliency. The table below shows available modes.
 
 
 | Level name                           | Description                     
@@ -53,4 +53,4 @@ Below there is a list of audio interfaces we have tested on:
 * Behringer U-PHORIA UMC2
 
 ## Collected data by the SDK
-In order to provide best experience with SyncStage, SDK gathers information about location of users and their network operators.
+In order to provide best experience with SyncStage, SDK gathers information about location of users and meta data of their network operators.

@@ -1,3 +1,7 @@
+???+ note
+
+    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
+
 SyncStage class provide four delegates:
 
 * `ISyncStageUserDelegate`
@@ -52,13 +56,11 @@ interface ISyncStageDiscoveryDelegate {
 
 
 ### SyncStageDesktopAgentDelegate
-Responsible for getting callbacks with information if SyncStage Desktop Agent is already acquired by some other browser tab to prevent parallel access, and general Desktop Agent connection events.
+Responsible for getting callbacks with information if SyncStage Desktop Agent is already acquired by some other browser tab to prevent parallel access.
 
 ```typescript
 interface ISyncStageDesktopAgentDelegate {
   desktopAgentAquired(): void;
   desktopAgentReleased(): void;
-  desktopAgentConnected(): void;
-  desktopAgentDisconnected(): void;
 }
 ```
