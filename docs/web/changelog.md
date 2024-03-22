@@ -1,4 +1,4 @@
-### 0.4.3 <small>March 2, 2024</small> { id="0.4.3" }
+### 0.4.3 <small>March 22, 2024</small> { id="0.4.3" }
 
 #### Modified
 * Fixed SyncStage service websocket URL
