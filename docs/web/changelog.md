@@ -1,3 +1,12 @@
+### 0.4.3 <small>March 2, 2024</small> { id="0.4.3" }
+
+#### Modified
+* Fixed SyncStage service websocket URL
+* Updated test application:
+    * fixed hanging updateMeasurements interval in the session screen
+    * updated link to the Mac Desktop Agent
+
+
 ### 0.4.2 <small>March 19, 2024</small> { id="0.4.2" }
 
 #### Modified
@@ -18,6 +27,7 @@
 * Added session code to `ISession` and `ISessionInfo` interfaces
 
 ### 0.4.1 <small>January 4, 2024</small> { id="0.4.1" }
+#### Modified
 * Fixed service websocket URL
 
 ### 0.4.0 <small>January 4, 2024</small> { id="0.4.0" }
