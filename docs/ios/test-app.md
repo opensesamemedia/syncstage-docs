@@ -1,6 +1,6 @@
 # Test App
 
-The best way to start you joyrney with SyncStage is by trying out our example project available on GitHub [SyncStage Test App for iOS](https://github.com/opensesamemedia/syncstage-test-app-ios){target=_blank}.
+The best way to start you journey with SyncStage is by trying out our example project available on GitHub [SyncStage Test App for iOS](https://github.com/opensesamemedia/syncstage-test-app-ios){target=_blank}.
 This tutorial shows you how to clone, build, and run the application on your device.
 
 ## Set up your development project
