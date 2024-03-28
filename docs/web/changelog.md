@@ -4,11 +4,14 @@ This SDK version provides auto-location selection without explicit latency measu
 - removed ISyncStageDiscoveryDelegate from the SDK
 - removed location screens from the test application
 - removed redundant `desktopAgentConnectionKeepAlive` and `desktopAgentLostConnection`
+- removed `getBestAvailableServer()` method
+
 #### Modified
 - reordered createSession method parameters
 - creteSession zoneId and studioServerId parameters are optional and deprecated (likely to be removed in the next versions)
 - reordered join method parameters
 - join zoneId and studioServerId parameters are optional and deprecated (likely to be removed in the next versions)
+
 #### Added
 - `'STUDIO_SERVER_NOT_FOUND' = -12` SyncStageSDKErrorCode returned in case no Studio Server is available
 

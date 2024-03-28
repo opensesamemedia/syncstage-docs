@@ -73,14 +73,6 @@ Parameters:
 
 * `onWebsocketReconnected` - method to be called when the browser SDK reconnects to the SyncStage services. Session state should be refetched and synchronized on the UI in this callback.
 
-### Get best available server
-
-Get best available server, where a session can be created
-
-```typescript
-async getBestAvailableServer(): Promise<[IServerInstance | null, SyncStageSDKErrorCode]>
-```
-
 
 ### Get server instances
 
