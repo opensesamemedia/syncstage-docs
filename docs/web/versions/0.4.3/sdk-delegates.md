@@ -39,6 +39,17 @@ interface ISyncStageConnectivityDelegate {
 `transmitterConnectivityChanged` and `receiverConnectivityChanged` can be used to update connectivity indicator of particular connections. The `desktopAgentReconnected` callback is suggested to be used to trigger rebuild of the session state in the application (during the disconnection, new connections might be added or removed to the session which result in the ui state inconsistency).
 
 
+### SyncStageDiscoveryDelegate
+Responsible for getting callbacks about available zones latency.
+
+```typescript
+interface ISyncStageDiscoveryDelegate {
+  discoveryResults(zones: string[]): void;
+  discoveryLatencyTestResults(results: IZoneLatency[]): void;
+}
+```
+
+
 
 ### SyncStageDesktopAgentDelegate
 Responsible for getting callbacks with information if SyncStage Desktop Agent is already acquired by some other browser tab to prevent parallel access, and general Desktop Agent connection events.
@@ -47,7 +58,9 @@ Responsible for getting callbacks with information if SyncStage Desktop Agent is
 interface ISyncStageDesktopAgentDelegate {
   desktopAgentAquired(): void;
   desktopAgentReleased(): void;
-  desktopAgentConnected(): void; // Reports if Desktop Agent is alive (will be triggered periodicaly on Dekstop Agent keep alive messages)
-  desktopAgentDisconnected(): void; // Reports Desktop Agent connection loss or lack of keep alive
+  desktopAgentConnected(): void;
+  desktopAgentDisconnected(): void;
+  desktopAgentConnectionKeepAlive(): void; // Triggered every 5s informing that Desktop Agent is connected and alive
+  desktopAgentLostConnection(): void; // Reports unexpected connection loss or lack of keep alive
 }
 ```

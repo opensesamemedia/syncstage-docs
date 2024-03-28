@@ -5,6 +5,7 @@ class SyncStage implements ISyncStage{
     constructor(
         userDelegate: ISyncStageUserDelegate | null,
         connectivityDelegate: ISyncStageConnectivityDelegate | null,
+        discoveryDelegate: ISyncStageDiscoveryDelegate | null,
         desktopAgentDelegate: ISyncStageDesktopAgentDelegate | null,
         onTokenExpired: (() => Promise<string>) | null,
     );
@@ -14,6 +15,8 @@ class SyncStage implements ISyncStage{
 Constructor parameters:
 
 * `userDelegate` - delegate object to receive events about users in session state
+
+* `discoveryDelegate` - delegate object responsible for getting callbacks about available zones latency.
 
 * `connectivityDelegate` - delegate object to receive events with information about stream connection to Studio Server state
 
@@ -73,6 +76,14 @@ Parameters:
 
 * `onWebsocketReconnected` - method to be called when the browser SDK reconnects to the SyncStage services. Session state should be refetched and synchronized on the UI in this callback.
 
+### Get best available server
+
+Get best available server, where a session can be created
+
+```typescript
+async getBestAvailableServer(): Promise<[IServerInstance | null, SyncStageSDKErrorCode]>
+```
+
 
 ### Get server instances
 
@@ -89,11 +100,11 @@ Get server instances so you can select the server that is suitable for your sess
 Creates a session in a given zone by a given user from your user pool.
 
 ```typescript
-createSession(
-    userId: string,
-    zoneId?: string | null,
-    studioServerId?: string | null,
-  ): Promise<[ISessionIdentifier | null, SyncStageSDKErrorCode]>
+async createSession(
+    zoneId: string,
+    studioServerId: string,
+    userId: string
+): Promise<[ISessionIdentifier | null, SyncStageSDKErrorCode]>
 ```
 
 Parameters:
@@ -110,10 +121,10 @@ Joins a particular session identified by `sessionCode`.
 async join(
     sessionCode: string,
     userId: string,
+    zoneId: string,
+    studioServerId: string,
     displayName?: string | null,
-    zoneId?: string | null,
-    studioServerId?: string | null,
-  ): Promise<[ISession | null, SyncStageSDKErrorCode]>;
+): Promise<[ISession | null, SyncStageSDKErrorCode]>
 ```
 
 Parameters:
