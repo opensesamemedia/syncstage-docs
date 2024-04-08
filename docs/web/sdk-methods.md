@@ -63,10 +63,29 @@ Gets SDK version.
 getSDKVersion(): string
 ```
 
+
+### Gets autoselected Studio Server
+Get autoselected server instance info
+
+```typescript
+async getSelectedServer(): Promise<[IServerInstance | null, SyncStageSDKErrorCode]>;
+```
+
+
+
+### Get best available Studio Server DEPRECATED
+
+Get best available server, where a session can be created
+
+```typescript
+async getBestAvailableServer(): Promise<[IServerInstance | null, SyncStageSDKErrorCode]>
+```
+
+
 ### Update SDK to SyncStage backend connected callback
 
 ```typescript
-public updateOnWebsocketReconnected(onWebsocketReconnected: () => void): void
+  updateOnWebsocketReconnected(onWebsocketReconnected: () => void): void
 ```
 
 Parameters:

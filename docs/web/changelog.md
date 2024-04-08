@@ -1,19 +1,21 @@
 ### 0.4.4 <small>April ??, 2024</small> { id="0.4.4" }
 This SDK version provides auto-location selection without explicit latency measurements and selection.
 #### Removed
-- removed ISyncStageDiscoveryDelegate from the SDK
 - removed location screens from the test application
 - removed redundant `desktopAgentConnectionKeepAlive` and `desktopAgentLostConnection`
-- removed `getBestAvailableServer()` method
 
 #### Modified
 - reordered createSession method parameters
-- creteSession zoneId and studioServerId parameters are optional and deprecated (likely to be removed in the next versions)
+- `creteSession` zoneId and `studioServerId` parameters are optional and deprecated (likely to be removed in the next versions)
 - reordered join method parameters
-- join zoneId and studioServerId parameters are optional and deprecated (likely to be removed in the next versions)
+- join `zoneId` and `studioServerId` parameters are optional and deprecated (likely to be removed in the next versions)
+- `getBestAvailableServer()` marked as deprecated
+- extended `ISyncStageDiscoveryDelegate` with `serverSelected(selectedServer: IServerInstance): void;` callback
+- fixed test application stability issues
 
 #### Added
 - `'STUDIO_SERVER_NOT_FOUND' = -12` SyncStageSDKErrorCode returned in case no Studio Server is available
+- `getSelectedServer()` method
 
 ### 0.4.3 <small>March 22, 2024</small> { id="0.4.3" }
 
