@@ -1,4 +1,4 @@
-### 0.4.4 <small>April ??, 2024</small> { id="0.4.4" }
+### 0.5.0 <small>April 9, 2024</small> { id="0.5.0" }
 This SDK version provides auto-location selection without explicit latency measurements and selection.
 #### Removed
 - removed location screens from the test application
