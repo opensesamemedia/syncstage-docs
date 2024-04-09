@@ -276,7 +276,7 @@ func getLatencyOptimizationLevel() -> SyncStageSDK.LatencyOptimizationLevel
 ```
 
 #### Turn on / off noise cancellation
-Turns on / off noise cancellation.
+Turns on / off noise cancellation. This filter is applied on the transmitter (e.g. microphone).
 
 ```swift
 func toggleNoiseCancellation(enabled: Bool)

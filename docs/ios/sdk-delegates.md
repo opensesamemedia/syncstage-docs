@@ -1,6 +1,5 @@
 ## [:octicons-tag-24: 0.6.0][0.6.0]{target=_blank}
-[0.5.2]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.6.0
-
+[0.6.0]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.6.0
 
 ### SyncStage delegates
 SyncStage class provide two delegate:, `SyncStageUserDelegate` and `SyncStageConnectivityDelegate` which provide a set of callbacks to inform your application about asynchronous events from the SyncStage.
