@@ -1,3 +1,11 @@
+### 0.6.1 <small>April 9, 2024</small> { id="0.6.1" }
+
+#### Modified
+* Enabled network slicing
+* Extended analytics data collected by the SDK (network slicing)
+* Fixed connectivity dot indicator
+* minor improvements in the test application
+
 ### 0.6.0 <small>October 24, 2023</small> { id="0.6.0" }
 
 #### Modified
