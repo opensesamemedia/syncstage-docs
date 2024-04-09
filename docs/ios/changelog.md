@@ -1,3 +1,9 @@
+### 0.6.0 <small>April 9, 2024</small> { id="0.6.0" }
+
+#### Added
+
+* toggle noise cancellation
+
 ### 0.5.2 <small>March 19, 2024</small> { id="0.5.2" }
 
 #### Added
