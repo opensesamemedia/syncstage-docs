@@ -2,7 +2,7 @@
 This SDK version provides auto-location selection without explicit latency measurements and selection.
 #### Removed
 - removed location screens from the test application
-- removed redundant `desktopAgentConnectionKeepAlive` and `desktopAgentLostConnection`
+- removed redundant `desktopAgentConnectionKeepAlive` and `desktopAgentLostConnection` from the ` ISyncStageDesktopAgentDelegate`
 
 #### Modified
 - reordered createSession method parameters
