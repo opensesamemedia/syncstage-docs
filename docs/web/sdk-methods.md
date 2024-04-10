@@ -5,6 +5,7 @@ class SyncStage implements ISyncStage{
     constructor(
         userDelegate: ISyncStageUserDelegate | null,
         connectivityDelegate: ISyncStageConnectivityDelegate | null,
+        discoveryDelegate: ISyncStageDiscoveryDelegate | null,
         desktopAgentDelegate: ISyncStageDesktopAgentDelegate | null,
         onTokenExpired: (() => Promise<string>) | null,
     );
