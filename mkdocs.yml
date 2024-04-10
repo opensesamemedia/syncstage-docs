@@ -42,7 +42,7 @@ theme:
 extra:
   latest_android_sdk_version: v0.6.1
   latest_ios_sdk_version: v0.6.0
-  latest_web_sdk_version: v0.4.0
+  latest_web_sdk_version: v0.5.0
   latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.4.0/SyncStageAgent_0.4.0.dmg
   latest_desktop_agent_for_windows_url: https://public.sync-stage.com/agent/windows/prod/0.1.0/SyncStageAgent_0.1.0.exe
 
