@@ -3,6 +3,11 @@ To provide low-latency capabilities SyncStage uses platform-specific optimizatio
 [Latest SyncStage Desktop Agent for macOS]({{ latest_desktop_agent_for_macos_url }}){ .md-button}
 
 ### Versions
+#### 0.4.0 <small>April 9, 2024</small> { id="0.4.0" }
+##### Changelog
+###### Added
+* Noise cancellation
+
 #### 0.3.1 <small>March 19, 2024</small> { id="0.3.1" }
 ##### Changelog
 ###### Added
