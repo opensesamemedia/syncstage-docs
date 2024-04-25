@@ -1,3 +1,10 @@
+### 0.6.1 <small>April 25, 2024</small> { id="0.6.1" }
+
+#### Added
+
+* Fixing latency test
+* Adding privacy manifest
+
 ### 0.6.0 <small>April 9, 2024</small> { id="0.6.0" }
 
 #### Added
