@@ -2,21 +2,21 @@
 
 #### Added
 
-* Fixing latency test
-* Adding privacy manifest
+* Fixed network latency test to Studio Servers
+* Added Privacy Manifest required by Apple
 
 ### 0.6.0 <small>April 9, 2024</small> { id="0.6.0" }
 
 #### Added
 
-* toggle noise cancellation
+*  Added Noise Cancellation
 
 ### 0.5.2 <small>March 19, 2024</small> { id="0.5.2" }
 
 #### Added
 
 * Session code
-* Is direct monitor enabled
+* Is Direct Monitor enabled
 
 
 ### 0.5.1 <small>October 18, 2023</small> { id="0.5.1" }
