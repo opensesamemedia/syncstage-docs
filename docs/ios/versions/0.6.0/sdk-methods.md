@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.6.1][0.6.1]{target=_blank}
-[0.6.1]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.6.1
+## [:octicons-tag-24: 0.5.2][0.5.2]{target=_blank}
+[0.5.2]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.5.2
 
 ### General
 
@@ -180,8 +180,8 @@ Parameters:
 
 * `identifier`- Session receiver identifier.
 
-#### Turn on / off direct monitor
-Turns on / off direct monitor.
+#### Turn on / of direct monitor
+Turns on / of direct monitor.
 
 ```swift
 func toggleDirectMonitor(enable: Bool)
@@ -213,8 +213,8 @@ Returns a Bool indicating if the direct monitor is enabled
 func isDirectMonitorEnabled() -> Bool
 ```
 
-#### Turn on / off internal microphone
-Turns on / off internal microphone to be used instead of default audio input i.e. headphones mic.
+#### Turn on / of internal microphone
+Turns on / of internal microphone to be used instead of default audio input i.e. headphones mic.
 
 ```swift
 func toggleInternalMic(enable: Bool)
@@ -273,13 +273,6 @@ Returns latency optimization level.
 
 ```swift
 func getLatencyOptimizationLevel() -> SyncStageSDK.LatencyOptimizationLevel
-```
-
-#### Turn on / off noise cancellation
-Turns on / off noise cancellation. This filter is applied on the transmitter (e.g. microphone).
-
-```swift
-func toggleNoiseCancellation(enabled: Bool)
 ```
 
 
