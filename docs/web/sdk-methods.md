@@ -33,6 +33,8 @@ Parameters:
 
 * `currentOS` - operating system should be provided. Accepted values from list: `['Windows', 'macOS']`
 
+### Get latest Compatible Desktop Agent version
+
 ```typescript
 getLatestCompatibleDesktopAgentVersion(currentOs: string): Promise<string | null>;
 ```
