@@ -1,6 +1,7 @@
 ### 0.6.0 <small>May 7, 2024</small> { id="0.6.0" }
 #### Added
 * `isCompatible` method
+* `getLatestCompatibleDesktopAgentVersion` method
 * `checkProvisionedStatus` method
 * `onDesktopAgentDeprovisioned` and `onDesktopAgentProvisioned` callbacks to 
 

@@ -31,7 +31,15 @@ async isCompatible(currentOs: string): Promise<boolean>;
 
 Parameters:
 
-* `currentOS` - detected operating system should be provided. Accepted values from list: `['Windows', 'macOS']`
+* `currentOS` - operating system should be provided. Accepted values from list: `['Windows', 'macOS']`
+
+```typescript
+getLatestCompatibleDesktopAgentVersion(currentOs: string): Promise<string | null>;
+```
+
+Parameters:
+
+* `currentOS` - operating system should be provided. Accepted values from list: `['Windows', 'macOS']`
 
 ### Initialize
 
