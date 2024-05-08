@@ -84,8 +84,8 @@ self.onmessage = function (e) {
       self.postMessage({ id: -1, result: { callback: 'onDesktopAgentDisconnected' } });
     }, //onDesktopAgentDisconnected
     () => {
-      self.postMessage({ id: -1, result: { callback: 'onDesktopAgentRelaunched' } });
-    }, //onDesktopAgentRelaunched
+      self.postMessage({ id: -1, result: { callback: 'onDesktopAgentDeprovisioned' } });
+    }, //onDesktopAgentDeprovisioned
     () => {
       self.postMessage({ id: -1, result: { callback: 'onDesktopAgentProvisioned' } });
     },
@@ -190,8 +190,8 @@ class SyncStageWorkerWrapper {
           case 'onDesktopAgentDisconnected':
             this.desktopAgentDelegate?.onDesktopAgentDisconnected();
             break;
-          case 'onDesktopAgentRelaunched':
-            this.desktopAgentDelegate?.onDesktopAgentRelaunched();
+          case 'onDesktopAgentDeprovisioned':
+            this.desktopAgentDelegate?.onDesktopAgentDeprovisioned();
             break;
           case 'onDesktopAgentProvisioned':
             this.desktopAgentDelegate?.onDesktopAgentProvisioned();
