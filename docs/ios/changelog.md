@@ -1,3 +1,9 @@
+### 0.6.2 <small>May 21, 2024</small> { id="0.6.2" }
+
+### Added
+
+* Extending NAT support
+
 ### 0.6.1 <small>April 25, 2024</small> { id="0.6.1" }
 
 #### Added
