@@ -1,3 +1,9 @@
+### 0.6.2 <small>May 21, 2024</small> { id="0.6.2" }
+
+### Changed
+
+* Extended NAT support for better IPv6 networks handling
+
 ### 0.6.1 <small>April 25, 2024</small> { id="0.6.1" }
 
 #### Added

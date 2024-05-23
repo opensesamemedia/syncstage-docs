@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.6.2][0.6.2]{target=_blank}
-[0.6.2]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.6.2
+## [:octicons-tag-24: 0.6.1][0.6.1]{target=_blank}
+[0.6.1]: https://github.com/opensesamemedia/SyncStageSwiftPackage/releases/tag/0.6.1
 
 ### General
 
