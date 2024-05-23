@@ -49,7 +49,5 @@ interface ISyncStageDesktopAgentDelegate {
   desktopAgentReleased(): void;
   desktopAgentConnected(): void; // Reports if Desktop Agent is alive (will be triggered periodicaly on Dekstop Agent keep alive messages)
   desktopAgentDisconnected(): void; // Reports Desktop Agent connection loss or lack of keep alive
-  onDesktopAgentDeprovisioned(): void; // Reports if Desktop Agent got deprovitioned - can happen if Desktop Agent is restarted 
-  onDesktopAgentProvisioned(): void; // Periodically confirms that Desktop Agent is still provisioned (was not restarted)
 }
 ```

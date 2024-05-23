@@ -1,21 +1,37 @@
+### 0.6.0 <small>May 7, 2024</small> { id="0.6.0" }
+#### Added
+* `isCompatible` method
+* `getLatestCompatibleDesktopAgentVersion` method
+* `checkProvisionedStatus` method
+* `onDesktopAgentDeprovisioned` and `onDesktopAgentProvisioned` callbacks to 
+
+#### Modified
+* Renamed method `updateOnDesktopAgentReconnected` to `updateOnWebsocketReconnected` to `ISyncDesktopAgentDelegate`
+* Renamed `isRecording` field in ISession to `recordingStatus` which can be set to values from list: `['stopped', 'started']`
+* Extended `ISessionInfo` with `sessionName` field
+* Updated type of `sessionCode` field within `ISessionInfo` to `string`
+
+#### Fixed
+* Fixed breaking websocket connections to Desktop Agent due to possibility to run the SyncStage SDK in the [web worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Worker){target=_blank}
+
 ### 0.5.0 <small>April 9, 2024</small> { id="0.5.0" }
 This SDK version provides auto-location selection without explicit latency measurements and selection.
 #### Removed
-- removed location screens from the test application
-- removed redundant `desktopAgentConnectionKeepAlive` and `desktopAgentLostConnection` from the ` ISyncStageDesktopAgentDelegate`
+* removed location screens from the test application
+* removed redundant `desktopAgentConnectionKeepAlive` and `desktopAgentLostConnection` from the ` ISyncStageDesktopAgentDelegate`
 
 #### Modified
-- reordered createSession method parameters
-- `creteSession` zoneId and `studioServerId` parameters are optional and deprecated (likely to be removed in the next versions)
-- reordered join method parameters
-- join `zoneId` and `studioServerId` parameters are optional and deprecated (likely to be removed in the next versions)
-- `getBestAvailableServer()` marked as deprecated
-- extended `ISyncStageDiscoveryDelegate` with `serverSelected(selectedServer: IServerInstance): void;` callback
-- fixed test application stability issues
+* reordered createSession method parameters
+* `creteSession` zoneId and `studioServerId` parameters are optional and deprecated (likely to be removed in the next versions)
+* reordered join method parameters
+* join `zoneId` and `studioServerId` parameters are optional and deprecated (likely to be removed in the next versions)
+* `getBestAvailableServer()` marked as deprecated
+* extended `ISyncStageDiscoveryDelegate` with `serverSelected(selectedServer: IServerInstance): void;` callback
+* fixed test application stability issues
 
 #### Added
-- `'STUDIO_SERVER_NOT_FOUND' = -12` SyncStageSDKErrorCode returned in case no Studio Server is available
-- `getSelectedServer()` method
+* `'STUDIO_SERVER_NOT_FOUND' = -12` SyncStageSDKErrorCode returned in case no Studio Server is available
+* `getSelectedServer()` method
 
 ### 0.4.3 <small>March 22, 2024</small> { id="0.4.3" }
 
@@ -52,7 +68,7 @@ This SDK version provides auto-location selection without explicit latency measu
 #### Modified
 * Added new error code NO_INPUT_DEVICE, returned on join session when no input device is detected
 * Added two methods to the ISyncStageDesktopAgentDelegate interface: desktopAgentConnected and desktopAgentDisconnected
-* Renamed method updateOnDesktopAgentReconnected to updateOnWebsocketReconnected
+* Renamed method `updateOnDesktopAgentReconnected` to `updateOnWebsocketReconnected`
 * Updated the test app to be compatible with the SDK 0.4.0
 
 ### 0.3.0 <small>December 15, 2023</small> { id="0.3.0" }
