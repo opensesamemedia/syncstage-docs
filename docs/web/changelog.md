@@ -1,3 +1,7 @@
+### 0.6.1 <small>May 31, 2024</small> { id="0.6.1" }
+#### Fixed
+* Compatiblity check methods fixed
+
 ### 0.6.0 <small>May 7, 2024</small> { id="0.6.0" }
 #### Added
 * `isCompatible` method
