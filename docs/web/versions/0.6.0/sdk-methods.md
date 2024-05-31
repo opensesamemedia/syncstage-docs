@@ -1,5 +1,5 @@
-## [:octicons-tag-24: 0.6.1][0.6.1]{target=_blank}
-[0.6.1]: https://www.npmjs.com/package/@opensesamemedia/syncstage/v/0.6.1
+## [:octicons-tag-24: 0.6.0][0.6.0]{target=_blank}
+[0.6.0]: https://www.npmjs.com/package/@opensesamemedia/syncstage/v/0.6.0
 
 ### Constructor 
 
