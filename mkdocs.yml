@@ -44,8 +44,8 @@ extra:
   latest_ios_sdk_version: v0.6.2
   latest_web_sdk_version: v0.6.1
 
-  latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.4.1/SyncStageAgent_0.4.1.dmg
-  latest_desktop_agent_for_windows_url: https://public.sync-stage.com/agent/windows/prod/0.1.0/SyncStageAgent_0.1.0.exe
+  latest_desktop_agent_for_macos_url: https://public.sync-stage.com/agent/macos/prod/0.5.0/SyncStageAgent_0.5.0.dmg
+  latest_desktop_agent_for_windows_url: https://public.sync-stage.com/agent/windows/prod/0.2.0/SyncStageAgent_0.2.0.exe
 
   consent:
     title: Cookie consent
