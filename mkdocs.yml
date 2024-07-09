@@ -23,6 +23,14 @@ theme:
     - header.autohide    
     - content.tooltips
     - navigation.top
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+
 
   palette: 
     # Palette toggle for light mode
@@ -81,137 +89,148 @@ extra_css:
 # Page tree
 nav:
   # - SyncStage:
-  - What is SyncStage?: index.md
-  - Architecture & Glossary: architecture-and-glossary.md
-  - SyncStage SDK for Android:
-    - Overview: android/overview.md
-    - Quickstart: android/quickstart.md
-    - Reference:
-      - Methods: android/sdk-methods.md
-      - Delegates: android/sdk-delegates.md
-      - Error codes: android/sdk-error-codes.md
-      - Previous versions:
-        - 0.6.0:
-          - Methods: android/versions/0.6.0/sdk-methods.md
-          - Delegates: android/versions/0.6.0/sdk-delegates.md
-          - Error codes: android/versions/0.6.0/sdk-error-codes.md
-        - 0.5.2:
-          - Methods: android/versions/0.5.2/sdk-methods.md
-          - Delegates: android/versions/0.5.2/sdk-delegates.md
-          - Error codes: android/versions/0.5.2/sdk-error-codes.md   
-        - 0.5.1:
-          - Methods: android/versions/0.5.1/sdk-methods.md
-          - Delegates: android/versions/0.5.1/sdk-delegates.md
-          - Error codes: android/versions/0.5.1/sdk-error-codes.md   
-        - 0.5.0:
-          - Methods: android/versions/0.5.0/sdk-methods.md
-          - Delegates: android/versions/0.5.0/sdk-delegates.md
-          - Error codes: android/versions/0.5.0/sdk-error-codes.md   
-        - 0.4.1:
-          - Methods: android/versions/0.4.1/sdk-methods.md
-          - Delegates: android/versions/0.4.1/sdk-delegates.md
-          - Error codes: android/versions/0.4.1/sdk-error-codes.md      
-        - 0.4.0:
-          - Methods: android/versions/0.4.0/sdk-methods.md
-          - Delegates: android/versions/0.4.0/sdk-delegates.md
-          - Error codes: android/versions/0.4.0/sdk-error-codes.md 
-    - Test App: android/test-app.md
-    - Changelog: android/changelog.md
-    - Known issues: android/known-issues.md  
-  - SyncStage SDK for iOS:
-    - Overview: ios/overview.md
-    - Quickstart: ios/quickstart.md
-    - Reference:
-      - Methods: ios/sdk-methods.md
-      - Delegates: ios/sdk-delegates.md
-      - Error codes: ios/sdk-error-codes.md      
-      - Previous versions:
-        - 0.6.1:
-          - Methods: ios/versions/0.6.1/sdk-methods.md
-          - Delegates: ios/versions/0.6.1/sdk-delegates.md
-          - Error codes: ios/versions/0.6.1/sdk-error-codes.md      
-        - 0.6.0:
-          - Methods: ios/versions/0.6.0/sdk-methods.md
-          - Delegates: ios/versions/0.6.0/sdk-delegates.md
-          - Error codes: ios/versions/0.6.0/sdk-error-codes.md
-        - 0.5.2:
-          - Methods: ios/versions/0.5.2/sdk-methods.md
-          - Delegates: ios/versions/0.5.2/sdk-delegates.md
-          - Error codes: ios/versions/0.5.2/sdk-error-codes.md        
-        - 0.5.1:
-          - Methods: ios/versions/0.5.1/sdk-methods.md
-          - Delegates: ios/versions/0.5.1/sdk-delegates.md
-          - Error codes: ios/versions/0.5.1/sdk-error-codes.md        
-        - 0.5.0:
-          - Methods: ios/versions/0.5.0/sdk-methods.md
-          - Delegates: ios/versions/0.5.0/sdk-delegates.md
-          - Error codes: ios/versions/0.5.0/sdk-error-codes.md      
-        - 0.4.0:
-          - Methods: ios/versions/0.4.0/sdk-methods.md
-          - Delegates: ios/versions/0.4.0/sdk-delegates.md
-          - Error codes: ios/versions/0.4.0/sdk-error-codes.md        
-        - 0.3.1:
-          - Methods: ios/versions/0.3.1/sdk-methods.md
-          - Delegates: ios/versions/0.3.1/sdk-delegates.md
-          - Error codes: ios/versions/0.3.1/sdk-error-codes.md        
-    - Test App: ios/test-app.md      
-    - Changelog: ios/changelog.md  
-  - SyncStage SDK for Web:
-    - Overview: web/overview.md
-    - Quickstart: web/quickstart.md
-    - Provisioning: web/provisioning.md
-    - Desktop Agent:
-      - macOS: web/desktop-agent-macos.md
-      - Windows: web/desktop-agent-windows.md
-    - Reference:
-      - Methods: web/sdk-methods.md
-      - Delegates: web/sdk-delegates.md
-      - Data interfaces: web/sdk-data-interfaces.md
-      - Error codes: web/sdk-error-codes.md   
-      - Previous versions:
-        - 0.6.0:
-          - Methods: web/versions/0.6.0/sdk-methods.md
-          - Delegates: web/versions/0.6.0/sdk-delegates.md
-          - Data interfaces: web/versions/0.6.0/sdk-data-interfaces.md
-          - Error codes: web/versions/0.6.0/sdk-error-codes.md  
-        - 0.5.0:
-          - Methods: web/versions/0.5.0/sdk-methods.md
-          - Delegates: web/versions/0.5.0/sdk-delegates.md
-          - Data interfaces: web/versions/0.5.0/sdk-data-interfaces.md
-          - Error codes: web/versions/0.5.0/sdk-error-codes.md  
-        - 0.4.3:
-          - Methods: web/versions/0.4.3/sdk-methods.md
-          - Delegates: web/versions/0.4.3/sdk-delegates.md
-          - Data interfaces: web/versions/0.4.3/sdk-data-interfaces.md
-          - Error codes: web/versions/0.4.3/sdk-error-codes.md  
-        - 0.4.2:
-          - Methods: web/versions/0.4.2/sdk-methods.md
-          - Delegates: web/versions/0.4.2/sdk-delegates.md
-          - Data interfaces: web/versions/0.4.2/sdk-data-interfaces.md
-          - Error codes: web/versions/0.4.2/sdk-error-codes.md  
-        - 0.4.1:
-          - Methods: web/versions/0.4.1/sdk-methods.md
-          - Delegates: web/versions/0.4.1/sdk-delegates.md
-          - Error codes: web/versions/0.4.1/sdk-error-codes.md  
-        - 0.3.0:
-          - Methods: web/versions/0.3.0/sdk-methods.md
-          - Delegates: web/versions/0.3.0/sdk-delegates.md
-          - Error codes: web/versions/0.3.0/sdk-error-codes.md  
-        - 0.2.0:
-          - Methods: web/versions/0.2.0/sdk-methods.md
-          - Delegates: web/versions/0.2.0/sdk-delegates.md
-          - Error codes: web/versions/0.2.0/sdk-error-codes.md  
-        - 0.1.0:
-          - Methods: web/versions/0.1.0/sdk-methods.md
-          - Delegates: web/versions/0.1.0/sdk-delegates.md
-          - Error codes: web/versions/0.1.0/sdk-error-codes.md  
-    - Test App: web/test-app.md
-    - Using Web Worker: web/using-web-worker.md
-    - Changelog: web/changelog.md
-    - Known issues: web/known-issues.md    
-  - Getting ultra low latency experience: low-latency-experience.md
-  - Developer API: developer-api/swagger.md
-  - Recommendations: recommendations.md
+  - Home:
+    - index.md
+    - architecture-and-glossary.md
+
+  - Guides:
+    - guides/index.md
+    - Music Collaboration:
+        - guides/music-collaboration/index.md
+        - Audio Setup:
+          - Headphones: guides/music-collaboration/headphones.md
+          - Audio Interfaces: guides/music-collaboration/audio-interfaces.md
+  - SDKs:
+    - sdks/index.md
+    - SyncStage SDK for Android:
+      - Overview: android/overview.md
+      - Quickstart: android/quickstart.md
+      - Reference:
+        - Methods: android/sdk-methods.md
+        - Delegates: android/sdk-delegates.md
+        - Error codes: android/sdk-error-codes.md
+        - Previous versions:
+          - 0.6.0:
+            - Methods: android/versions/0.6.0/sdk-methods.md
+            - Delegates: android/versions/0.6.0/sdk-delegates.md
+            - Error codes: android/versions/0.6.0/sdk-error-codes.md
+          - 0.5.2:
+            - Methods: android/versions/0.5.2/sdk-methods.md
+            - Delegates: android/versions/0.5.2/sdk-delegates.md
+            - Error codes: android/versions/0.5.2/sdk-error-codes.md   
+          - 0.5.1:
+            - Methods: android/versions/0.5.1/sdk-methods.md
+            - Delegates: android/versions/0.5.1/sdk-delegates.md
+            - Error codes: android/versions/0.5.1/sdk-error-codes.md   
+          - 0.5.0:
+            - Methods: android/versions/0.5.0/sdk-methods.md
+            - Delegates: android/versions/0.5.0/sdk-delegates.md
+            - Error codes: android/versions/0.5.0/sdk-error-codes.md   
+          - 0.4.1:
+            - Methods: android/versions/0.4.1/sdk-methods.md
+            - Delegates: android/versions/0.4.1/sdk-delegates.md
+            - Error codes: android/versions/0.4.1/sdk-error-codes.md      
+          - 0.4.0:
+            - Methods: android/versions/0.4.0/sdk-methods.md
+            - Delegates: android/versions/0.4.0/sdk-delegates.md
+            - Error codes: android/versions/0.4.0/sdk-error-codes.md 
+      - Test App: android/test-app.md
+      - Changelog: android/changelog.md
+      - Known issues: android/known-issues.md  
+    - SyncStage SDK for iOS:
+      - Overview: ios/overview.md
+      - Quickstart: ios/quickstart.md
+      - Reference:
+        - Methods: ios/sdk-methods.md
+        - Delegates: ios/sdk-delegates.md
+        - Error codes: ios/sdk-error-codes.md      
+        - Previous versions:
+          - 0.6.1:
+            - Methods: ios/versions/0.6.1/sdk-methods.md
+            - Delegates: ios/versions/0.6.1/sdk-delegates.md
+            - Error codes: ios/versions/0.6.1/sdk-error-codes.md      
+          - 0.6.0:
+            - Methods: ios/versions/0.6.0/sdk-methods.md
+            - Delegates: ios/versions/0.6.0/sdk-delegates.md
+            - Error codes: ios/versions/0.6.0/sdk-error-codes.md
+          - 0.5.2:
+            - Methods: ios/versions/0.5.2/sdk-methods.md
+            - Delegates: ios/versions/0.5.2/sdk-delegates.md
+            - Error codes: ios/versions/0.5.2/sdk-error-codes.md        
+          - 0.5.1:
+            - Methods: ios/versions/0.5.1/sdk-methods.md
+            - Delegates: ios/versions/0.5.1/sdk-delegates.md
+            - Error codes: ios/versions/0.5.1/sdk-error-codes.md        
+          - 0.5.0:
+            - Methods: ios/versions/0.5.0/sdk-methods.md
+            - Delegates: ios/versions/0.5.0/sdk-delegates.md
+            - Error codes: ios/versions/0.5.0/sdk-error-codes.md      
+          - 0.4.0:
+            - Methods: ios/versions/0.4.0/sdk-methods.md
+            - Delegates: ios/versions/0.4.0/sdk-delegates.md
+            - Error codes: ios/versions/0.4.0/sdk-error-codes.md        
+          - 0.3.1:
+            - Methods: ios/versions/0.3.1/sdk-methods.md
+            - Delegates: ios/versions/0.3.1/sdk-delegates.md
+            - Error codes: ios/versions/0.3.1/sdk-error-codes.md        
+      - Test App: ios/test-app.md      
+      - Changelog: ios/changelog.md  
+    - SyncStage SDK for Web:
+      - Overview: web/overview.md
+      - Quickstart: web/quickstart.md
+      - Provisioning: web/provisioning.md
+      - Desktop Agent:
+        - macOS: web/desktop-agent-macos.md
+        - Windows: web/desktop-agent-windows.md
+      - Reference:
+        - Methods: web/sdk-methods.md
+        - Delegates: web/sdk-delegates.md
+        - Data interfaces: web/sdk-data-interfaces.md
+        - Error codes: web/sdk-error-codes.md   
+        - Previous versions:
+          - 0.6.0:
+            - Methods: web/versions/0.6.0/sdk-methods.md
+            - Delegates: web/versions/0.6.0/sdk-delegates.md
+            - Data interfaces: web/versions/0.6.0/sdk-data-interfaces.md
+            - Error codes: web/versions/0.6.0/sdk-error-codes.md  
+          - 0.5.0:
+            - Methods: web/versions/0.5.0/sdk-methods.md
+            - Delegates: web/versions/0.5.0/sdk-delegates.md
+            - Data interfaces: web/versions/0.5.0/sdk-data-interfaces.md
+            - Error codes: web/versions/0.5.0/sdk-error-codes.md  
+          - 0.4.3:
+            - Methods: web/versions/0.4.3/sdk-methods.md
+            - Delegates: web/versions/0.4.3/sdk-delegates.md
+            - Data interfaces: web/versions/0.4.3/sdk-data-interfaces.md
+            - Error codes: web/versions/0.4.3/sdk-error-codes.md  
+          - 0.4.2:
+            - Methods: web/versions/0.4.2/sdk-methods.md
+            - Delegates: web/versions/0.4.2/sdk-delegates.md
+            - Data interfaces: web/versions/0.4.2/sdk-data-interfaces.md
+            - Error codes: web/versions/0.4.2/sdk-error-codes.md  
+          - 0.4.1:
+            - Methods: web/versions/0.4.1/sdk-methods.md
+            - Delegates: web/versions/0.4.1/sdk-delegates.md
+            - Error codes: web/versions/0.4.1/sdk-error-codes.md  
+          - 0.3.0:
+            - Methods: web/versions/0.3.0/sdk-methods.md
+            - Delegates: web/versions/0.3.0/sdk-delegates.md
+            - Error codes: web/versions/0.3.0/sdk-error-codes.md  
+          - 0.2.0:
+            - Methods: web/versions/0.2.0/sdk-methods.md
+            - Delegates: web/versions/0.2.0/sdk-delegates.md
+            - Error codes: web/versions/0.2.0/sdk-error-codes.md  
+          - 0.1.0:
+            - Methods: web/versions/0.1.0/sdk-methods.md
+            - Delegates: web/versions/0.1.0/sdk-delegates.md
+            - Error codes: web/versions/0.1.0/sdk-error-codes.md  
+      - Test App: web/test-app.md
+      - Using Web Worker: web/using-web-worker.md
+      - Changelog: web/changelog.md
+      - Known issues: web/known-issues.md
+  - APIs: developer-api/swagger.md    
+  # - Getting ultra low latency experience: low-latency-experience.md
+  # - Recommendations: recommendations.md
   - Help:
     - FAQ: help/faq.md
     - Reporting a bug: help/report-a-bug.md
@@ -223,6 +242,7 @@ nav:
 
 # Extensions
 markdown_extensions:
+  - md_in_html
   - toc:
       permalink: "#"
   - admonition      
@@ -250,3 +270,4 @@ plugins:
   - tags
   - macros
   - swagger-ui-tag
+
