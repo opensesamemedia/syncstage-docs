@@ -1,0 +1,15 @@
+- title: Early Access Launch
+  content: Developer Console and iOS SDK
+  icon: ':material-rocket-launch-outline:'
+  sub_title: 2023 July
+
+- title: New Platforms
+  content: Android SDK and Web SDK for macOS
+  icon: ':fontawesome-solid-gem:'
+  sub_title: 2023 August
+  
+- title: Windows support
+  content: Preview version of Windows SDK
+  icon: ':fontawesome-solid-desktop:'
+  sub_title: 2023 October
+  
