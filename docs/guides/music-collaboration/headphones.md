@@ -1,14 +1,23 @@
 # Headphones
-The way you connect wired headphones to your smartphone, tablet, or desktop depends on the available connectors:
+To start with SyncStage you don’t need to have any audio interface! 
 
+## Steps
+1. Connect your wired headphones to your device.
+2. Launch SyncStage Test App.
+3. Activate the "Internal Microphone" or "Built-in Microphone" option in the application settings (:material-dots-vertical:)
+4. If you wish to hear your own audio in real-time, simply enable the "Direct Monitor" option.
+
+<figure markdown="span">
+      ![Application Settings](../../assets/guides/app-settings.png){ width="600" loading=lazy}
+      <figcaption>Application Settings</figcaption>
+</figure>
+
+
+## Possible Setups
+The way you connect wired headphones to your smartphone, tablet, or desktop depends on the available connectors.
 Below are the most common connectors and the recommended ways to connect headphones to a device with each connector.
 
-!!! note
-
-    We strongly advise **against** using Bluetooth or any other wireless headphones for music collaboration. Bluetooth technology introduce itself anything between 100 ms and 800 ms of latency.
-
-
-## 3.5-mm Headphone Jack
+### 3.5-mm Headphone Jack
 This is the most common option on desktops, tablets, and older smartphones.
 
 <div class="grid cards" markdown>
@@ -21,7 +30,7 @@ This is the most common option on desktops, tablets, and older smartphones.
 
 </div>
 
-## USB Type-C
+### USB Type-C
 USB Type-C is used in most of the modern Android phones, iPhones 15 and newer, and iPads.
 <div class="grid cards" markdown>
 
@@ -38,7 +47,7 @@ USB Type-C is used in most of the modern Android phones, iPhones 15 and newer, a
 
 </div>
 
-## Apple Lightning
+### Apple Lightning
 Apple Lightning is used in most modern iPhones 14 and older, and older iPads.
 
 <div class="grid cards" markdown>
@@ -56,6 +65,8 @@ Apple Lightning is used in most modern iPhones 14 and older, and older iPads.
 
 </div>
 
+### Bluetooth
+We strongly advise **against** using Bluetooth or any other wireless headphones for music collaboration. Bluetooth technology introduce itself anything between 100 ms and 800 ms of latency.
 
 
 ## Acknowledgements
