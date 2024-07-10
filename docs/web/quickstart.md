@@ -26,7 +26,6 @@ To use test application you need to install SyncStage Desktop Agent on your Mac.
 
 #### Windows
 To use test application you need to install SyncStage Desktop Agent on your PC.
-**Desktop agent for Windows is preview-only, it does not implement all of the methods yet, and does not provide low latency performance yet - [learn more](known-issues.md).** 
 
 [Download SyncStage Desktop Agent for Windows]({{ latest_desktop_agent_for_windows_url }}){ .md-button}
 

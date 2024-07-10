@@ -30,7 +30,7 @@ theme:
     - navigation.tracking
     - navigation.tabs
     - navigation.sections
-
+    - navigation.footer
 
   palette: 
     # Palette toggle for light mode
@@ -100,9 +100,15 @@ nav:
         - Audio Setup:
           - Headphones: guides/music-collaboration/headphones.md
           - Audio Interfaces: guides/music-collaboration/audio-interfaces.md
+          - Acoustic Feedback: guides/music-collaboration/acoustic-feedback.md
+        - Network Setup:
+          - Network Latency: guides/music-collaboration/network-latency.md
+          - Network Types: guides/music-collaboration/network-types.md
+          - Distance Between Musicians: guides/music-collaboration/distance.md
+          - Latency Optimization Levels : guides/music-collaboration/latency-optimization-levels.md
   - SDKs:
     - sdks/index.md
-    - SyncStage SDK for Android:
+    - Android SDK:
       - Overview: android/overview.md
       - Quickstart: android/quickstart.md
       - Reference:
@@ -137,7 +143,7 @@ nav:
       - Test App: android/test-app.md
       - Changelog: android/changelog.md
       - Known issues: android/known-issues.md  
-    - SyncStage SDK for iOS:
+    - iOS SDK:
       - Overview: ios/overview.md
       - Quickstart: ios/quickstart.md
       - Reference:
@@ -175,7 +181,7 @@ nav:
             - Error codes: ios/versions/0.3.1/sdk-error-codes.md        
       - Test App: ios/test-app.md      
       - Changelog: ios/changelog.md  
-    - SyncStage SDK for Web:
+    - JavaScript SDK:
       - Overview: web/overview.md
       - Quickstart: web/quickstart.md
       - Provisioning: web/provisioning.md
@@ -271,3 +277,6 @@ plugins:
   - macros
   - swagger-ui-tag
 
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js

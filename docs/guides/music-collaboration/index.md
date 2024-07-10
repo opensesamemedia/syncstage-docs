@@ -1,12 +1,57 @@
 # Music Collaboration
-Due to its incomparable speed, SyncStage can support music collaboration use cases starting from music education, song writing sessions, to jamming (when certain conditions are met).
 
-Here are a few things you need to make your remote music collab successful. 
+Welcome to the SyncStage Music Collaboration Guide. This document will help you get started with SyncStage for live music collaboration. Whether you're involved in music education, songwriting sessions, or simply jamming with friends, SyncStage offers unparalleled speed and audio quality to support your needs.
 
-## Audio Setup
+![type:video](https://www.youtube.com/embed/YEVOAS-hzCg)
+
+Here are a few things you need to make your remote music collaboration successful using both the SyncStage Test Application and SyncStage SDK-based Apps.
+
+## Prerequisites
+Before you start, please ensure that you have the SyncStage Test App or another SyncStage SDK-based application installed. 
+
+If you have it installed already, please proceed to the [next step](#audio-setup)
+
+You can install the application by:
+
+* Building SyncStage Test Application from Sources
+* Requesting access to the already built application.
+
+### Building SyncStage Test Application from Sources
 <div class="grid cards" markdown>
 
--   __Use SyncStage With Just Headphones__
+-   :material-android:{ .lg .middle } __Test App for Android__
+
+    ---
+
+    [:octicons-arrow-right-24: Getting started](../../android/test-app.md)
+
+
+-   :fontawesome-brands-apple:{ .lg .middle } __Test App for iOS__
+
+    ---
+
+    [:octicons-arrow-right-24: Getting started](../../ios/test-app.md)
+
+
+-   :fontawesome-brands-js:{ .lg .middle } __Test App for Web__
+
+    ---
+
+    [:octicons-arrow-right-24: Getting started](../../web/test-app.md)
+
+</div>
+
+### Requesting access to the already built application.
+Fill out [this form](https://console.sync-stage.com/request-a-demo){target=_blank} to request access to the SyncStage Test Application.
+
+
+## Audio Setup
+
+You can start using SyncStage quickly with just you headphones or use an audio interface of your choice. Select your setup to learn more.
+
+<div class="grid cards" markdown>
+
+-   __Using SyncStage With Just Headphones__
 
     ---
     <figure markdown="span">
@@ -14,7 +59,7 @@ Here are a few things you need to make your remote music collab successful.
       <figcaption><small>Picture by Harman International Industries</small></figcaption>
     </figure>
 
-    [:octicons-arrow-right-24: Learn more](headphones.md){target=_blank}
+    [:octicons-arrow-right-24: Learn more](headphones.md)
 
 
 -   __Use SyncStage With An Audio Interface__
@@ -25,66 +70,44 @@ Here are a few things you need to make your remote music collab successful.
       <figcaption><small>Picture by Focusrite Audio Engineering Limited</small></figcaption>
     </figure>
 
-    [:octicons-arrow-right-24: Learn more](audio-interfaces.md){target=_blank}
+    [:octicons-arrow-right-24: Learn more](audio-interfaces.md)
 
 </div>
 
 
-## Network Latency
-Fast and stable network is a critical for achieving real-time experience. The faster and more stable connection you have, the better experience is. 
+## Network Setup
+<div class="grid cards" markdown>
 
-Below you can find a mapping of network parameters into expected experience for **music jamming use case** which is the most demanding one. 
+-   :material-lightning-bolt:{ .lg .middle } __Importance of Network Latency__
 
-| Expected Experience | Latency | Jitter | Packet Loss |
-| :-----------------: | :-----: | :----: | :---------: |
-| <big>:partying_face:</big> | <= 15 ms | <= 2.0 ms | <= 0.010% |
-| <big>:smiley:</big> | 16ms to 25ms | 2.1ms to 5.0ms | 0.011% to 0.02% |
-| <big>:neutral_face:</big> |  25ms to 35ms | 5.1ms to 8.0ms | 0.021% to 0.03% |
-| <big>:confused_face:</big> |  > 35ms | > 8.0ms | > 0.03% |
+    ---
 
-!!! note
-    
-    The final experience may vary different use cases. Use cases around voice communications are much less demanding.
+    A fast and stable network is critical for a real-time experience.
 
+    [:octicons-arrow-right-24: Learn more](network-latency.md)
 
+-   :material-wifi:{ .lg .middle } __Recommended Network Types__
 
+    ---
 
-## Distance Between The Musicians
-As the distance between users increases, so does the network latency, which can potentially impede certain types of music collaboration. SyncStage uses a client-server architecture, whereby all connections are routed through its servers known as the Studio Servers. Consequently, the geographical distance between users and the Studio Server must be considered.
+    Remote Music Collaboration might not be possible in certain networks types.
 
-<figure markdown="span">
-    ![Latency vs. Distance](../../assets/guides/latency-vs-distance.png){ width="600" loading=lazy}
-    <figcaption>Network latency increases with the distance</figcaption>
-</figure>
+    [:octicons-arrow-right-24: Learn more](network-types.md)
 
-| Distance In Kilometers | Distance In Miles | Network Latency Floor |
-| :---------------------: | :----------------: | :--------------: |
-| 200 km | ~124 mi | > 2 ms |
-| 500 km | ~311 mi | > 5 ms |
-| 1000 km | ~621 mi | > 10 ms |
-| 2000 km | ~1243 mi | > 20 ms |
-| 5000 km | ~3107 mi | > 50 ms |
-| 10000 km | ~6214 mi | > 100 ms |
+-   :material-map-marker-distance:{ .lg .middle } __Distance Between Musicians__
 
+    ---
 
-!!! note
+    The physical distance between location translates into audio latency.
 
-    Network latency floor  only considers the propagation delay due to the speed of light in the fiber and does not account for other factors that can contribute to latency. In reality this value can be 2-5x higher.
+    [:octicons-arrow-right-24: Learn more](distance.md)
 
+-   :material-cog-box:{ .lg .middle } __Latency Optimization Levels__
 
+    ---
 
-## Latency Optimization Level
-Each use case has its own latency and quality requirements. For voice communications, voice clarity is the key, whereas sub-100ms latency isn't required. For real-time music collaboration, there is nothing more important than low and stable latency. To address the needs of multiple use cases SyncStage offers `Latency Optimization Level` parameter that allows for setting up trade-off between latency level and network fluctuations resiliency. The table below shows available modes.
+    SyncStage offers four modes dedicated for different use cases.
 
+    [:octicons-arrow-right-24: Learn more](latency-optimization-levels.md)
 
-| Level name                           | Description                     
-| ------------------------------------ | :--------------------------------------------------------------------------------------------------------- |
-| High Quality                         |  SyncStage tries to maintain the highest possible quality regardless of the network fluctuations.          |
-| Optimized                            |  Similar to High Quality but a bit more focused on reducing latency.                                       |
-| Best Performance                     |  SyncStage is focused on delivering low latency. In poor network conditions, cracks in audio can occur.    |
-| Ultra Fast                           |  SyncStage is focused on delivering possibly low and stable latency. Good network conditions needed.       |
-
-
-## Avoid Acoustic Feedback
-
-If you’re testing two smartphones without headphones connected in close proximity, you will need to be aware of audio feedback. While the SyncStage platform provides feedback cancellation, isolating the phones from each other by distance will ensure the best experience.
+</div>

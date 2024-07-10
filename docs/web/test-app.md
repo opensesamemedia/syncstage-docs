@@ -8,7 +8,8 @@ This tutorial shows you how to clone, build, and run the application on your dev
 
 To use test application you need to install SyncStage Desktop Agent on your Mac.
 
-[Download SyncStage Desktop Agent for macOS]({{ latest_desktop_agent_for_macos_url }}){ .md-button}
+[:fontawesome-brands-apple: Download for macOS]({{ latest_desktop_agent_for_macos_url }}){ .md-button}
+[:fontawesome-brands-windows: Download for Windows]({{ latest_desktop_agent_for_windows_url }}){ .md-button}
 
 ## Get a SyncStage SDK secret
 

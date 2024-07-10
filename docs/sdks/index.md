@@ -14,7 +14,7 @@
 
     ---
 
-    Start using building an iOS or iPad application with SyncStage.
+    Start using building an iOS or iPadOS application with SyncStage.
 
     [:octicons-arrow-right-24: Getting started](#)
 
