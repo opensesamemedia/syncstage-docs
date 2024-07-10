@@ -1,14 +1,18 @@
-!!! warning
-    Desktop Agent for Windows is currently in preview mode and may not fully reflect the final product. It may not yet implement all functionalities, and latency performance may not yet meet the desired level.
-
 To provide low-latency capabilities SyncStage uses platform-specific optimizations, not available from the browser's engine. Therefore, we have introduced a SyncStage Agent, an application that be installed in the system and run in the background. 
 
 [Latest SyncStage Desktop Agent for Windows]({{ latest_desktop_agent_for_windows_url }}){ .md-button}
 
 ### Versions
 #### 0.2.0 <small>June 5, 2024</small> { id="0.2.0" }
+##### Compatibility
+* Compatible with Web SDK >= 0.5.0
+
 ##### Changelog
-TBA
+* Improved audio quality.
+* Reduced audio latency.
+* Added handling for dynamic input/output changes.
+* Added Noise Cancellation filter.
+
 
 ### Versions
 #### 0.1.0 <small>January 4, 2024</small> { id="0.1.0" }

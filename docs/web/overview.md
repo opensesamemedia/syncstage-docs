@@ -20,8 +20,8 @@ To provide low-latency capabilities SyncStage uses platform-specific optimizatio
 
 SyncStage Agent, necessary to establish audio communications, is currently available only for macOS. Both Intel and Apple chips are supported. We are working to bring SyncStage to other platforms, i.e. Windows and Linux.
 
-| Browser                              | Support                        |       Comment             |
-| ------------------------------------ | -----------------------------: | ------------------------: |
-| :fontawesome-brands-apple: macOS     |  :fontawesome-solid-check:{ .icon-check }     |                           |
-| :fontawesome-brands-windows: Windows  |  :fontawesome-solid-plus-minus:{ .icon-plus-minus }         |   Preview only        |
-| :fontawesome-brands-linux: Linux     |  :fontawesome-solid-x:{ .icon-x }         |   Work in progress        |
+| Browser                              | Support                                            |       Comment             |
+| :----------------------------------: | :------------------------------------------------: | :-----------------------: |
+| :fontawesome-brands-apple: macOS     |  :fontawesome-solid-check:{ .icon-check }          |                           |
+| :fontawesome-brands-windows: Windows |  :fontawesome-solid-check:{ .icon-check }          |                           |
+| :fontawesome-brands-linux: Linux     |  :fontawesome-solid-x:{ .icon-x }                  |   Work in progress        |
