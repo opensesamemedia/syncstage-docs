@@ -23,7 +23,7 @@ To build and run the app:
 
 1. Connect an iOS device to your computer, or select a simulator from the Xcode scheme pop-up menu.
 2. In Xcode, click the Product/Run menu option (or :fontawesome-solid-play: button).
-3, Xcode builds the app, and then runs the app on the device or on the simulator.
+3. Xcode builds the app, and then runs the app on the device or on the simulator.
 
 
 ## Use the app
@@ -65,7 +65,7 @@ To build and run the app:
 ![alt Join a session](../assets/ios/join_session.png){ width="300" }  | ![alt Invite others](../assets/ios/user_2_joined.png){ width="300" } 
 
 
-Currently, SyncStage’s audio pipeline supports sessions with **up to 8 users. **
+Currently, SyncStage’s audio pipeline supports sessions with **up to 8 users.**
 
 ### Other functionalities
 
