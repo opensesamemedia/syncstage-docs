@@ -1,7 +1,3 @@
-???+ note
-
-    SyncStage Web SDK is currently available only in PREVIEW-ONLY mode, which means it is not yet recommended for production usage. [Learn more.](../known-issues/#possible-secrets-leak){ target=_blank}.
-
 SyncStage class provide four delegates:
 
 * `ISyncStageUserDelegate`

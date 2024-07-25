@@ -99,7 +99,7 @@ Service and additional permissions must be added to `AndroidManifest.xml`.
 
 ### 6. Handle exiting application gracefully
 
-Use a method for stopping and cleaning app all the SDK's background tasks. See [here](../sdk-methods/#stop-and-dispose){ target=_blank}) for more details.
+Use a method for stopping and cleaning app all the SDK's background tasks. See [here](sdk-methods.md/#stop-and-dispose){ target=_blank}) for more details.
 
 ## Troubleshooting
 

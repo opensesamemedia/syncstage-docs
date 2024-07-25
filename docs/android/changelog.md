@@ -63,7 +63,7 @@
 
 #### Removed
 
-* Zone list (Replaced by: [getServerInstances](../sdk-methods/#get-server-instances){ target=_blank})
+* Zone list (Replaced by: [getServerInstances](sdk-methods.md/#get-server-instances){ target=_blank})
 
 
 ### 0.3.0 <small>May 12, 2023</small> { id="0.3.0" }
