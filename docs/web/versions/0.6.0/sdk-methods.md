@@ -58,7 +58,6 @@ async init(
 
 Parameters:
 
-* `jwt` - token obtained in the [provisioning](provisioning.md) process.
 
 ### Check if SyncStage Agent is provisioned
 Returns if Desktop Agent has been already provisioned.
@@ -76,7 +75,7 @@ You can update JWT anytime you want, even before expiration takes place.
 async updateToken(jwt: string): Promise<SyncStageSDKErrorCode>
 ```
 
-* `jwt` - token obtained in the [provisioning](provisioning.md) process.
+* `jwt` - token obtained in the [provisioning](../../provisioning.md) process.
 
 ### Get is desktop agent connected
 

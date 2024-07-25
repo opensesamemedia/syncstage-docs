@@ -120,14 +120,17 @@ In our implementation, we use the SyncStageWorkerWrapper class to manage the Web
 ```javascript
 class SyncStageWorkerWrapper {
   constructor(userDelegate, connectivityDelegate, discoveryDelegate, desktopAgentDelegate, onTokenExpired) {
+    console.log('SyncStageWorkerWrapper constructor');
+
     this.userDelegate = userDelegate;
     this.connectivityDelegate = connectivityDelegate;
     this.discoveryDelegate = discoveryDelegate;
     this.desktopAgentDelegate = desktopAgentDelegate;
     this.onTokenExpired = onTokenExpired;
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     this.onDesktopAgentReconnected = () => {};
 
-    this.worker = new Worker(new URL('worker.js', import.meta.url));
+    this.worker = new Worker(new URL('worker.js', import.meta.url)); //NEW SYNTAX
 
     this.worker.onmessage = async (event) => {
       const { id, result, error } = event.data;
@@ -197,7 +200,16 @@ class SyncStageWorkerWrapper {
             this.desktopAgentDelegate?.onDesktopAgentProvisioned();
             break;
           case 'onTokenExpired':
-            this.updateToken(this.onTokenExpired());
+            try {
+              if (typeof this.onTokenExpired === 'function') {
+                const jwt = await this.onTokenExpired();
+                this.updateToken(jwt);
+              } else {
+                console.error('onTokenExpired is not a function');
+              }
+            } catch (error) {
+              console.error('An error occurred in onTokenExpired or updateToken:', error);
+            }
             break;
           case 'onDesktopAgentReconnected':
             this.onDesktopAgentReconnected();
@@ -256,6 +268,7 @@ class SyncStageWorkerWrapper {
   }
 
   async updateToken(token) {
+    console.log('SyncStageWorkerWrapper updateToken');
     return this.callWorker('updateToken', token);
   }
 
@@ -311,10 +324,6 @@ class SyncStageWorkerWrapper {
     return this.callWorker('getTransmitterMeasurements');
   }
 
-  getLatencyOptimizationLevel() {
-    return this.callWorker('getLatencyOptimizationLevel');
-  }
-
   getDesktopAgentProtocolHandler() {
     return this.callWorker('getDesktopAgentProtocolHandler');
   }
@@ -336,6 +345,34 @@ class SyncStageWorkerWrapper {
   }
   checkProvisionedStatus() {
     return this.callWorker('checkProvisionedStatus');
+  }
+
+  getSessionSettings() {
+    return this.callWorker('getSessionSettings');
+  }
+
+  setInputDevice(identifier) {
+    return this.callWorker('setInputDevice', identifier);
+  }
+
+  setOutputDevice(identifier) {
+    return this.callWorker('setOutputDevice', identifier);
+  }
+
+  setNoiseCancellation(enabled) {
+    return this.callWorker('setNoiseCancellation', enabled);
+  }
+
+  setDisableGain(disabled) {
+    return this.callWorker('setDisableGain', disabled);
+  }
+
+  setDirectMonitor(enabled) {
+    return this.callWorker('setDirectMonitor', enabled);
+  }
+
+  setLatencyOptimizationLevel(level) {
+    return this.callWorker('setLatencyOptimizationLevel', level);
   }
 }
 

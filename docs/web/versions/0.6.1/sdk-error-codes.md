@@ -4,8 +4,6 @@ Most of the SDK methods return SyncStageSDKErrorCode which can be decoded using 
 enum SyncStageSDKErrorCode {
   'TOKEN_EXPIRED' = -2002,
   'SYNCSTAGE_OPENED_IN_ANOTHER_TAB' = -2001,
-  'INVALID_DEVICE' = -1003,
-  'INCOMPATIBLE_CONTENT' = -1002,
   'NOT_IN_SESSION' = -1001,
   'API_UNAUTHORIZED' = -1000,
   'STUDIO_SERVER_NOT_FOUND' = -12,

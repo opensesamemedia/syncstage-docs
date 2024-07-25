@@ -36,7 +36,7 @@ async init(
 
 Parameters:
 
-* `jwt` - token obtained in the [provisioning](provisioning.md) process.
+* `jwt` - token obtained in the [provisioning](../../provisioning.md) process.
 
 
 ### Update JWT
@@ -47,7 +47,7 @@ You can update JWT anytime you want, even before expiration takes place.
 async updateToken(jwt: string): Promise<SyncStageSDKErrorCode>
 ```
 
-* `jwt` - token obtained in the [provisioning](provisioning.md) process.
+* `jwt` - token obtained in the [provisioning](../../provisioning.md) process.
 
 ### Get is desktop agent connected
 

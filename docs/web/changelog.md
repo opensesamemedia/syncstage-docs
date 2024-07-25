@@ -1,6 +1,28 @@
+### 0.7.0 <small>July 25, 2024</small> { id="0.7.0" }
+
+#### Added 
+* New error codes `INVALID_DEVICE` and `INCOMPATIBLE_CONTENT`
+* `getSessionSettings` method
+* `setInputDevice` method
+* `setOutputDevice` method
+* `setNoiseCancellation` method
+* `setDisableGain` method
+* `setDirectMonitor` method
+* `setLatencyOptimizationLevel` method
+* `ISessionSettings` interface
+
+#### Removed
+* `getLatencyOptimizationLevel` method
+
+
+#### Fixed
+* stream connection state after Internet reconnection
+
+
 ### 0.6.1 <small>May 31, 2024</small> { id="0.6.1" }
 #### Fixed
 * Compatiblity check methods fixed
+* Desktop Agent with web sdk compatibility checking procedure
 
 ### 0.6.0 <small>May 7, 2024</small> { id="0.6.0" }
 #### Added
