@@ -5,7 +5,7 @@ To provide low-latency capabilities SyncStage uses platform-specific optimizatio
 ### Versions
 #### 0.5.0 <small>June 5, 2024</small> { id="0.5.0" }
 ##### Changelog
-TBA
+* Extended NAT support for better IPv6 networks handling
 
 #### 0.4.1 <small>May 21, 2024</small> { id="0.4.1" }
 ##### Changelog
