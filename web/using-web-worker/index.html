@@ -1,0 +1,2380 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="SyncStage is a patent pending infrastructure platform that allows any application developer to create a synchronous audio experience within their application." name="description"/>
+<meta content="Patryk Kaczmarek, Mateusz Mul" name="author"/>
+<link href="https://docs.sync-stage.com/web/using-web-worker/" rel="canonical"/>
+<link href="../test-app/" rel="prev"/>
+<link href="../changelog/" rel="next"/>
+<link href="../../assets/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<title>Using Web Worker - SyncStage Docs</title>
+<link href="../../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Josefin Sans";--md-code-font:"Source Code Pro"}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<link href="../../stylesheets/css-v1.0.2.css" rel="stylesheet"/>
+<link href="../../stylesheets/neoteroi-mkdocs.min.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-7YFZKQNWH4"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-7YFZKQNWH4",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-7YFZKQNWH4",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+<script>var consent;"undefined"==typeof __md_analytics||(consent=__md_get("__consent"))&&consent.analytics&&__md_analytics()</script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></link></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#using-web-worker">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="SyncStage Docs" class="md-header__button md-logo" data-md-component="logo" href="../.." title="SyncStage Docs">
+<img alt="logo" src="../../assets/logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            SyncStage Docs
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Using Web Worker
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54 0 4.5-2.94 8.27-7 9.54.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+          
+  
+    
+  
+  Home
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../guides/">
+          
+  
+    
+  
+  Guides
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../sdks/">
+          
+  
+    
+  
+  SDKs
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../developer-api/swagger/">
+        
+  
+    
+  
+  APIs
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../help/faq/">
+          
+  
+    
+  
+  Help
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../acknowledgements/">
+        
+  
+    
+  
+  Acknowledgements
+
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="SyncStage Docs" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="SyncStage Docs">
+<img alt="logo" src="../../assets/logo.png"/>
+</a>
+    SyncStage Docs
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture-and-glossary/">
+<span class="md-ellipsis">
+    Architecture and glossary
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../guides/">
+<span class="md-ellipsis">
+    Guides
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../guides/music-collaboration/">
+<span class="md-ellipsis">
+    Music Collaboration
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Music Collaboration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Audio Setup
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_2">
+<span class="md-nav__icon md-icon"></span>
+            Audio Setup
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../guides/music-collaboration/headphones/">
+<span class="md-ellipsis">
+    Headphones
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../guides/music-collaboration/audio-interfaces/">
+<span class="md-ellipsis">
+    Audio Interfaces
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../guides/music-collaboration/acoustic-feedback/">
+<span class="md-ellipsis">
+    Acoustic Feedback
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Network Setup
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Network Setup
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../guides/music-collaboration/network-latency/">
+<span class="md-ellipsis">
+    Network Latency
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../guides/music-collaboration/network-types/">
+<span class="md-ellipsis">
+    Network Types
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../guides/music-collaboration/distance/">
+<span class="md-ellipsis">
+    Distance Between Musicians
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../guides/music-collaboration/latency-optimization-levels/">
+<span class="md-ellipsis">
+    Latency Optimization Levels
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../sdks/">
+<span class="md-ellipsis">
+    SDKs
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            SDKs
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+<span class="md-ellipsis">
+    Android SDK
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            Android SDK
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/overview/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/quickstart/">
+<span class="md-ellipsis">
+    Quickstart
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Reference
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_3_4" id="__nav_3_2_3_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Previous versions
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+            Previous versions
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_3_4_1" id="__nav_3_2_3_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    0.6.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_4_1_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_2_3_4_1">
+<span class="md-nav__icon md-icon"></span>
+            0.6.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.6.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.6.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.6.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_3_4_2" id="__nav_3_2_3_4_2_label" tabindex="0">
+<span class="md-ellipsis">
+    0.5.2
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_4_2_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_2_3_4_2">
+<span class="md-nav__icon md-icon"></span>
+            0.5.2
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.5.2/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.5.2/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.5.2/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_3_4_3" id="__nav_3_2_3_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    0.5.1
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_4_3_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_2_3_4_3">
+<span class="md-nav__icon md-icon"></span>
+            0.5.1
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.5.1/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.5.1/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.5.1/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_3_4_4" id="__nav_3_2_3_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    0.5.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_4_4_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_2_3_4_4">
+<span class="md-nav__icon md-icon"></span>
+            0.5.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.5.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.5.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.5.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_3_4_5" id="__nav_3_2_3_4_5_label" tabindex="0">
+<span class="md-ellipsis">
+    0.4.1
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_4_5_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_2_3_4_5">
+<span class="md-nav__icon md-icon"></span>
+            0.4.1
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.4.1/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.4.1/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.4.1/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_2_3_4_6" id="__nav_3_2_3_4_6_label" tabindex="0">
+<span class="md-ellipsis">
+    0.4.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_4_6_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_2_3_4_6">
+<span class="md-nav__icon md-icon"></span>
+            0.4.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.4.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.4.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/versions/0.4.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/test-app/">
+<span class="md-ellipsis">
+    Test App
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/changelog/">
+<span class="md-ellipsis">
+    Changelog
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../android/known-issues/">
+<span class="md-ellipsis">
+    Known issues
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+<span class="md-ellipsis">
+    iOS SDK
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+            iOS SDK
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/overview/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/quickstart/">
+<span class="md-ellipsis">
+    Quickstart
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Reference
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_3_3">
+<span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3_3_4" id="__nav_3_3_3_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Previous versions
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_3_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_3_3_4">
+<span class="md-nav__icon md-icon"></span>
+            Previous versions
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3_3_4_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3_3_4_1" id="__nav_3_3_3_4_1_label" tabindex="0">
+<span class="md-ellipsis">
+    0.6.1
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_3_4_1_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_3_3_4_1">
+<span class="md-nav__icon md-icon"></span>
+            0.6.1
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.6.1/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.6.1/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.6.1/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3_3_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3_3_4_2" id="__nav_3_3_3_4_2_label" tabindex="0">
+<span class="md-ellipsis">
+    0.6.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_3_4_2_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_3_3_4_2">
+<span class="md-nav__icon md-icon"></span>
+            0.6.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.6.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.6.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.6.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3_3_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3_3_4_3" id="__nav_3_3_3_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    0.5.2
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_3_4_3_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_3_3_4_3">
+<span class="md-nav__icon md-icon"></span>
+            0.5.2
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.5.2/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.5.2/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.5.2/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3_3_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3_3_4_4" id="__nav_3_3_3_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    0.5.1
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_3_4_4_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_3_3_4_4">
+<span class="md-nav__icon md-icon"></span>
+            0.5.1
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.5.1/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.5.1/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.5.1/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3_3_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3_3_4_5" id="__nav_3_3_3_4_5_label" tabindex="0">
+<span class="md-ellipsis">
+    0.5.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_3_4_5_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_3_3_4_5">
+<span class="md-nav__icon md-icon"></span>
+            0.5.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.5.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.5.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.5.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3_3_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3_3_4_6" id="__nav_3_3_3_4_6_label" tabindex="0">
+<span class="md-ellipsis">
+    0.4.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_3_4_6_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_3_3_4_6">
+<span class="md-nav__icon md-icon"></span>
+            0.4.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.4.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.4.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.4.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_3_3_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3_3_4_7" id="__nav_3_3_3_4_7_label" tabindex="0">
+<span class="md-ellipsis">
+    0.3.1
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_3_3_4_7_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_3_3_4_7">
+<span class="md-nav__icon md-icon"></span>
+            0.3.1
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.3.1/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.3.1/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/versions/0.3.1/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/test-app/">
+<span class="md-ellipsis">
+    Test App
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ios/changelog/">
+<span class="md-ellipsis">
+    Changelog
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+<span class="md-ellipsis">
+    JavaScript SDK
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+            JavaScript SDK
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../overview/">
+<span class="md-ellipsis">
+    Overview
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../quickstart/">
+<span class="md-ellipsis">
+    Quickstart
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../provisioning/">
+<span class="md-ellipsis">
+    Provisioning
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_4" id="__nav_3_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Desktop Agent
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_4_4">
+<span class="md-nav__icon md-icon"></span>
+            Desktop Agent
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../desktop-agent-macos/">
+<span class="md-ellipsis">
+    macOS
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../desktop-agent-windows/">
+<span class="md-ellipsis">
+    Windows
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5" id="__nav_3_4_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Reference
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_4_5">
+<span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdk-data-interfaces/">
+<span class="md-ellipsis">
+    Data interfaces
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdk-latency-optimization-level/">
+<span class="md-ellipsis">
+    Latency optimization level
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6" id="__nav_3_4_5_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Previous versions
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_4_5_6">
+<span class="md-nav__icon md-icon"></span>
+            Previous versions
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6_1" id="__nav_3_4_5_6_1_label" tabindex="0">
+<span class="md-ellipsis">
+    0.6.2
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_1_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_4_5_6_1">
+<span class="md-nav__icon md-icon"></span>
+            0.6.2
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.2/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.2/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.2/sdk-data-interfaces/">
+<span class="md-ellipsis">
+    Data interfaces
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.2/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6_2" id="__nav_3_4_5_6_2_label" tabindex="0">
+<span class="md-ellipsis">
+    0.6.1
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_2_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_4_5_6_2">
+<span class="md-nav__icon md-icon"></span>
+            0.6.1
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.1/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.1/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.1/sdk-data-interfaces/">
+<span class="md-ellipsis">
+    Data interfaces
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.1/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6_3" id="__nav_3_4_5_6_3_label" tabindex="0">
+<span class="md-ellipsis">
+    0.6.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_3_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_4_5_6_3">
+<span class="md-nav__icon md-icon"></span>
+            0.6.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.0/sdk-data-interfaces/">
+<span class="md-ellipsis">
+    Data interfaces
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.6.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6_4" id="__nav_3_4_5_6_4_label" tabindex="0">
+<span class="md-ellipsis">
+    0.5.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_4_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_4_5_6_4">
+<span class="md-nav__icon md-icon"></span>
+            0.5.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.5.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.5.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.5.0/sdk-data-interfaces/">
+<span class="md-ellipsis">
+    Data interfaces
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.5.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6_5" id="__nav_3_4_5_6_5_label" tabindex="0">
+<span class="md-ellipsis">
+    0.4.3
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_5_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_4_5_6_5">
+<span class="md-nav__icon md-icon"></span>
+            0.4.3
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.3/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.3/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.3/sdk-data-interfaces/">
+<span class="md-ellipsis">
+    Data interfaces
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.3/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6_6" id="__nav_3_4_5_6_6_label" tabindex="0">
+<span class="md-ellipsis">
+    0.4.2
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_6_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_4_5_6_6">
+<span class="md-nav__icon md-icon"></span>
+            0.4.2
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.2/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.2/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.2/sdk-data-interfaces/">
+<span class="md-ellipsis">
+    Data interfaces
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.2/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6_7" id="__nav_3_4_5_6_7_label" tabindex="0">
+<span class="md-ellipsis">
+    0.4.1
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_7_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_4_5_6_7">
+<span class="md-nav__icon md-icon"></span>
+            0.4.1
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.1/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.1/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.4.1/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6_8" id="__nav_3_4_5_6_8_label" tabindex="0">
+<span class="md-ellipsis">
+    0.3.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_8_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_4_5_6_8">
+<span class="md-nav__icon md-icon"></span>
+            0.3.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.3.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.3.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.3.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6_9" id="__nav_3_4_5_6_9_label" tabindex="0">
+<span class="md-ellipsis">
+    0.2.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_9_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_4_5_6_9">
+<span class="md-nav__icon md-icon"></span>
+            0.2.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.2.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.2.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.2.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_5_6_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4_5_6_10" id="__nav_3_4_5_6_10_label" tabindex="0">
+<span class="md-ellipsis">
+    0.1.0
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_5_6_10_label" class="md-nav" data-md-level="5">
+<label class="md-nav__title" for="__nav_3_4_5_6_10">
+<span class="md-nav__icon md-icon"></span>
+            0.1.0
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.1.0/sdk-methods/">
+<span class="md-ellipsis">
+    Methods
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.1.0/sdk-delegates/">
+<span class="md-ellipsis">
+    Delegates
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/0.1.0/sdk-error-codes/">
+<span class="md-ellipsis">
+    Error codes
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../test-app/">
+<span class="md-ellipsis">
+    Test App
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Using Web Worker
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Using Web Worker
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-problem-with-browsers">
+<span class="md-ellipsis">
+      The Problem with Browsers
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-solution-web-workers">
+<span class="md-ellipsis">
+      The Solution: Web Workers
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web-worker">
+<span class="md-ellipsis">
+      Web Worker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#syncstageworkerwrapper">
+<span class="md-ellipsis">
+      SyncStageWorkerWrapper
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-web-workers-in-reactjs">
+<span class="md-ellipsis">
+      Configuring Web Workers in React.js
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../changelog/">
+<span class="md-ellipsis">
+    Changelog
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../known-issues/">
+<span class="md-ellipsis">
+    Known issues
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-api/swagger/">
+<span class="md-ellipsis">
+    APIs
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Help
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Help
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../help/faq/">
+<span class="md-ellipsis">
+    FAQ
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../help/report-a-bug/">
+<span class="md-ellipsis">
+    Reporting a bug
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../help/report-an-issue-in-docs/">
+<span class="md-ellipsis">
+    Reporting an issue in docs
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../help/ask-a-question/">
+<span class="md-ellipsis">
+    Asking a question
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../acknowledgements/">
+<span class="md-ellipsis">
+    Acknowledgements
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-problem-with-browsers">
+<span class="md-ellipsis">
+      The Problem with Browsers
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-solution-web-workers">
+<span class="md-ellipsis">
+      The Solution: Web Workers
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web-worker">
+<span class="md-ellipsis">
+      Web Worker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#syncstageworkerwrapper">
+<span class="md-ellipsis">
+      SyncStageWorkerWrapper
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-web-workers-in-reactjs">
+<span class="md-ellipsis">
+      Configuring Web Workers in React.js
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div><h1 id="using-web-worker">Using Web Worker<a class="headerlink" href="#using-web-worker" title="Permanent link">#</a></h1>
+<p>The SyncStage SDK uses WebSocket to communicate with the Desktop Agent, maintaining a persistent connection that allows real-time communication between the two system components.</p>
+<h2 id="the-problem-with-browsers">The Problem with Browsers<a class="headerlink" href="#the-problem-with-browsers" title="Permanent link">#</a></h2>
+<p>When a browser tab is not active or the browser is running in the background, the browser optimizes its resources. This optimization can lead to the freezing and disconnection of WebSocket connections. This behavior can corrupt the state of SyncStage for users, leading to an inconsistent user experience.</p>
+<h2 id="the-solution-web-workers">The Solution: Web Workers<a class="headerlink" href="#the-solution-web-workers" title="Permanent link">#</a></h2>
+<p>To circumvent this issue, in the SyncStage web <a href="https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester" target="_blank">test application</a> we run the SyncStage class within a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Worker" target="_blank">Web Worker</a>. Web Workers are a simple means for web content to run scripts in background threads. The worker thread can perform tasks without interfering with the user interface.</p>
+<p>In addition, workers utilize thread-like message passing to achieve parallelism. They're perfect for performing processing or computation that would otherwise block the UI thread.</p>
+<p>When SyncStage is run within a Web Worker, the WebSocket connection is not disturbed by the browser's optimization process. This ensures that the SyncStage state remains consistent for users, regardless of whether the browser tab is active or not.</p>
+<h2 id="web-worker">Web Worker<a class="headerlink" href="#web-worker" title="Permanent link">#</a></h2>
+<p>Below you can find our implementation of the web worker in the <a href="https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester" target="_blank">test application</a>. Folowing script should be saved as  <code>worker.js</code> in the application project scope.</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">SyncStage</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@opensesamemedia/syncstage-sdk-npm-package-development'</span><span class="p">;</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">SyncStageUserDelegate</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./SyncStageUserDelegate'</span><span class="p">;</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">import</span><span class="w"> </span><span class="nx">SyncStageConnectivityDelegate</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./SyncStageConnectivityDelegate'</span><span class="p">;</span>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="k">import</span><span class="w"> </span><span class="nx">SyncStageDiscoveryDelegate</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./SyncStageDiscoveryDelegate'</span><span class="p">;</span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">import</span><span class="w"> </span><span class="nx">SyncStageDesktopAgentDelegate</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./SyncStageDesktopAgentDelegate'</span><span class="p">;</span>
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kd">let</span><span class="w"> </span><span class="nx">syncStage</span><span class="p">;</span>
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="nx">self</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-10"><a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">args</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+</span><span id="__span-0-11"><a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">userDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SyncStageUserDelegate</span><span class="p">(</span>
+</span><span id="__span-0-13"><a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="p">(</span><span class="nx">connection</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-14"><a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onUserJoined'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">connection</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-15"><a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onUserJoined</span>
+</span><span id="__span-0-16"><a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="p">(</span><span class="nx">identifier</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-17"><a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onUserLeft'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">identifier</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-18"><a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onUserLeft</span>
+</span><span id="__span-0-19"><a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="p">(</span><span class="nx">identifier</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-20"><a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onUserMuted'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">identifier</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-21"><a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onUserMuted</span>
+</span><span id="__span-0-22"><a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="p">(</span><span class="nx">identifier</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-23"><a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onUserUnmuted'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">identifier</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-24"><a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onUserUnmuted</span>
+</span><span id="__span-0-25"><a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-26"><a href="#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onRecordingStarted'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-27"><a href="#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onRecordingStarted</span>
+</span><span id="__span-0-28"><a href="#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-29"><a href="#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onRecordingStopped'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-30"><a href="#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onRecordingStopped</span>
+</span><span id="__span-0-31"><a href="#__codelineno-0-31" id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-32"><a href="#__codelineno-0-32" id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onSessionOut'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-33"><a href="#__codelineno-0-33" id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onSessionOut</span>
+</span><span id="__span-0-34"><a href="#__codelineno-0-34" id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">  </span><span class="p">);</span>
+</span><span id="__span-0-35"><a href="#__codelineno-0-35" id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">connectivityDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SyncStageConnectivityDelegate</span><span class="p">(</span>
+</span><span id="__span-0-36"><a href="#__codelineno-0-36" id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">    </span><span class="p">(</span><span class="nx">connected</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-37"><a href="#__codelineno-0-37" id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onTransmitterConnectivityChanged'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">connected</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-38"><a href="#__codelineno-0-38" id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onTransmitterConnectivityChanged</span>
+</span><span id="__span-0-39"><a href="#__codelineno-0-39" id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="p">(</span><span class="nx">identifier</span><span class="p">,</span><span class="w"> </span><span class="nx">connected</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-40"><a href="#__codelineno-0-40" id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onReceiverConnectivityChanged'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">identifier</span><span class="p">,</span><span class="w"> </span><span class="nx">connected</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-41"><a href="#__codelineno-0-41" id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onReceiverConnectivityChanged</span>
+</span><span id="__span-0-42"><a href="#__codelineno-0-42" id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">  </span><span class="p">);</span>
+</span><span id="__span-0-43"><a href="#__codelineno-0-43" id="__codelineno-0-43" name="__codelineno-0-43"></a>
+</span><span id="__span-0-44"><a href="#__codelineno-0-44" id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">discoveryDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SyncStageDiscoveryDelegate</span><span class="p">(</span>
+</span><span id="__span-0-45"><a href="#__codelineno-0-45" id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">    </span><span class="p">(</span><span class="nx">zones</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-46"><a href="#__codelineno-0-46" id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onDiscoveryResults'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">zones</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-47"><a href="#__codelineno-0-47" id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onDiscoveryResults</span>
+</span><span id="__span-0-48"><a href="#__codelineno-0-48" id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="p">(</span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-49"><a href="#__codelineno-0-49" id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onDiscoveryLatencyTestResults'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">results</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-50"><a href="#__codelineno-0-50" id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onDiscoveryLatencyTestResults</span>
+</span><span id="__span-0-51"><a href="#__codelineno-0-51" id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="w">    </span><span class="p">(</span><span class="nx">selectedServer</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-52"><a href="#__codelineno-0-52" id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onServerSelected'</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">selectedServer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-53"><a href="#__codelineno-0-53" id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onServerSelected</span>
+</span><span id="__span-0-54"><a href="#__codelineno-0-54" id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">  </span><span class="p">);</span>
+</span><span id="__span-0-55"><a href="#__codelineno-0-55" id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">desktopAgentDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SyncStageDesktopAgentDelegate</span><span class="p">(</span>
+</span><span id="__span-0-56"><a href="#__codelineno-0-56" id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-57"><a href="#__codelineno-0-57" id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onDesktopAgentAquired'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-58"><a href="#__codelineno-0-58" id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onDesktopAgentAquired</span>
+</span><span id="__span-0-59"><a href="#__codelineno-0-59" id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-60"><a href="#__codelineno-0-60" id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onDesktopAgentReleased'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-61"><a href="#__codelineno-0-61" id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onDesktopAgentReleased</span>
+</span><span id="__span-0-62"><a href="#__codelineno-0-62" id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-63"><a href="#__codelineno-0-63" id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onDesktopAgentConnected'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-64"><a href="#__codelineno-0-64" id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onDesktopAgentConnected</span>
+</span><span id="__span-0-65"><a href="#__codelineno-0-65" id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-66"><a href="#__codelineno-0-66" id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onDesktopAgentDisconnected'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-67"><a href="#__codelineno-0-67" id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onDesktopAgentDisconnected</span>
+</span><span id="__span-0-68"><a href="#__codelineno-0-68" id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-69"><a href="#__codelineno-0-69" id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onDesktopAgentDeprovisioned'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-70"><a href="#__codelineno-0-70" id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="c1">//onDesktopAgentDeprovisioned</span>
+</span><span id="__span-0-71"><a href="#__codelineno-0-71" id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-72"><a href="#__codelineno-0-72" id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onDesktopAgentProvisioned'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-73"><a href="#__codelineno-0-73" id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-0-74"><a href="#__codelineno-0-74" id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">  </span><span class="p">);</span>
+</span><span id="__span-0-75"><a href="#__codelineno-0-75" id="__codelineno-0-75" name="__codelineno-0-75"></a>
+</span><span id="__span-0-76"><a href="#__codelineno-0-76" id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">onTokenExpired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-77"><a href="#__codelineno-0-77" id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="w">    </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onTokenExpired'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-78"><a href="#__codelineno-0-78" id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="w">  </span><span class="p">};</span>
+</span><span id="__span-0-79"><a href="#__codelineno-0-79" id="__codelineno-0-79" name="__codelineno-0-79"></a>
+</span><span id="__span-0-80"><a href="#__codelineno-0-80" id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">method</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'constructor'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-81"><a href="#__codelineno-0-81" id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="w">    </span><span class="nx">syncStage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SyncStage</span><span class="p">(</span><span class="nx">userDelegate</span><span class="p">,</span><span class="w"> </span><span class="nx">connectivityDelegate</span><span class="p">,</span><span class="w"> </span><span class="nx">discoveryDelegate</span><span class="p">,</span><span class="w"> </span><span class="nx">desktopAgentDelegate</span><span class="p">,</span><span class="w"> </span><span class="nx">onTokenExpired</span><span class="p">);</span>
+</span><span id="__span-0-82"><a href="#__codelineno-0-82" id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="w">    </span><span class="nx">syncStage</span><span class="p">.</span><span class="nx">updateOnDesktopAgentReconnected</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-83"><a href="#__codelineno-0-83" id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="w">      </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="s1">'onDesktopAgentReconnected'</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-84"><a href="#__codelineno-0-84" id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-0-85"><a href="#__codelineno-0-85" id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="w">    </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="s1">'SyncStage initialized in worker.'</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-86"><a href="#__codelineno-0-86" id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">syncStage</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">syncStage</span><span class="p">[</span><span class="nx">method</span><span class="p">]</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'function'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-87"><a href="#__codelineno-0-87" id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="w">    </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">syncStage</span><span class="p">[</span><span class="nx">method</span><span class="p">](...</span><span class="nx">args</span><span class="p">))</span>
+</span><span id="__span-0-88"><a href="#__codelineno-0-88" id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-89"><a href="#__codelineno-0-89" id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="w">        </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-90"><a href="#__codelineno-0-90" id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="w">      </span><span class="p">})</span>
+</span><span id="__span-0-91"><a href="#__codelineno-0-91" id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="w">      </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-92"><a href="#__codelineno-0-92" id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="w">        </span><span class="nx">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-0-93"><a href="#__codelineno-0-93" id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="w">      </span><span class="p">});</span>
+</span><span id="__span-0-94"><a href="#__codelineno-0-94" id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-95"><a href="#__codelineno-0-95" id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="p">};</span>
+</span></code></pre></div>
+<h2 id="syncstageworkerwrapper">SyncStageWorkerWrapper<a class="headerlink" href="#syncstageworkerwrapper" title="Permanent link">#</a></h2>
+<p>In our implementation, we use the SyncStageWorkerWrapper class to manage the Web Worker. This class creates a new worker that runs the SyncStage class. It also provides methods to communicate with the worker and handle responses from it. The interface is compliant with the SyncStage class itself. It should be added as <code>SyncStageWorkerWrapper.js</code> to the application code:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">SyncStageWorkerWrapper</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">userDelegate</span><span class="p">,</span><span class="w"> </span><span class="nx">connectivityDelegate</span><span class="p">,</span><span class="w"> </span><span class="nx">discoveryDelegate</span><span class="p">,</span><span class="w"> </span><span class="nx">desktopAgentDelegate</span><span class="p">,</span><span class="w"> </span><span class="nx">onTokenExpired</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'SyncStageWorkerWrapper constructor'</span><span class="p">);</span>
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">userDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userDelegate</span><span class="p">;</span>
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">connectivityDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">connectivityDelegate</span><span class="p">;</span>
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">discoveryDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">discoveryDelegate</span><span class="p">;</span>
+</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">desktopAgentDelegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">desktopAgentDelegate</span><span class="p">;</span>
+</span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">onTokenExpired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">onTokenExpired</span><span class="p">;</span>
+</span><span id="__span-1-10"><a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="c1">// eslint-disable-next-line @typescript-eslint/no-empty-function</span>
+</span><span id="__span-1-11"><a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">onDesktopAgentReconnected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{};</span>
+</span><span id="__span-1-12"><a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">worker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Worker</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="s1">'worker.js'</span><span class="p">,</span><span class="w"> </span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">url</span><span class="p">));</span><span class="w"> </span><span class="c1">//NEW SYNTAX</span>
+</span><span id="__span-1-14"><a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">worker</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-16"><a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+</span><span id="__span-1-17"><a href="#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a href="#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">promises</span><span class="p">[</span><span class="nx">id</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-19"><a href="#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-20"><a href="#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">promises</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">));</span>
+</span><span id="__span-1-21"><a href="#__codelineno-1-21" id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-22"><a href="#__codelineno-1-22" id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">promises</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+</span><span id="__span-1-23"><a href="#__codelineno-1-23" id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-24"><a href="#__codelineno-1-24" id="__codelineno-1-24" name="__codelineno-1-24"></a>
+</span><span id="__span-1-25"><a href="#__codelineno-1-25" id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">        </span><span class="ow">delete</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">promises</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+</span><span id="__span-1-26"><a href="#__codelineno-1-26" id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-27"><a href="#__codelineno-1-27" id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-28"><a href="#__codelineno-1-28" id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onUserJoined'</span><span class="o">:</span>
+</span><span id="__span-1-29"><a href="#__codelineno-1-29" id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">userDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">userJoined</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-1-30"><a href="#__codelineno-1-30" id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-31"><a href="#__codelineno-1-31" id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onUserLeft'</span><span class="o">:</span>
+</span><span id="__span-1-32"><a href="#__codelineno-1-32" id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">userDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">userLeft</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-1-33"><a href="#__codelineno-1-33" id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-34"><a href="#__codelineno-1-34" id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onUserMuted'</span><span class="o">:</span>
+</span><span id="__span-1-35"><a href="#__codelineno-1-35" id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">userDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">userMuted</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-1-36"><a href="#__codelineno-1-36" id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-37"><a href="#__codelineno-1-37" id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onUserUnmuted'</span><span class="o">:</span>
+</span><span id="__span-1-38"><a href="#__codelineno-1-38" id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">userDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">userUnmuted</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-1-39"><a href="#__codelineno-1-39" id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-40"><a href="#__codelineno-1-40" id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onRecordingStarted'</span><span class="o">:</span>
+</span><span id="__span-1-41"><a href="#__codelineno-1-41" id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">userDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">sessionRecordingStarted</span><span class="p">();</span>
+</span><span id="__span-1-42"><a href="#__codelineno-1-42" id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-43"><a href="#__codelineno-1-43" id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onRecordingStopped'</span><span class="o">:</span>
+</span><span id="__span-1-44"><a href="#__codelineno-1-44" id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">userDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">sessionRecordingStopped</span><span class="p">();</span>
+</span><span id="__span-1-45"><a href="#__codelineno-1-45" id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-46"><a href="#__codelineno-1-46" id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onSessionOut'</span><span class="o">:</span>
+</span><span id="__span-1-47"><a href="#__codelineno-1-47" id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">userDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">sessionOut</span><span class="p">();</span>
+</span><span id="__span-1-48"><a href="#__codelineno-1-48" id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-49"><a href="#__codelineno-1-49" id="__codelineno-1-49" name="__codelineno-1-49"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onTransmitterConnectivityChanged'</span><span class="o">:</span>
+</span><span id="__span-1-50"><a href="#__codelineno-1-50" id="__codelineno-1-50" name="__codelineno-1-50"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">connectivityDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">transmitterConnectivityChanged</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-1-51"><a href="#__codelineno-1-51" id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-52"><a href="#__codelineno-1-52" id="__codelineno-1-52" name="__codelineno-1-52"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onReceiverConnectivityChanged'</span><span class="o">:</span>
+</span><span id="__span-1-53"><a href="#__codelineno-1-53" id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">connectivityDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">receiverConnectivityChanged</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">identifier</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">connected</span><span class="p">);</span>
+</span><span id="__span-1-54"><a href="#__codelineno-1-54" id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-55"><a href="#__codelineno-1-55" id="__codelineno-1-55" name="__codelineno-1-55"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onDiscoveryResults'</span><span class="o">:</span>
+</span><span id="__span-1-56"><a href="#__codelineno-1-56" id="__codelineno-1-56" name="__codelineno-1-56"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">discoveryDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">discoveryResults</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-1-57"><a href="#__codelineno-1-57" id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-58"><a href="#__codelineno-1-58" id="__codelineno-1-58" name="__codelineno-1-58"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onDiscoveryLatencyTestResults'</span><span class="o">:</span>
+</span><span id="__span-1-59"><a href="#__codelineno-1-59" id="__codelineno-1-59" name="__codelineno-1-59"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">discoveryDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">discoveryLatencyTestResults</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-1-60"><a href="#__codelineno-1-60" id="__codelineno-1-60" name="__codelineno-1-60"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-61"><a href="#__codelineno-1-61" id="__codelineno-1-61" name="__codelineno-1-61"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onServerSelected'</span><span class="o">:</span>
+</span><span id="__span-1-62"><a href="#__codelineno-1-62" id="__codelineno-1-62" name="__codelineno-1-62"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">discoveryDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">serverSelected</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-1-63"><a href="#__codelineno-1-63" id="__codelineno-1-63" name="__codelineno-1-63"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-64"><a href="#__codelineno-1-64" id="__codelineno-1-64" name="__codelineno-1-64"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onDesktopAgentAquired'</span><span class="o">:</span>
+</span><span id="__span-1-65"><a href="#__codelineno-1-65" id="__codelineno-1-65" name="__codelineno-1-65"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">desktopAgentDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">onDesktopAgentAquired</span><span class="p">();</span>
+</span><span id="__span-1-66"><a href="#__codelineno-1-66" id="__codelineno-1-66" name="__codelineno-1-66"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-67"><a href="#__codelineno-1-67" id="__codelineno-1-67" name="__codelineno-1-67"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onDesktopAgentReleased'</span><span class="o">:</span>
+</span><span id="__span-1-68"><a href="#__codelineno-1-68" id="__codelineno-1-68" name="__codelineno-1-68"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">desktopAgentDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">onDesktopAgentReleased</span><span class="p">();</span>
+</span><span id="__span-1-69"><a href="#__codelineno-1-69" id="__codelineno-1-69" name="__codelineno-1-69"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-70"><a href="#__codelineno-1-70" id="__codelineno-1-70" name="__codelineno-1-70"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onDesktopAgentConnected'</span><span class="o">:</span>
+</span><span id="__span-1-71"><a href="#__codelineno-1-71" id="__codelineno-1-71" name="__codelineno-1-71"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">desktopAgentDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">onDesktopAgentConnected</span><span class="p">();</span>
+</span><span id="__span-1-72"><a href="#__codelineno-1-72" id="__codelineno-1-72" name="__codelineno-1-72"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-73"><a href="#__codelineno-1-73" id="__codelineno-1-73" name="__codelineno-1-73"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onDesktopAgentDisconnected'</span><span class="o">:</span>
+</span><span id="__span-1-74"><a href="#__codelineno-1-74" id="__codelineno-1-74" name="__codelineno-1-74"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">desktopAgentDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">onDesktopAgentDisconnected</span><span class="p">();</span>
+</span><span id="__span-1-75"><a href="#__codelineno-1-75" id="__codelineno-1-75" name="__codelineno-1-75"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-76"><a href="#__codelineno-1-76" id="__codelineno-1-76" name="__codelineno-1-76"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onDesktopAgentDeprovisioned'</span><span class="o">:</span>
+</span><span id="__span-1-77"><a href="#__codelineno-1-77" id="__codelineno-1-77" name="__codelineno-1-77"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">desktopAgentDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">onDesktopAgentDeprovisioned</span><span class="p">();</span>
+</span><span id="__span-1-78"><a href="#__codelineno-1-78" id="__codelineno-1-78" name="__codelineno-1-78"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-79"><a href="#__codelineno-1-79" id="__codelineno-1-79" name="__codelineno-1-79"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onDesktopAgentProvisioned'</span><span class="o">:</span>
+</span><span id="__span-1-80"><a href="#__codelineno-1-80" id="__codelineno-1-80" name="__codelineno-1-80"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">desktopAgentDelegate</span><span class="o">?</span><span class="p">.</span><span class="nx">onDesktopAgentProvisioned</span><span class="p">();</span>
+</span><span id="__span-1-81"><a href="#__codelineno-1-81" id="__codelineno-1-81" name="__codelineno-1-81"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-82"><a href="#__codelineno-1-82" id="__codelineno-1-82" name="__codelineno-1-82"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onTokenExpired'</span><span class="o">:</span>
+</span><span id="__span-1-83"><a href="#__codelineno-1-83" id="__codelineno-1-83" name="__codelineno-1-83"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-84"><a href="#__codelineno-1-84" id="__codelineno-1-84" name="__codelineno-1-84"></a><span class="w">              </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">onTokenExpired</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">'function'</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-85"><a href="#__codelineno-1-85" id="__codelineno-1-85" name="__codelineno-1-85"></a><span class="w">                </span><span class="kd">const</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">onTokenExpired</span><span class="p">();</span>
+</span><span id="__span-1-86"><a href="#__codelineno-1-86" id="__codelineno-1-86" name="__codelineno-1-86"></a><span class="w">                </span><span class="k">this</span><span class="p">.</span><span class="nx">updateToken</span><span class="p">(</span><span class="nx">jwt</span><span class="p">);</span>
+</span><span id="__span-1-87"><a href="#__codelineno-1-87" id="__codelineno-1-87" name="__codelineno-1-87"></a><span class="w">              </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-88"><a href="#__codelineno-1-88" id="__codelineno-1-88" name="__codelineno-1-88"></a><span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'onTokenExpired is not a function'</span><span class="p">);</span>
+</span><span id="__span-1-89"><a href="#__codelineno-1-89" id="__codelineno-1-89" name="__codelineno-1-89"></a><span class="w">              </span><span class="p">}</span>
+</span><span id="__span-1-90"><a href="#__codelineno-1-90" id="__codelineno-1-90" name="__codelineno-1-90"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-91"><a href="#__codelineno-1-91" id="__codelineno-1-91" name="__codelineno-1-91"></a><span class="w">              </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'An error occurred in onTokenExpired or updateToken:'</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+</span><span id="__span-1-92"><a href="#__codelineno-1-92" id="__codelineno-1-92" name="__codelineno-1-92"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-1-93"><a href="#__codelineno-1-93" id="__codelineno-1-93" name="__codelineno-1-93"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-94"><a href="#__codelineno-1-94" id="__codelineno-1-94" name="__codelineno-1-94"></a><span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="s1">'onDesktopAgentReconnected'</span><span class="o">:</span>
+</span><span id="__span-1-95"><a href="#__codelineno-1-95" id="__codelineno-1-95" name="__codelineno-1-95"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">onDesktopAgentReconnected</span><span class="p">();</span>
+</span><span id="__span-1-96"><a href="#__codelineno-1-96" id="__codelineno-1-96" name="__codelineno-1-96"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-97"><a href="#__codelineno-1-97" id="__codelineno-1-97" name="__codelineno-1-97"></a><span class="w">          </span><span class="k">default</span><span class="o">:</span>
+</span><span id="__span-1-98"><a href="#__codelineno-1-98" id="__codelineno-1-98" name="__codelineno-1-98"></a><span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`No implementation for callback </span><span class="si">${</span><span class="nx">result</span><span class="p">.</span><span class="nx">callback</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-1-99"><a href="#__codelineno-1-99" id="__codelineno-1-99" name="__codelineno-1-99"></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-1-100"><a href="#__codelineno-1-100" id="__codelineno-1-100" name="__codelineno-1-100"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-101"><a href="#__codelineno-1-101" id="__codelineno-1-101" name="__codelineno-1-101"></a><span class="w">      </span><span class="p">}</span>
+</span><span id="__span-1-102"><a href="#__codelineno-1-102" id="__codelineno-1-102" name="__codelineno-1-102"></a><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-1-103"><a href="#__codelineno-1-103" id="__codelineno-1-103" name="__codelineno-1-103"></a>
+</span><span id="__span-1-104"><a href="#__codelineno-1-104" id="__codelineno-1-104" name="__codelineno-1-104"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">promises</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+</span><span id="__span-1-105"><a href="#__codelineno-1-105" id="__codelineno-1-105" name="__codelineno-1-105"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">nextId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-1-106"><a href="#__codelineno-1-106" id="__codelineno-1-106" name="__codelineno-1-106"></a>
+</span><span id="__span-1-107"><a href="#__codelineno-1-107" id="__codelineno-1-107" name="__codelineno-1-107"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'constructor'</span><span class="p">);</span>
+</span><span id="__span-1-108"><a href="#__codelineno-1-108" id="__codelineno-1-108" name="__codelineno-1-108"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-109"><a href="#__codelineno-1-109" id="__codelineno-1-109" name="__codelineno-1-109"></a>
+</span><span id="__span-1-110"><a href="#__codelineno-1-110" id="__codelineno-1-110" name="__codelineno-1-110"></a><span class="w">  </span><span class="nx">callWorker</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-111"><a href="#__codelineno-1-111" id="__codelineno-1-111" name="__codelineno-1-111"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-112"><a href="#__codelineno-1-112" id="__codelineno-1-112" name="__codelineno-1-112"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">nextId</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-1-113"><a href="#__codelineno-1-113" id="__codelineno-1-113" name="__codelineno-1-113"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">promises</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-1-114"><a href="#__codelineno-1-114" id="__codelineno-1-114" name="__codelineno-1-114"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">worker</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">args</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-1-115"><a href="#__codelineno-1-115" id="__codelineno-1-115" name="__codelineno-1-115"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-1-116"><a href="#__codelineno-1-116" id="__codelineno-1-116" name="__codelineno-1-116"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-117"><a href="#__codelineno-1-117" id="__codelineno-1-117" name="__codelineno-1-117"></a>
+</span><span id="__span-1-118"><a href="#__codelineno-1-118" id="__codelineno-1-118" name="__codelineno-1-118"></a><span class="w">  </span><span class="nx">updateOnDesktopAgentReconnected</span><span class="p">(</span><span class="nx">onDesktopAgentReconnected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-119"><a href="#__codelineno-1-119" id="__codelineno-1-119" name="__codelineno-1-119"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">onDesktopAgentReconnected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">onDesktopAgentReconnected</span><span class="p">;</span>
+</span><span id="__span-1-120"><a href="#__codelineno-1-120" id="__codelineno-1-120" name="__codelineno-1-120"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-121"><a href="#__codelineno-1-121" id="__codelineno-1-121" name="__codelineno-1-121"></a>
+</span><span id="__span-1-122"><a href="#__codelineno-1-122" id="__codelineno-1-122" name="__codelineno-1-122"></a><span class="w">  </span><span class="nx">isCompatible</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-123"><a href="#__codelineno-1-123" id="__codelineno-1-123" name="__codelineno-1-123"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">os</span><span class="p">;</span>
+</span><span id="__span-1-124"><a href="#__codelineno-1-124" id="__codelineno-1-124" name="__codelineno-1-124"></a>
+</span><span id="__span-1-125"><a href="#__codelineno-1-125" id="__codelineno-1-125" name="__codelineno-1-125"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'Mac'</span><span class="p">)</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-126"><a href="#__codelineno-1-126" id="__codelineno-1-126" name="__codelineno-1-126"></a><span class="w">      </span><span class="nx">os</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'macOS'</span><span class="p">;</span>
+</span><span id="__span-1-127"><a href="#__codelineno-1-127" id="__codelineno-1-127" name="__codelineno-1-127"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'Win'</span><span class="p">)</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-128"><a href="#__codelineno-1-128" id="__codelineno-1-128" name="__codelineno-1-128"></a><span class="w">      </span><span class="nx">os</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Windows'</span><span class="p">;</span>
+</span><span id="__span-1-129"><a href="#__codelineno-1-129" id="__codelineno-1-129" name="__codelineno-1-129"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-130"><a href="#__codelineno-1-130" id="__codelineno-1-130" name="__codelineno-1-130"></a>
+</span><span id="__span-1-131"><a href="#__codelineno-1-131" id="__codelineno-1-131" name="__codelineno-1-131"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'isCompatible'</span><span class="p">,</span><span class="w"> </span><span class="nx">os</span><span class="p">);</span>
+</span><span id="__span-1-132"><a href="#__codelineno-1-132" id="__codelineno-1-132" name="__codelineno-1-132"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-133"><a href="#__codelineno-1-133" id="__codelineno-1-133" name="__codelineno-1-133"></a>
+</span><span id="__span-1-134"><a href="#__codelineno-1-134" id="__codelineno-1-134" name="__codelineno-1-134"></a><span class="w">  </span><span class="nx">getLatestCompatibleDesktopAgentVersion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-135"><a href="#__codelineno-1-135" id="__codelineno-1-135" name="__codelineno-1-135"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">os</span><span class="p">;</span>
+</span><span id="__span-1-136"><a href="#__codelineno-1-136" id="__codelineno-1-136" name="__codelineno-1-136"></a>
+</span><span id="__span-1-137"><a href="#__codelineno-1-137" id="__codelineno-1-137" name="__codelineno-1-137"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'Mac'</span><span class="p">)</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-138"><a href="#__codelineno-1-138" id="__codelineno-1-138" name="__codelineno-1-138"></a><span class="w">      </span><span class="nx">os</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'macOS'</span><span class="p">;</span>
+</span><span id="__span-1-139"><a href="#__codelineno-1-139" id="__codelineno-1-139" name="__codelineno-1-139"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">'Win'</span><span class="p">)</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-140"><a href="#__codelineno-1-140" id="__codelineno-1-140" name="__codelineno-1-140"></a><span class="w">      </span><span class="nx">os</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Windows'</span><span class="p">;</span>
+</span><span id="__span-1-141"><a href="#__codelineno-1-141" id="__codelineno-1-141" name="__codelineno-1-141"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-142"><a href="#__codelineno-1-142" id="__codelineno-1-142" name="__codelineno-1-142"></a>
+</span><span id="__span-1-143"><a href="#__codelineno-1-143" id="__codelineno-1-143" name="__codelineno-1-143"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'getLatestCompatibleDesktopAgentVersion'</span><span class="p">,</span><span class="w"> </span><span class="nx">os</span><span class="p">);</span>
+</span><span id="__span-1-144"><a href="#__codelineno-1-144" id="__codelineno-1-144" name="__codelineno-1-144"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-145"><a href="#__codelineno-1-145" id="__codelineno-1-145" name="__codelineno-1-145"></a>
+</span><span id="__span-1-146"><a href="#__codelineno-1-146" id="__codelineno-1-146" name="__codelineno-1-146"></a><span class="w">  </span><span class="nx">init</span><span class="p">(</span><span class="nx">jwt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-147"><a href="#__codelineno-1-147" id="__codelineno-1-147" name="__codelineno-1-147"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'init'</span><span class="p">,</span><span class="w"> </span><span class="nx">jwt</span><span class="p">);</span>
+</span><span id="__span-1-148"><a href="#__codelineno-1-148" id="__codelineno-1-148" name="__codelineno-1-148"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-149"><a href="#__codelineno-1-149" id="__codelineno-1-149" name="__codelineno-1-149"></a>
+</span><span id="__span-1-150"><a href="#__codelineno-1-150" id="__codelineno-1-150" name="__codelineno-1-150"></a><span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">updateToken</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-151"><a href="#__codelineno-1-151" id="__codelineno-1-151" name="__codelineno-1-151"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'SyncStageWorkerWrapper updateToken'</span><span class="p">);</span>
+</span><span id="__span-1-152"><a href="#__codelineno-1-152" id="__codelineno-1-152" name="__codelineno-1-152"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'updateToken'</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">);</span>
+</span><span id="__span-1-153"><a href="#__codelineno-1-153" id="__codelineno-1-153" name="__codelineno-1-153"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-154"><a href="#__codelineno-1-154" id="__codelineno-1-154" name="__codelineno-1-154"></a>
+</span><span id="__span-1-155"><a href="#__codelineno-1-155" id="__codelineno-1-155" name="__codelineno-1-155"></a><span class="w">  </span><span class="nx">isDesktopAgentConnected</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-156"><a href="#__codelineno-1-156" id="__codelineno-1-156" name="__codelineno-1-156"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'isDesktopAgentConnected'</span><span class="p">);</span>
+</span><span id="__span-1-157"><a href="#__codelineno-1-157" id="__codelineno-1-157" name="__codelineno-1-157"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-158"><a href="#__codelineno-1-158" id="__codelineno-1-158" name="__codelineno-1-158"></a>
+</span><span id="__span-1-159"><a href="#__codelineno-1-159" id="__codelineno-1-159" name="__codelineno-1-159"></a><span class="w">  </span><span class="nx">getSDKVersion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-160"><a href="#__codelineno-1-160" id="__codelineno-1-160" name="__codelineno-1-160"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'getSDKVersion'</span><span class="p">);</span>
+</span><span id="__span-1-161"><a href="#__codelineno-1-161" id="__codelineno-1-161" name="__codelineno-1-161"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-162"><a href="#__codelineno-1-162" id="__codelineno-1-162" name="__codelineno-1-162"></a>
+</span><span id="__span-1-163"><a href="#__codelineno-1-163" id="__codelineno-1-163" name="__codelineno-1-163"></a><span class="w">  </span><span class="nx">getServerInstances</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-164"><a href="#__codelineno-1-164" id="__codelineno-1-164" name="__codelineno-1-164"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'getServerInstances'</span><span class="p">);</span>
+</span><span id="__span-1-165"><a href="#__codelineno-1-165" id="__codelineno-1-165" name="__codelineno-1-165"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-166"><a href="#__codelineno-1-166" id="__codelineno-1-166" name="__codelineno-1-166"></a>
+</span><span id="__span-1-167"><a href="#__codelineno-1-167" id="__codelineno-1-167" name="__codelineno-1-167"></a><span class="w">  </span><span class="nx">createSession</span><span class="p">(</span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">zoneId</span><span class="p">,</span><span class="w"> </span><span class="nx">studioServerId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-168"><a href="#__codelineno-1-168" id="__codelineno-1-168" name="__codelineno-1-168"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'createSession'</span><span class="p">,</span><span class="w"> </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">zoneId</span><span class="p">,</span><span class="w"> </span><span class="nx">studioServerId</span><span class="p">);</span>
+</span><span id="__span-1-169"><a href="#__codelineno-1-169" id="__codelineno-1-169" name="__codelineno-1-169"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-170"><a href="#__codelineno-1-170" id="__codelineno-1-170" name="__codelineno-1-170"></a>
+</span><span id="__span-1-171"><a href="#__codelineno-1-171" id="__codelineno-1-171" name="__codelineno-1-171"></a><span class="w">  </span><span class="nx">join</span><span class="p">(</span><span class="nx">sessionCode</span><span class="p">,</span><span class="w"> </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">displayName</span><span class="p">,</span><span class="w"> </span><span class="nx">zoneId</span><span class="p">,</span><span class="w"> </span><span class="nx">studioServerId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-172"><a href="#__codelineno-1-172" id="__codelineno-1-172" name="__codelineno-1-172"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'join'</span><span class="p">,</span><span class="w"> </span><span class="nx">sessionCode</span><span class="p">,</span><span class="w"> </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">displayName</span><span class="p">,</span><span class="w"> </span><span class="nx">zoneId</span><span class="p">,</span><span class="w"> </span><span class="nx">studioServerId</span><span class="p">);</span>
+</span><span id="__span-1-173"><a href="#__codelineno-1-173" id="__codelineno-1-173" name="__codelineno-1-173"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-174"><a href="#__codelineno-1-174" id="__codelineno-1-174" name="__codelineno-1-174"></a>
+</span><span id="__span-1-175"><a href="#__codelineno-1-175" id="__codelineno-1-175" name="__codelineno-1-175"></a><span class="w">  </span><span class="nx">leave</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-176"><a href="#__codelineno-1-176" id="__codelineno-1-176" name="__codelineno-1-176"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'leave'</span><span class="p">);</span>
+</span><span id="__span-1-177"><a href="#__codelineno-1-177" id="__codelineno-1-177" name="__codelineno-1-177"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-178"><a href="#__codelineno-1-178" id="__codelineno-1-178" name="__codelineno-1-178"></a>
+</span><span id="__span-1-179"><a href="#__codelineno-1-179" id="__codelineno-1-179" name="__codelineno-1-179"></a><span class="w">  </span><span class="nx">session</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-180"><a href="#__codelineno-1-180" id="__codelineno-1-180" name="__codelineno-1-180"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'session'</span><span class="p">);</span>
+</span><span id="__span-1-181"><a href="#__codelineno-1-181" id="__codelineno-1-181" name="__codelineno-1-181"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-182"><a href="#__codelineno-1-182" id="__codelineno-1-182" name="__codelineno-1-182"></a>
+</span><span id="__span-1-183"><a href="#__codelineno-1-183" id="__codelineno-1-183" name="__codelineno-1-183"></a><span class="w">  </span><span class="nx">changeReceiverVolume</span><span class="p">(</span><span class="nx">identifier</span><span class="p">,</span><span class="w"> </span><span class="nx">volume</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-184"><a href="#__codelineno-1-184" id="__codelineno-1-184" name="__codelineno-1-184"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'changeReceiverVolume'</span><span class="p">,</span><span class="w"> </span><span class="nx">identifier</span><span class="p">,</span><span class="w"> </span><span class="nx">volume</span><span class="p">);</span>
+</span><span id="__span-1-185"><a href="#__codelineno-1-185" id="__codelineno-1-185" name="__codelineno-1-185"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-186"><a href="#__codelineno-1-186" id="__codelineno-1-186" name="__codelineno-1-186"></a>
+</span><span id="__span-1-187"><a href="#__codelineno-1-187" id="__codelineno-1-187" name="__codelineno-1-187"></a><span class="w">  </span><span class="nx">getReceiverVolume</span><span class="p">(</span><span class="nx">identifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-188"><a href="#__codelineno-1-188" id="__codelineno-1-188" name="__codelineno-1-188"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'getReceiverVolume'</span><span class="p">,</span><span class="w"> </span><span class="nx">identifier</span><span class="p">);</span>
+</span><span id="__span-1-189"><a href="#__codelineno-1-189" id="__codelineno-1-189" name="__codelineno-1-189"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-190"><a href="#__codelineno-1-190" id="__codelineno-1-190" name="__codelineno-1-190"></a>
+</span><span id="__span-1-191"><a href="#__codelineno-1-191" id="__codelineno-1-191" name="__codelineno-1-191"></a><span class="w">  </span><span class="nx">toggleMicrophone</span><span class="p">(</span><span class="nx">mute</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-192"><a href="#__codelineno-1-192" id="__codelineno-1-192" name="__codelineno-1-192"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'toggleMicrophone'</span><span class="p">,</span><span class="w"> </span><span class="nx">mute</span><span class="p">);</span>
+</span><span id="__span-1-193"><a href="#__codelineno-1-193" id="__codelineno-1-193" name="__codelineno-1-193"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-194"><a href="#__codelineno-1-194" id="__codelineno-1-194" name="__codelineno-1-194"></a>
+</span><span id="__span-1-195"><a href="#__codelineno-1-195" id="__codelineno-1-195" name="__codelineno-1-195"></a><span class="w">  </span><span class="nx">isMicrophoneMuted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-196"><a href="#__codelineno-1-196" id="__codelineno-1-196" name="__codelineno-1-196"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'isMicrophoneMuted'</span><span class="p">);</span>
+</span><span id="__span-1-197"><a href="#__codelineno-1-197" id="__codelineno-1-197" name="__codelineno-1-197"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-198"><a href="#__codelineno-1-198" id="__codelineno-1-198" name="__codelineno-1-198"></a>
+</span><span id="__span-1-199"><a href="#__codelineno-1-199" id="__codelineno-1-199" name="__codelineno-1-199"></a><span class="w">  </span><span class="nx">getReceiverMeasurements</span><span class="p">(</span><span class="nx">identifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-200"><a href="#__codelineno-1-200" id="__codelineno-1-200" name="__codelineno-1-200"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'getReceiverMeasurements'</span><span class="p">,</span><span class="w"> </span><span class="nx">identifier</span><span class="p">);</span>
+</span><span id="__span-1-201"><a href="#__codelineno-1-201" id="__codelineno-1-201" name="__codelineno-1-201"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-202"><a href="#__codelineno-1-202" id="__codelineno-1-202" name="__codelineno-1-202"></a>
+</span><span id="__span-1-203"><a href="#__codelineno-1-203" id="__codelineno-1-203" name="__codelineno-1-203"></a><span class="w">  </span><span class="nx">getTransmitterMeasurements</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-204"><a href="#__codelineno-1-204" id="__codelineno-1-204" name="__codelineno-1-204"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'getTransmitterMeasurements'</span><span class="p">);</span>
+</span><span id="__span-1-205"><a href="#__codelineno-1-205" id="__codelineno-1-205" name="__codelineno-1-205"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-206"><a href="#__codelineno-1-206" id="__codelineno-1-206" name="__codelineno-1-206"></a>
+</span><span id="__span-1-207"><a href="#__codelineno-1-207" id="__codelineno-1-207" name="__codelineno-1-207"></a><span class="w">  </span><span class="nx">getDesktopAgentProtocolHandler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-208"><a href="#__codelineno-1-208" id="__codelineno-1-208" name="__codelineno-1-208"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'getDesktopAgentProtocolHandler'</span><span class="p">);</span>
+</span><span id="__span-1-209"><a href="#__codelineno-1-209" id="__codelineno-1-209" name="__codelineno-1-209"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-210"><a href="#__codelineno-1-210" id="__codelineno-1-210" name="__codelineno-1-210"></a>
+</span><span id="__span-1-211"><a href="#__codelineno-1-211" id="__codelineno-1-211" name="__codelineno-1-211"></a><span class="w">  </span><span class="nx">getSelectedServer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-212"><a href="#__codelineno-1-212" id="__codelineno-1-212" name="__codelineno-1-212"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'getSelectedServer'</span><span class="p">);</span>
+</span><span id="__span-1-213"><a href="#__codelineno-1-213" id="__codelineno-1-213" name="__codelineno-1-213"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-214"><a href="#__codelineno-1-214" id="__codelineno-1-214" name="__codelineno-1-214"></a>
+</span><span id="__span-1-215"><a href="#__codelineno-1-215" id="__codelineno-1-215" name="__codelineno-1-215"></a><span class="w">  </span><span class="nx">getBestAvailableServer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-216"><a href="#__codelineno-1-216" id="__codelineno-1-216" name="__codelineno-1-216"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'getBestAvailableServer'</span><span class="p">);</span>
+</span><span id="__span-1-217"><a href="#__codelineno-1-217" id="__codelineno-1-217" name="__codelineno-1-217"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-218"><a href="#__codelineno-1-218" id="__codelineno-1-218" name="__codelineno-1-218"></a>
+</span><span id="__span-1-219"><a href="#__codelineno-1-219" id="__codelineno-1-219" name="__codelineno-1-219"></a><span class="w">  </span><span class="nx">startRecording</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-220"><a href="#__codelineno-1-220" id="__codelineno-1-220" name="__codelineno-1-220"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'startRecording'</span><span class="p">);</span>
+</span><span id="__span-1-221"><a href="#__codelineno-1-221" id="__codelineno-1-221" name="__codelineno-1-221"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-222"><a href="#__codelineno-1-222" id="__codelineno-1-222" name="__codelineno-1-222"></a>
+</span><span id="__span-1-223"><a href="#__codelineno-1-223" id="__codelineno-1-223" name="__codelineno-1-223"></a><span class="w">  </span><span class="nx">stopRecording</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-224"><a href="#__codelineno-1-224" id="__codelineno-1-224" name="__codelineno-1-224"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'stopRecording'</span><span class="p">);</span>
+</span><span id="__span-1-225"><a href="#__codelineno-1-225" id="__codelineno-1-225" name="__codelineno-1-225"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-226"><a href="#__codelineno-1-226" id="__codelineno-1-226" name="__codelineno-1-226"></a><span class="w">  </span><span class="nx">checkProvisionedStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-227"><a href="#__codelineno-1-227" id="__codelineno-1-227" name="__codelineno-1-227"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'checkProvisionedStatus'</span><span class="p">);</span>
+</span><span id="__span-1-228"><a href="#__codelineno-1-228" id="__codelineno-1-228" name="__codelineno-1-228"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-229"><a href="#__codelineno-1-229" id="__codelineno-1-229" name="__codelineno-1-229"></a>
+</span><span id="__span-1-230"><a href="#__codelineno-1-230" id="__codelineno-1-230" name="__codelineno-1-230"></a><span class="w">  </span><span class="nx">getSessionSettings</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-231"><a href="#__codelineno-1-231" id="__codelineno-1-231" name="__codelineno-1-231"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'getSessionSettings'</span><span class="p">);</span>
+</span><span id="__span-1-232"><a href="#__codelineno-1-232" id="__codelineno-1-232" name="__codelineno-1-232"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-233"><a href="#__codelineno-1-233" id="__codelineno-1-233" name="__codelineno-1-233"></a>
+</span><span id="__span-1-234"><a href="#__codelineno-1-234" id="__codelineno-1-234" name="__codelineno-1-234"></a><span class="w">  </span><span class="nx">setInputDevice</span><span class="p">(</span><span class="nx">identifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-235"><a href="#__codelineno-1-235" id="__codelineno-1-235" name="__codelineno-1-235"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'setInputDevice'</span><span class="p">,</span><span class="w"> </span><span class="nx">identifier</span><span class="p">);</span>
+</span><span id="__span-1-236"><a href="#__codelineno-1-236" id="__codelineno-1-236" name="__codelineno-1-236"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-237"><a href="#__codelineno-1-237" id="__codelineno-1-237" name="__codelineno-1-237"></a>
+</span><span id="__span-1-238"><a href="#__codelineno-1-238" id="__codelineno-1-238" name="__codelineno-1-238"></a><span class="w">  </span><span class="nx">setOutputDevice</span><span class="p">(</span><span class="nx">identifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-239"><a href="#__codelineno-1-239" id="__codelineno-1-239" name="__codelineno-1-239"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'setOutputDevice'</span><span class="p">,</span><span class="w"> </span><span class="nx">identifier</span><span class="p">);</span>
+</span><span id="__span-1-240"><a href="#__codelineno-1-240" id="__codelineno-1-240" name="__codelineno-1-240"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-241"><a href="#__codelineno-1-241" id="__codelineno-1-241" name="__codelineno-1-241"></a>
+</span><span id="__span-1-242"><a href="#__codelineno-1-242" id="__codelineno-1-242" name="__codelineno-1-242"></a><span class="w">  </span><span class="nx">setNoiseCancellation</span><span class="p">(</span><span class="nx">enabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-243"><a href="#__codelineno-1-243" id="__codelineno-1-243" name="__codelineno-1-243"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'setNoiseCancellation'</span><span class="p">,</span><span class="w"> </span><span class="nx">enabled</span><span class="p">);</span>
+</span><span id="__span-1-244"><a href="#__codelineno-1-244" id="__codelineno-1-244" name="__codelineno-1-244"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-245"><a href="#__codelineno-1-245" id="__codelineno-1-245" name="__codelineno-1-245"></a>
+</span><span id="__span-1-246"><a href="#__codelineno-1-246" id="__codelineno-1-246" name="__codelineno-1-246"></a><span class="w">  </span><span class="nx">setDisableGain</span><span class="p">(</span><span class="nx">disabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-247"><a href="#__codelineno-1-247" id="__codelineno-1-247" name="__codelineno-1-247"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'setDisableGain'</span><span class="p">,</span><span class="w"> </span><span class="nx">disabled</span><span class="p">);</span>
+</span><span id="__span-1-248"><a href="#__codelineno-1-248" id="__codelineno-1-248" name="__codelineno-1-248"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-249"><a href="#__codelineno-1-249" id="__codelineno-1-249" name="__codelineno-1-249"></a>
+</span><span id="__span-1-250"><a href="#__codelineno-1-250" id="__codelineno-1-250" name="__codelineno-1-250"></a><span class="w">  </span><span class="nx">setDirectMonitor</span><span class="p">(</span><span class="nx">enabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-251"><a href="#__codelineno-1-251" id="__codelineno-1-251" name="__codelineno-1-251"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'setDirectMonitor'</span><span class="p">,</span><span class="w"> </span><span class="nx">enabled</span><span class="p">);</span>
+</span><span id="__span-1-252"><a href="#__codelineno-1-252" id="__codelineno-1-252" name="__codelineno-1-252"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-253"><a href="#__codelineno-1-253" id="__codelineno-1-253" name="__codelineno-1-253"></a>
+</span><span id="__span-1-254"><a href="#__codelineno-1-254" id="__codelineno-1-254" name="__codelineno-1-254"></a><span class="w">  </span><span class="nx">setLatencyOptimizationLevel</span><span class="p">(</span><span class="nx">level</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-255"><a href="#__codelineno-1-255" id="__codelineno-1-255" name="__codelineno-1-255"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callWorker</span><span class="p">(</span><span class="s1">'setLatencyOptimizationLevel'</span><span class="p">,</span><span class="w"> </span><span class="nx">level</span><span class="p">);</span>
+</span><span id="__span-1-256"><a href="#__codelineno-1-256" id="__codelineno-1-256" name="__codelineno-1-256"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-257"><a href="#__codelineno-1-257" id="__codelineno-1-257" name="__codelineno-1-257"></a><span class="p">}</span>
+</span><span id="__span-1-258"><a href="#__codelineno-1-258" id="__codelineno-1-258" name="__codelineno-1-258"></a>
+</span><span id="__span-1-259"><a href="#__codelineno-1-259" id="__codelineno-1-259" name="__codelineno-1-259"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">SyncStageWorkerWrapper</span><span class="p">;</span>
+</span></code></pre></div>
+<p>The SyncStageWorkerWrapper class ensures that the SyncStage class and its WebSocket connection continue to run smoothly, providing a seamless user experience.</p>
+<h2 id="configuring-web-workers-in-reactjs">Configuring Web Workers in React.js<a class="headerlink" href="#configuring-web-workers-in-reactjs" title="Permanent link">#</a></h2>
+<p>To use Web Workers in a React.js project, you need to configure your project in a specific way. </p>
+<p>Here are the steps:</p>
+<ol>
+<li>
+<p>Create a Worker File: Create a new JavaScript file (<code>worker.js</code>). This file will contain the code that the worker will execute.</p>
+</li>
+<li>
+<p>Instantiate the Worker: In your React component, instantiate the worker using the Worker constructor, passing the path to your worker file as an argument (we do it in <code>SyncStageWorkerWrapper.js</code>).</p>
+</li>
+<li>
+<p>Communicate with the Worker: Use the <code>postMessage</code> method to send data to the worker. The worker can send data back to the main thread using its own <code>postMessage</code> method. To receive messages from the worker, add an event listener for the message event to the worker instance (we do it in (<code>SyncStageWorkerWrapper.js</code>).</p>
+</li>
+<li>
+<p>Configure Webpack (if used): If your project uses Webpack, you may need to add a loader to handle worker files. The <code>worker-loader</code> package is a popular choice. Install it with npm <code>npm install --save-dev worker-loader</code>, and add a rule to your Webpack configuration as <code>config-overrides.js</code> file in the root directory:</p>
+</li>
+</ol>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">//config-overrides.js</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">override</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span><span class="w"> </span><span class="nx">env</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="nx">config</span><span class="p">.</span><span class="nx">output</span><span class="p">.</span><span class="nx">globalObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'this'</span><span class="p">;</span>
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span><span class="nx">config</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">rules</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.worker\.js$/</span><span class="p">,</span>
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="nx">use</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">loader</span><span class="o">:</span><span class="w"> </span><span class="s1">'worker-loader'</span><span class="w"> </span><span class="p">}],</span>
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">config</span><span class="p">;</span>
+</span><span id="__span-2-10"><a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="p">};</span>
+</span></code></pre></div></div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Test App" class="md-footer__link md-footer__link--prev" href="../test-app/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                Test App
+              </div>
+</div>
+</a>
+<a aria-label="Next: Changelog" class="md-footer__link md-footer__link--next" href="../changelog/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                Changelog
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2024 Open Sesame Media, Inc.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/opensesamemedia" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://www.linkedin.com/company/opensesamemedia" rel="noopener" target="_blank" title="www.linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" id="__settings" type="checkbox"/>
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="analytics" type="checkbox"/>
+<span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">Accept</button>
+<label class="md-button" for="__settings">Manage settings</label>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "content.tooltips", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.instant.prefetch", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../../javascripts/tablesort.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script><script>document$.subscribe(() => {
+            window.update_swagger_ui_iframe_height = function (id) {
+                var iFrameID = document.getElementById(id);
+                if (iFrameID) {
+                    full_height = (iFrameID.contentWindow.document.body.scrollHeight + 80) + "px";
+                    iFrameID.height = full_height;
+                    iFrameID.style.height = full_height;
+                }
+            }
+        
+            let iframe_id_list = []
+            var iframes = document.getElementsByClassName("swagger-ui-iframe");
+            for (var i = 0; i < iframes.length; i++) { 
+                iframe_id_list.push(iframes[i].getAttribute("id"))
+            }
+        
+            let ticking = true;
+            
+            document.addEventListener('scroll', function(e) {
+                if (!ticking) {
+                    window.requestAnimationFrame(()=> {
+                        let half_vh = window.innerHeight/2;
+                        for(var i = 0; i < iframe_id_list.length; i++) {
+                            let element = document.getElementById(iframe_id_list[i])
+                            if(element==null){
+                                return
+                            }
+                            let diff = element.getBoundingClientRect().top
+                            if(element.contentWindow.update_top_val){
+                                element.contentWindow.update_top_val(half_vh - diff)
+                            }
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        
+            const dark_scheme_name = "slate"
+            
+            window.scheme = document.body.getAttribute("data-md-color-scheme")
+            const options = {
+                attributeFilter: ['data-md-color-scheme'],
+            };
+            function color_scheme_callback(mutations) {
+                for (let mutation of mutations) {
+                    if (mutation.attributeName === "data-md-color-scheme") {
+                        scheme = document.body.getAttribute("data-md-color-scheme")
+                        var iframe_list = document.getElementsByClassName("swagger-ui-iframe")
+                        for(var i = 0; i < iframe_list.length; i++) {
+                            var ele = iframe_list.item(i);
+                            if (ele) {
+                                if (scheme === dark_scheme_name) {
+                                    ele.contentWindow.enable_dark_mode();
+                                } else {
+                                    ele.contentWindow.disable_dark_mode();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            observer = new MutationObserver(color_scheme_callback);
+            observer.observe(document.body, options);
+            })</script></body>
+</html>
