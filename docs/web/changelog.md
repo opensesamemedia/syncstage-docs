@@ -3,6 +3,8 @@
     `{{ latest_web_sdk_version }}` is only compoatible with latest iOS verision of SyncStage Agent - `0.6.0`. Please make sure to update your SyncStage Agent to the latest version. 
     To use Windows Desktop Agent, please remain with `0.6.2` version of the javascript SDK.
 
+Most changes in the 0.7.0 release was made to move management of the session settings to the javascript SDK. Session settings are removed from the Desktop Agent and are now managed by the javascript SDK. This change allows for more flexibility in managing the session settings and allows for more control over the session settings from the javascript SDK. Test application for 0.7.0 introduces a new UI for managing session settings.
+
 #### Added 
 * New error codes `INVALID_DEVICE` and `INCOMPATIBLE_CONTENT`
 * `getSessionSettings` method
@@ -83,8 +85,8 @@ This SDK version provides auto-location selection without explicit latency measu
     * Added `NOT_IN_SESSION`, `SYNCSTAGE_SERVICE_COMMUNICATION_ERROR`, `TIMEOUT_ERROR`
     * Removed `DESKTOP_AGENT_COMMUNICATION_ERROR`
 * Extended ISyncStageDesktopAgentDelegate with two methods:
-    * `desktopAgentConnectionKeepAlive(): void`
-    *  `desktopAgentLostConnection(): void`
+  * `desktopAgentConnectionKeepAlive(): void`
+  *  `desktopAgentLostConnection(): void`
 * Updated flow of test application which improves user experience, and reorganizes the project structure:
     * Caching last selected location, nickname
     * Auto SyncStage initialization
