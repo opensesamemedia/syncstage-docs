@@ -21,22 +21,25 @@ To run the SyncStage Test App you will need to add a SyncStageSecret to the back
 ## Set up your development project
 Follow these steps to run the Test App project on your local machine.
 
-1. Create `.env` file within `web-application` directory and fill it with following variables:
-
+1. Clone a repository using: `git clone git@github.com:opensesamemedia/syncstage-sdk-npm-package-tester.git`
+2. Create `.env` file within `web-application` directory and fill it with following variables:
 ```
 REACT_APP_DOCKER_COMPOSE_BACKEND=true
 REACT_APP_BACKEND_BASE_PATH=http://localhost:3000/api
 ```
-
-2. Ensure Docker and docker-compose are installed on your machine.
-3. Copy the SyncStageSecret.json file into the `backend/src` path.
-4. Open a terminal and navigate to the root directory of the repository.
-5. Run the following command: `docker-compose up`
-6. The application will start and you can access it in your browser at `http://localhost:3001` (it might take some time to load, because it runs in development mode)
+3. Ensure Docker and docker-compose are installed on your machine.
+4. Copy the SyncStageSecret.json file into the `backend/src` path.
+5. Open a terminal and navigate to the root directory of the repository.
+6. Run the following commands:
+```
+docker-compose build --no-cache
+docker-compose up
+```
+7. The application will start and you can access it in your browser at `http://localhost:3001` (it might take some time to load, because it runs in development mode)
 
 ## Use the app
 
-Firstly you will be asked to login. Credentials are defined in `backend\src\user-db.json` file for docker-compose deployment or in the AWS Cognito using AWS Amplify deployment [(learn more)](https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester){target=_blank}.
+Firstly you will be asked to login. Credentials are defined in `backend/src/user-db.json` file for docker-compose deployment or in the AWS Cognito using AWS Amplify deployment [(learn more)](https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester){target=_blank}.
 ![alt Install Desktop Agent](../assets/browser/login.png "Login")
 
 Then you will be asked to install Desktop Agent on your Mac.
@@ -48,17 +51,8 @@ Once installed and running you will see
 Input nickname of the user that will join the session
 ![alt Nickname](../assets/browser/profile.png "Nickname")
 
-
-You can choose if you want SyncStage to determine the best Studio server for you, or you want to select it manually
-![alt Nickname](../assets/browser/location-selection.png "Location selection")
-
-![alt Nickname](../assets/browser/location-auto.png "Location selection")
-
-![alt Nickname](../assets/browser/location-manual.png "Location selection")
-
 You can now join existing session or create a new one
 ![alt Nickname](../assets/browser/join-or-create.png "Join or create")
 
-
 Enjoy your low latency session
-![alt Nickname](../assets/browser/session.png "Session")
+![alt Session](../assets/browser/session.png "Session")

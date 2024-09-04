@@ -7,9 +7,10 @@ It consists of two components:
 
 SyncStage SDK for Web latest version: `{{ latest_web_sdk_version }}` ([View changelog](changelog.md))
 
-!!! warning
-    `{{ latest_web_sdk_version }}` is only compoatible with latest iOS verision of SyncStage Agent - `0.6.0`. Please make sure to update your SyncStage Agent to the latest version. 
-    To use Windows Desktop Agent, please remain with `0.6.2` version of the javascript SDK.
+!!! note
+    JavaScript SDK `{{ latest_web_sdk_version }}` is compatible only with the latest macOS version of SyncStage Agent - `0.6.0`. Please make sure to update your SyncStage Agent before use.
+    
+    To use Windows Desktop Agent, please remain with `0.6.2` version of the JavaScript SDK.
 
 [Get SDK](quickstart.md){ .md-button .md-button--primary}
 [Test SyncStage Web SDK](https://github.com/opensesamemedia/syncstage-sdk-npm-package-tester){ .md-button target=_blank }
