@@ -1,6 +1,17 @@
+### 0.7.0 <small>August 23, 2024</small> { id="0.7.0" }
+
+#### Changed
+* Increased resilience to network latency fluctuations and packet loss.
+
+
+???+ warning
+
+    SyncStage SDK v0.7.0 for iOS is incompatible with the previous SDK versions.
+
+
 ### 0.6.2 <small>May 21, 2024</small> { id="0.6.2" }
 
-### Changed
+#### Changed
 
 * Extended NAT support for better IPv6 networks handling
 
