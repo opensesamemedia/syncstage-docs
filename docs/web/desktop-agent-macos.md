@@ -3,6 +3,13 @@ To provide low-latency capabilities SyncStage uses platform-specific optimizatio
 [Latest SyncStage Desktop Agent for macOS]({{ latest_desktop_agent_for_macos_url }}){ .md-button}
 
 ### Versions
+#### 0.6.0 <small>September 4, 2024</small> { id="0.6.0" }
+##### Changelog
+* Input and output devices selection moved from Desktop Agent to Web SDK.
+* Direct Monitor toggle moved from Desktop Agent to Web SDK.
+* Noise Cancellation toggle moved from Desktop Agent to Web SDK.
+* Improved audio quality and network conditions resiliency.
+  
 #### 0.5.0 <small>June 5, 2024</small> { id="0.5.0" }
 ##### Changelog
 * Extended NAT support for better IPv6 networks handling
