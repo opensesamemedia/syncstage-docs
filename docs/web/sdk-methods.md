@@ -1,7 +1,8 @@
-## [:octicons-tag-24: 0.6.1][0.6.1]{target=_blank}
-[0.6.1]: https://www.npmjs.com/package/@opensesamemedia/syncstage/v/0.6.1
+## [:octicons-tag-24: 0.7.0][0.7.0]{target=_blank}
 
-### Constructor 
+[0.7.0]: https://www.npmjs.com/package/@opensesamemedia/syncstage/v/0.7.0
+
+### Constructor
 
 ```typescript
 class SyncStage implements ISyncStage{
@@ -26,6 +27,7 @@ Constructor parameters:
 * `onTokenExpired` - callback to be called when `jwt` expires, callback should return new refetched `jwt`
 
 ### Check compatibility
+
 Checks if SyncStage SDK is compatible with currently installed Desktop Agent
 
 ```typescript
@@ -61,12 +63,12 @@ Parameters:
 * `jwt` - token obtained in the [provisioning](provisioning.md) process.
 
 ### Check if SyncStage Agent is provisioned
+
 Returns if Desktop Agent has been already provisioned.
 
 ```typescript
 async checkProvisionedStatus(): Promise<boolean>;
 ```
-
 
 ### Update JWT
 
@@ -86,7 +88,6 @@ Checks if desktop agent is running and available on the localhost.
 isDesktopAgentConnected(): boolean
 ```
 
-
 ### Get SDK version
 
 Gets SDK version.
@@ -95,15 +96,13 @@ Gets SDK version.
 getSDKVersion(): string
 ```
 
-
 ### Gets autoselected Studio Server
+
 Get autoselected server instance info
 
 ```typescript
 async getSelectedServer(): Promise<[IServerInstance | null, SyncStageSDKErrorCode]>;
 ```
-
-
 
 ### Get best available Studio Server
 
@@ -112,7 +111,6 @@ Get best available server, where a session can be created
 ```typescript
 async getBestAvailableServer(): Promise<[IServerInstance | null, SyncStageSDKErrorCode]>
 ```
-
 
 ### Update SDK to SyncStage backend connected callback
 
@@ -124,7 +122,6 @@ Parameters:
 
 * `onDesktopAgentReconnected` - method to be called when the browser SDK reconnects to Desktop Agent. Session state should be refetched and synchronized on the UI in this callback.
 
-
 ### Get server instances
 
 Get server instances so you can select the server that is suitable for your session.
@@ -132,8 +129,6 @@ Get server instances so you can select the server that is suitable for your sess
 ```typescript
   async getServerInstances(): Promise<[IServerInstances | null, SyncStageSDKErrorCode]>
 ```
-
-
 
 ### Create a session
 
@@ -187,7 +182,6 @@ Gets state of currently joined session.
 async session(): Promise<[ISession | null, SyncStageSDKErrorCode]> 
 ```
 
-
 ### Leave the session
 
 Leaves currently joined session.
@@ -217,6 +211,7 @@ async isMicrophoneMuted(): Promise<[boolean | null, SyncStageSDKErrorCode]>
 ```
 
 ### Get receiver network measurements
+
 Returns Measurements object with network delay, jitter, and calculated network quality indicators.
 
 ```typescript
@@ -227,8 +222,8 @@ Parameters:
 
 * `identifier` - receiver's identifier
 
-
 ### Get transmitter network measurements
+
 Returns Measurements object with network delay, jitter, and calculated network quality indicators.
 
 ```typescript
@@ -247,8 +242,74 @@ async startRecording(): Promise<SyncStageSDKErrorCode>
 async stopRecording(): Promise<SyncStageSDKErrorCode>
 ```
 
+### Get Session Settings
+
+Gets session settings.
+
+```typescript
+getSessionSettings(): Promise<[ISessionSettings | null, SyncStageSDKErrorCode]>
+```
+
+### Set Input Device
+
+Sets input device.
+
+```typescript
+  setInputDevice(identifier: number): Promise<SyncStageSDKErrorCode>;
+```
+
+* `identifier` - device identifier
+
+### Set Output Device
+
+Sets output device.
+
+```typescript
+  setOutputDevice(identifier: number): Promise<SyncStageSDKErrorCode>;
+```
+
+* `identifier` - device identifier
+
+### Set Noise Cancellation
+
+Sets noise cancellation.
+
+```typescript
+setNoiseCancellation(enabled: boolean): Promise<SyncStageSDKErrorCode>;
+```
+
+### Set Disable Gain
+
+Sets disable gain.
+
+```typescript
+  setDisableGain(disabled: boolean): Promise<SyncStageSDKErrorCode>;
+```
+
+* `disabled` - boolean value
+
+### Set Direct Monitor
+
+Sets direct monitor.
+
+```typescript
+  setDirectMonitor(enabled: boolean): Promise<SyncStageSDKErrorCode>;
+```
+
+* `enabled` - boolean value
+
+### Set Latency Optimization Level
+
+Sets latency optimization level.
+
+```typescript
+  setLatencyOptimizationLevel(level: LatencyOptimizationLevel): Promise<SyncStageSDKErrorCode>;
+```
+
+* `level` - latency optimization level
 
 ### Register Desktop Agent Reconnected Callback
+
 In case of reconnection UI application should be aware of this fact, to refetch the session state to keep it synchronized.
 
 ```typescript
@@ -259,8 +320,8 @@ Parameters:
 
 * `onWebsocketReconnected` - callback
 
-
 ### Unregister Desktop Agent Reconnected Callback
+
 Remove the callback in the SyncStage.
 
 ```typescript
@@ -268,25 +329,7 @@ unregisterDesktopAgentReconnectedCallback(): void;
 ```
 
 ### Get URI for opening SyncStage Agent on macOS or on Windows
+
 ```typescript
 async getDesktopAgentProtocolHandler(): Promise<string>;
 ```
-
-<!-- Available in 0.1.0 but not tested - no ui -->
-<!-- ### Change latency optimization level
-Change the latency optimization level using of the following options: highQuality, optimized, bestPerformance, ultraFast.
-
-```typescript
-async changeLatencyOptimizationLevel(level: number): Promise<SyncStageSDKErrorCode>
-```
-Parameters:
-
-* `level`- latency optimization level value.
-
-### Get latency optimization level
-Returns latency optimization level.
-
-```typescript
-async getLatencyOptimizationLevel(): Promise<[IZoneLatency | null, SyncStageSDKErrorCode]>
-``` -->
-

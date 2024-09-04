@@ -250,7 +250,11 @@ fun getTransmitterMeasurements(): Measurements
 ```
 
 ### Latency Optimization Level
+<<<<<<< HEAD
+Click [here](../../../guides/music-collaboration/latency-optimization-levels.md){ target=_blank} to learn more about the Latency Optimization Level.
+=======
 Click [here](/guides/music-collaboration/latency-optimization-levels/){ target=_blank} to learn more about the Latency Optimization Level.
+>>>>>>> 3a79feb8957e84f6ddb648b1a3a280ae9852cc47
 #### Change latency Optimization Level
 Change the latency optimization level using of the following options:
 

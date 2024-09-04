@@ -1,4 +1,7 @@
-### Constructor 
+## [:octicons-tag-24: 0.7.0][0.7.0]{target=_blank}
+[0.7.0]: https://www.npmjs.com/package/@opensesamemedia/syncstage/v/0.7.0
+
+### Constructor
 
 ```typescript
 class SyncStage implements ISyncStage{
@@ -22,9 +25,30 @@ Constructor parameters:
 
 * `onTokenExpired` - callback to be called when `jwt` expires, callback should return new refetched `jwt`
 
+### Check compatibility
+Checks if SyncStage SDK is compatible with currently installed Desktop Agent
+
+```typescript
+async isCompatible(currentOs: string): Promise<boolean>;
+```
+
+Parameters:
+
+* `currentOS` - operating system should be provided. Accepted values from list: `['Windows', 'macOS']`
+
+### Get latest Compatible Desktop Agent version
+
+```typescript
+getLatestCompatibleDesktopAgentVersion(currentOs: string): Promise<string | null>;
+```
+
+Parameters:
+
+* `currentOS` - operating system should be provided. Accepted values from list: `['Windows', 'macOS']`
+
 ### Initialize
 
-Initializes the SDK SyncStage object.
+Initializes and provisions the SDK SyncStage object.
 
 ```typescript
 async init(
@@ -35,6 +59,13 @@ async init(
 Parameters:
 
 * `jwt` - token obtained in the [provisioning](../../provisioning.md) process.
+
+### Check if SyncStage Agent is provisioned
+Returns if Desktop Agent has been already provisioned.
+
+```typescript
+async checkProvisionedStatus(): Promise<boolean>;
+```
 
 
 ### Update JWT
@@ -74,7 +105,7 @@ async getSelectedServer(): Promise<[IServerInstance | null, SyncStageSDKErrorCod
 
 
 
-### Get best available Studio Server DEPRECATED
+### Get best available Studio Server
 
 Get best available server, where a session can be created
 
@@ -86,12 +117,12 @@ async getBestAvailableServer(): Promise<[IServerInstance | null, SyncStageSDKErr
 ### Update SDK to SyncStage backend connected callback
 
 ```typescript
-  updateOnWebsocketReconnected(onWebsocketReconnected: () => void): void
+  updateOnDesktopAgentReconnected(onDesktopAgentReconnected: () => void): void;
 ```
 
 Parameters:
 
-* `onWebsocketReconnected` - method to be called when the browser SDK reconnects to the SyncStage services. Session state should be refetched and synchronized on the UI in this callback.
+* `onDesktopAgentReconnected` - method to be called when the browser SDK reconnects to Desktop Agent. Session state should be refetched and synchronized on the UI in this callback.
 
 
 ### Get server instances
@@ -109,7 +140,7 @@ Get server instances so you can select the server that is suitable for your sess
 Creates a session in a given zone by a given user from your user pool.
 
 ```typescript
-createSession(
+async createSession(
     userId: string,
     zoneId?: string | null,
     studioServerId?: string | null,
@@ -236,9 +267,9 @@ Remove the callback in the SyncStage.
 unregisterDesktopAgentReconnectedCallback(): void;
 ```
 
-### Get URI for opening SyncStage Agent on Windows
+### Get URI for opening SyncStage Agent on macOS or on Windows
 ```typescript
-getDesktopAgentProtocolHandler(): string;
+async getDesktopAgentProtocolHandler(): Promise<string>;
 ```
 
 <!-- Available in 0.1.0 but not tested - no ui -->

@@ -72,9 +72,9 @@ SyncStage SDK v0.4.0 for iOS is the first production-ready release!
 
 #### Removed
 
-* Zone list (Replaced by: [getServerInstances](../sdk-methods/#get-server-instances){ target=_blank})
-* Change quality coefficient (Replaced by: [changeLatencyOptimizationLevel](../sdk-methods/#change-latency-optimization-level){ target=_blank})
-* Get quality coeffient (Replaced by: [getLatencyOptimizationLevel](../sdk-methods/#get-latency-optimization-level){ target=_blank})
+* Zone list (Replaced by: [getServerInstances](sdk-methods.md/#get-server-instances){ target=_blank})
+* Change quality coefficient (Replaced by: [changeLatencyOptimizationLevel](sdk-methods.md/#change-latency-optimization-level){ target=_blank})
+* Get quality coeffient (Replaced by: [getLatencyOptimizationLevel](sdk-methods.md/#get-latency-optimization-level){ target=_blank})
 
 
 ???+ warning

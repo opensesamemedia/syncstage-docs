@@ -1,6 +1,35 @@
+### 0.7.0 <small>July 25, 2024</small> { id="0.7.0" }
+!!! warning
+    `{{ latest_web_sdk_version }}` is only compoatible with latest iOS verision of SyncStage Agent - `0.6.0`. Please make sure to update your SyncStage Agent to the latest version. 
+    To use Windows Desktop Agent, please remain with `0.6.2` version of the javascript SDK.
+
+#### Added 
+* New error codes `INVALID_DEVICE` and `INCOMPATIBLE_CONTENT`
+* `getSessionSettings` method
+* `setInputDevice` method
+* `setOutputDevice` method
+* `setNoiseCancellation` method
+* `setDisableGain` method
+* `setDirectMonitor` method
+* `setLatencyOptimizationLevel` method
+* `ISessionSettings` interface
+
+#### Removed
+* `getLatencyOptimizationLevel` method
+
+
+#### Fixed
+* stream connection state after Internet reconnection
+
+### 0.6.1 <small>May 31, 2024</small> { id="0.6.1" }
+#### Fixed
+* Improved session state management
+
+
 ### 0.6.1 <small>May 31, 2024</small> { id="0.6.1" }
 #### Fixed
 * Compatiblity check methods fixed
+* Desktop Agent with web sdk compatibility checking procedure
 
 ### 0.6.0 <small>May 7, 2024</small> { id="0.6.0" }
 #### Added

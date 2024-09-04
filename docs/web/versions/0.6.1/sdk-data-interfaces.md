@@ -25,6 +25,12 @@ interface IConnectionInfo {
 }
 ```
 
+```typescript
+interface ILatencyOptimizationLevel {
+  level: number;
+}
+
+```
 
 ```typescript
 interface IMeasurements {
@@ -99,22 +105,3 @@ export interface IZoneLatency {
 }
 ```
 
-
-```typescript
-interface ISessionSettings {
-  inputDevices: Array<{
-    identifier: number;
-    name: string;
-    selected: boolean;
-  }>;
-  outputDevices: Array<{
-    identifier: number;
-    name: string;
-    selected: boolean;
-  }>;
-  latencyOptimizationLevel: number;
-  noiseCancellationEnabled: boolean;
-  disableGain: boolean;
-  directMonitorEnabled: boolean;
-}
-```

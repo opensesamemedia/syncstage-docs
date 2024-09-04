@@ -244,7 +244,7 @@ Parameters:
 
 
 ### Latency Optimization Level
-Click [here](/guides/music-collaboration/latency-optimization-levels/){ target=_blank} to learn more about the Latency Optimization Level.
+Click [here](../../../guides/music-collaboration/latency-optimization-levels.md){ target=_blank} to learn more about the Latency Optimization Level.
 #### Change latency Optimization Level
 Change the latency optimization level using of the following options:
 
